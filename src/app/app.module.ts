@@ -1,4 +1,4 @@
-import { importProvidersFrom, NgModule } from '@angular/core';
+import { importProvidersFrom, NgModule, isDevMode } from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -16,15 +16,13 @@ import {
 } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from './shared/shared.module';
-import { HomeComponent } from './pages/home/home.component';
-import { AboutComponent } from './pages/about/about.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { BundlesComponent } from './pages/bundles/bundles.component';
-import { BudgetComponent } from './pages/budget/budget.component';
+
 import { HomeModule } from './pages/home/home.module';
 import { AboutModule } from './pages/about/about.module';
 import { BudgetModule } from './pages/budget/budget.module';
 import { BundlesModule } from './pages/bundles/bundles.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -34,10 +32,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    HomeModule,
-    AboutModule,
-    BudgetModule,
-    BundlesModule,
     SharedModule,
     BrowserModule,
     AppRoutingModule,
@@ -49,6 +43,12 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
   providers: [
