@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -7,11 +8,9 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  translate = inject(TranslateService);
-  title = 'got-you-trip-frontend';
+  private translate = inject(TranslateService);
   constructor() {
     this.translate.setDefaultLang('en');
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
     this.translate.use('en');
   }
 }

@@ -1,8 +1,22 @@
-<ul class="nav navbar-nav item">
-  <li>
-    <a [routerLink]="['/']" routerLinkActive="active">Home</a>
-  </li>
-  <li>
-    <a [routerLink]="['about']" routerLinkActive="active">About this</a>
-  </li>
-</ul>
+<div class="container">
+  <nav class="navbar">
+    <ul class="nav--list">
+      <li class="active"></li>
+      <li class="item">
+        <a (click)="goTo('')">Home</a>
+      </li>
+      <li class="item">
+        <a (click)="goTo('bundles')">Bundles</a>
+      </li>
+      <li class="item">
+        <h1>Got You Trip!</h1>
+      </li>
+      <li class="item">
+        <a (click)="goTo('budget')">Budgets</a>
+      </li>
+      <li class="item">
+        <a (click)="goTo('about')">About this</a>
+      </li>
+    </ul>
+  </nav>
+</div>
