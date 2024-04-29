@@ -18,10 +18,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from './shared/shared.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import { HomeModule } from './pages/home/home.module';
-import { AboutModule } from './pages/about/about.module';
-import { BudgetModule } from './pages/budget/budget.module';
-import { BundlesModule } from './pages/bundles/bundles.module';
+import { HomeModule } from './modules/home/home.module';
+import { AboutModule } from './modules/about/about.module';
+import { BudgetModule } from './modules/budget/budget.module';
+import { BundlesModule } from './modules/bundles/bundles.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 // AoT requires an exported function for factories
@@ -48,7 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
   providers: [
