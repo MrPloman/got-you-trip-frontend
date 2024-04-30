@@ -23,6 +23,7 @@ import { AboutModule } from './modules/about/about.module';
 import { BudgetModule } from './modules/budget/budget.module';
 import { BundlesModule } from './modules/bundles/bundles.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -34,6 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     SharedModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
