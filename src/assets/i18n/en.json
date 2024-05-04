@@ -1,3 +1,22 @@
 {
-  "hi": "Hello"
+  "hi": "Hello",
+  "questions": {
+    "question1": "Which kind of trip do you want?",
+    "question2": "Pick up your destination",
+    "question3": "How many people would it be in that trip?",
+    "question4": "How many under-age or kids would enjoy the trip?",
+    "question5": "How would you prefer to travel around your destination",
+    "question6": "In case you were visiting a city, how would you move around there?",
+    "question7": "Do you prefere to be hosted in an hotel, hostel or AirBnB?",
+    "question8": "Which kind of hotel do yo prefer?",
+    "question9": "In case you are on Airbnb, do you prefer to buy groceries and prepare your meals or go to dinne in?",
+    "question10": "Are you picky with the food?",
+    "question11": "Do you prefer city or nature?",
+    "question12": "Do you enjoy visiting museums and exibitions?",
+    "question13": "Do you enjoy going to shows as musicals or drama?",
+    "question14": "How much time would you spend on your trip?",
+    "question15": "When would you begin your trip?",
+    "question16": "When would you ended up?",
+    "question17": "From which country would you come in?"
+  }
 }

@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import {
   BundlesTypes,
   CityTransportation,
@@ -11,7 +12,7 @@ import {
 export class QuestionModel {
   public step: number;
   public question: string;
-  public answer:
+  public answer: FormControl<
     | TransportationTypes
     | CityTransportation
     | DestinationsTypes
@@ -22,23 +23,26 @@ export class QuestionModel {
     | OriginTypes
     | LodgeTypes
     | IntensityTypes
-    | undefined;
+    | null
+  >;
   public required: boolean;
   public nextStep: number | null;
   constructor(structure: {
     step: number;
     question: string;
-    answer:
+    answer: FormControl<
       | TransportationTypes
       | CityTransportation
       | DestinationsTypes
       | BundlesTypes
       | number
+      | boolean
+      | Date
       | OriginTypes
       | LodgeTypes
       | IntensityTypes
-      | boolean
-      | Date;
+      | null
+    >;
     required: boolean;
     nextStep: number | null;
   }) {

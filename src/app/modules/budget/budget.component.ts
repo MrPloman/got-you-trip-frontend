@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, signal } from '@angular/core';
+import { budgetForm } from 'src/app/shared/config/budget-form.config';
 import { questions } from 'src/app/shared/config/questions.config';
 
 @Component({
@@ -12,12 +13,14 @@ import { questions } from 'src/app/shared/config/questions.config';
         style({
           opacity: 0,
           transform: 'translateY(-50%)',
+          display: 'none',
         }), //apply default styles before animation starts
         animate(
           '400ms 400ms',
           style({
             opacity: 1,
             transform: 'translateY(0%)',
+            display: 'inline',
           })
         ),
       ]),
@@ -25,11 +28,13 @@ import { questions } from 'src/app/shared/config/questions.config';
         style({
           opacity: 1,
           transform: 'translateY(0%)',
+          display: 'inline',
         }), //apply default styles before animation starts
         animate(
           '400ms',
           style({
             opacity: 0,
+            display: 'none',
             transform: 'translateY(-50%)',
           })
         ),
@@ -39,12 +44,16 @@ import { questions } from 'src/app/shared/config/questions.config';
 })
 export class BudgetComponent {
   protected budgetQuestions = signal(questions);
+  public _budgetForm = budgetForm;
   public position = 0;
 
   get getQuestion() {
     return this.budgetQuestions();
   }
-  public clicka() {
+  public next() {
     this.position++;
+  }
+  public previous() {
+    this.position--;
   }
 }

@@ -1,10 +1,20 @@
 <p>budget works!</p>
 <div class="questions">
+  <button (click)="previous()">previous</button>
   <div *ngFor="let question of getQuestion; let i = index">
-    <div id="question" @inOutPaneAnimation *ngIf="position == i">
-      <app-input-text></app-input-text>
+    <div
+      id="question"
+      [@inOutPaneAnimation]="position == i"
+      *ngIf="position == i"
+    >
+      <app-input-text
+        class="input"
+        [required]="question.required"
+        [id]="question.question"
+        [formGroup]="_budgetForm.structure"
+        [label]="question.question"
+      ></app-input-text>
     </div>
   </div>
+  <button (click)="next()">next</button>
 </div>
-
-<button (click)="clicka()">LCICAK</button>

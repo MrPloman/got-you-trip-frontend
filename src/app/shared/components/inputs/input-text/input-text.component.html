@@ -1,4 +1,13 @@
-<mat-form-field>
-  <mat-label>Input</mat-label>
-  <input matInput />
+<mat-form-field class="input-field" [formGroup]="formGroup">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    [type]="type"
+    [id]="id"
+    type="text"
+    [formControl]="valueControl"
+    [formControlName]="label"
+    (blur)="onTouched()"
+    (input)="onTouched()"
+  />
 </mat-form-field>

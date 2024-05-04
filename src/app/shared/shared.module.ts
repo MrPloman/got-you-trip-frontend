@@ -7,6 +7,7 @@ import { InputTextComponent } from './components/inputs/input-text/input-text.co
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, InputTextComponent],
   imports: [
@@ -15,6 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [NavbarComponent, FooterComponent, InputTextComponent],
 })
