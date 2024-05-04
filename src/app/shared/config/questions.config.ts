@@ -46,16 +46,14 @@ export const questions: QuestionModel[] = [
   }),
   new QuestionModel({
     step: 4,
-    question:
-      'Do you prefere to be hosted in an hotel, hostel or AirBnB?',
+    question: 'Do you prefere to be hosted in an hotel, hostel or AirBnB?',
     answer: 'airbnb',
     required: true,
     nextStep: 4.1,
   }),
   new QuestionModel({
     step: 4.1,
-    question:
-    'Which kind of hotel do yo prefer?',
+    question: 'Which kind of hotel do yo prefer?',
     answer: 'high',
     required: true,
     nextStep: 4.3,
@@ -63,73 +61,65 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 4.2,
     question:
-    'In case you are on Airbnb, do you prefer to buy groceries and prepare your meals or go to dinne in?',
+      'In case you are on Airbnb, do you prefer to buy groceries and prepare your meals or go to dinne in?',
     answer: true,
     required: true,
     nextStep: 4.3,
   }),
   new QuestionModel({
     step: 4.3,
-    question:
-    'Are you picky with the food?',
+    question: 'Are you picky with the food?',
     answer: true,
     required: true,
     nextStep: 5,
   }),
   new QuestionModel({
     step: 5,
-    question:
-    'Do you prefer city or nature?',
+    question: 'Do you prefer city or nature?',
     answer: true,
     required: true,
     nextStep: 6,
   }),
   new QuestionModel({
     step: 6,
-    question:
-    'Do you enjoy visiting museums and exibitions?',
+    question: 'Do you enjoy visiting museums and exibitions?',
     answer: true,
     required: true,
     nextStep: 6.1,
   }),
   new QuestionModel({
     step: 6.1,
-    question:
-    'Do you enjoy going to shows as musicals or drama?',
+    question: 'Do you enjoy going to shows as musicals or drama?',
     answer: true,
     required: true,
     nextStep: 7,
   }),
   new QuestionModel({
     step: 7,
-    question:
-    'How much time would you spend on your trip?',
+    question: 'How much time would you spend on your trip?',
     answer: 1,
     required: true,
     nextStep: 8,
   }),
   new QuestionModel({
     step: 8,
-    question:
-    'When would you begin your trip?',
+    question: 'When would you begin your trip?',
     answer: new Date(),
     required: true,
     nextStep: 9,
   }),
   new QuestionModel({
     step: 9,
-    question:
-    'When would you ended up?',
+    question: 'When would you ended up?',
     answer: new Date(),
     required: true,
     nextStep: 10,
-  });
+  }),
   new QuestionModel({
     step: 10,
-    question:
-    'From which country would you come in?',
-    answer: new Date(),
+    question: 'From which country would you come in?',
+    answer: 'usa',
     required: true,
     nextStep: null,
-  })
+  }),
 ];

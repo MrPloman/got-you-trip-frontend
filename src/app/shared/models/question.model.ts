@@ -2,6 +2,9 @@ import {
   BundlesTypes,
   CityTransportation,
   DestinationsTypes,
+  IntensityTypes,
+  LodgeTypes,
+  OriginTypes,
   TransportationTypes,
 } from '../types/budget.types';
 
@@ -16,6 +19,9 @@ export class QuestionModel {
     | number
     | boolean
     | Date
+    | OriginTypes
+    | LodgeTypes
+    | IntensityTypes
     | undefined;
   public required: boolean;
   public nextStep: number | null;
@@ -28,6 +34,9 @@ export class QuestionModel {
       | DestinationsTypes
       | BundlesTypes
       | number
+      | OriginTypes
+      | LodgeTypes
+      | IntensityTypes
       | boolean
       | Date;
     required: boolean;

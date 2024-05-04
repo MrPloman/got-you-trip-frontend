@@ -1,1 +1,10 @@
 <p>budget works!</p>
+<div class="questions">
+  <div *ngFor="let question of getQuestion; let i = index">
+    <div id="question" @inOutPaneAnimation *ngIf="position == i">
+      <app-input-text></app-input-text>
+    </div>
+  </div>
+</div>
+
+<button (click)="clicka()">LCICAK</button>
