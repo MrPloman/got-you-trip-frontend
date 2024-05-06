@@ -8,8 +8,27 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+import { InputSelectComponent } from './components/inputs/input-select/input-select.component';
+import { InputNumberComponent } from './components/inputs/input-number/input-number.component';
+import { FormService } from './components/services/form.service';
+import { InputDateComponent } from './components/inputs/input-date/input-date.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ButtonComponent } from './components/button/button.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, InputTextComponent],
+  declarations: [
+    NavbarComponent,
+    FooterComponent,
+    InputTextComponent,
+    InputSelectComponent,
+    InputNumberComponent,
+    InputDateComponent,
+    ButtonComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -18,7 +37,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule,
   ],
-  exports: [NavbarComponent, FooterComponent, InputTextComponent],
+  exports: [
+    NavbarComponent,
+    FooterComponent,
+    InputTextComponent,
+    InputSelectComponent,
+    InputNumberComponent,
+    InputDateComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule,
+    ButtonComponent,
+  ],
+  providers: [FormService, MatDatepickerModule],
 })
 export class SharedModule {}

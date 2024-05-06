@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, forwardRef, inject } from '@angular/core';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import {
-  ControlValueAccessor,
   FormControl,
   FormGroup,
   NG_VALUE_ACCESSOR,
@@ -9,28 +8,27 @@ import {
 import { combineLatest } from 'rxjs';
 
 @Component({
-  selector: 'app-input-text',
-  templateUrl: './input-text.component.html',
-  styleUrl: './input-text.component.scss',
+  selector: 'app-input-date',
+  templateUrl: './input-date.component.html',
+  styleUrls: ['./input-date.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: forwardRef(() => InputTextComponent),
+      useExisting: forwardRef(() => InputDateComponent),
     },
   ],
 })
-export class InputTextComponent implements ControlValueAccessor, OnInit {
+export class InputDateComponent implements OnInit {
   @Input() public class = '';
   @Input() public label = '';
-  @Input() public type = 'text';
   @Input() public id = '';
   @Input() public width = '100%';
   @Input() public required = false;
   @Input() public formGroup!: FormGroup;
   @Input() public formControlName!: string;
 
-  public readonly valueControl = new FormControl(null || '');
+  public readonly valueControl = new FormControl(Date);
 
   ngOnInit(): void {
     combineLatest([this.valueControl.valueChanges]).subscribe(() => {
@@ -39,15 +37,15 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
     });
     if (this.required) this.valueControl.addValidators([Validators.required]);
   }
-  public writeValue(value: string | null): void {
-    if (typeof value === 'string' && value) {
+  public writeValue(value: any): void {
+    if (value) {
       const _value = value;
       this.valueControl.setValue(_value);
     } else {
       this.valueControl.setValue(null);
     }
   }
-  private _getValue(): string | null {
+  private _getValue(): any {
     try {
       if (this.valueControl.invalid) return null;
       const value = this.valueControl.value;
@@ -59,8 +57,8 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
   }
   // On change section
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  private _onChange = (_value: string | null): void => undefined;
-  public registerOnChange(fn: (value: string | null) => void): void {
+  private _onChange = (_value: any): void => undefined;
+  public registerOnChange(fn: (value: any) => void): void {
     this._onChange = fn;
   }
   // On touched section

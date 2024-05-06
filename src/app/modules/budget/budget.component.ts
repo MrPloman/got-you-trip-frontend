@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { FormService } from 'src/app/shared/components/services/form.service';
 import { budgetForm } from 'src/app/shared/config/budget-form.config';
 import { questions } from 'src/app/shared/config/questions.config';
 
@@ -42,10 +43,16 @@ import { questions } from 'src/app/shared/config/questions.config';
     ]),
   ],
 })
-export class BudgetComponent {
+export class BudgetComponent implements OnInit {
+  protected _formService = inject(FormService);
   protected budgetQuestions = signal(questions);
   public _budgetForm = budgetForm;
-  public position = 0;
+  public position = 1;
+  ngOnInit(): void {
+    console.log(this._budgetForm);
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+  }
 
   get getQuestion() {
     return this.budgetQuestions();

@@ -1,20 +1,77 @@
-<p>budget works!</p>
-<div class="questions">
-  <button (click)="previous()">previous</button>
-  <div *ngFor="let question of getQuestion; let i = index">
+<form class="container" [formGroup]="_budgetForm.structure">
+  <div id="information" @inOutPaneAnimation>
+    <h2>What about our budget</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna
+      justo, imperdiet ut nibh at, ultricies porttitor lorem. Suspendisse
+      potenti. Duis imperdiet eros turpis, et ultrices mauris porta nec.
+      Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum
+      dolor sit amet, consectetur adipiscing elit. Aenean erat dui, aliquam
+      tincidunt lobortis non, sodales quis velit. Vestibulum nec porta nulla.
+      Vivamus porttitor felis vel dictum aliquam. Fusce ut dolor aliquam,
+      hendrerit lorem at, tincidunt nisl. Cras blandit justo id auctor
+      convallis. Maecenas nec orci tincidunt.
+    </p>
+  </div>
+  <div id="questions" *ngFor="let question of getQuestion; let i = index">
     <div
       id="question"
       [@inOutPaneAnimation]="position == i"
       *ngIf="position == i"
     >
-      <app-input-text
+      <app-input-select
+        *ngIf="_formService.isInputSelector(question.question)"
         class="input"
         [required]="question.required"
         [id]="question.question"
+        [formControlName]="question.question"
         [formGroup]="_budgetForm.structure"
-        [label]="question.question"
+        [label]="'questions.' + question.question"
+        [options]="question.options ? question.options : []"
+      ></app-input-select>
+      <app-input-number
+        *ngIf="_formService.isInputNumber(question.question)"
+        class="input"
+        [required]="question.required"
+        [id]="question.question"
+        [formControlName]="question.question"
+        [formGroup]="_budgetForm.structure"
+        [label]="'questions.' + question.question"
+      ></app-input-number>
+      <app-input-text
+        *ngIf="_formService.isInputText(question.question)"
+        class="input"
+        [required]="question.required"
+        [id]="question.question"
+        [formControlName]="question.question"
+        [formGroup]="_budgetForm.structure"
+        [label]="'questions.' + question.question"
       ></app-input-text>
+      <app-input-date
+        *ngIf="_formService.isInputDate(question.question)"
+        class="input"
+        [required]="question.required"
+        [id]="question.question"
+        [formControlName]="question.question"
+        [formGroup]="_budgetForm.structure"
+        [label]="'questions.' + question.question"
+      ></app-input-date>
     </div>
   </div>
-  <button (click)="next()">next</button>
+</form>
+<div id="actions">
+  <app-button
+    @inOutPaneAnimation
+    *ngIf="position > 0"
+    (click)="previous()"
+    [label]="'previous'"
+    [color]="'primary'"
+  ></app-button>
+  <app-button
+    @inOutPaneAnimation
+    *ngIf="position < getQuestion.length - 1"
+    (click)="next()"
+    [color]="'accent'"
+    [label]="'next'"
+  ></app-button>
 </div>

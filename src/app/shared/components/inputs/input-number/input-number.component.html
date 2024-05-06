@@ -3,11 +3,14 @@
   <input
     matInput
     [type]="type"
+    [type]="type"
     [id]="id"
     type="text"
     [formControl]="valueControl"
     [formControlName]="formControlName"
     (blur)="onTouched()"
     (input)="onTouched()"
+    min="0"
+    max="10"
   />
 </mat-form-field>

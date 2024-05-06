@@ -9,28 +9,28 @@ import {
 import { combineLatest } from 'rxjs';
 
 @Component({
-  selector: 'app-input-text',
-  templateUrl: './input-text.component.html',
-  styleUrl: './input-text.component.scss',
+  selector: 'app-input-number',
+  templateUrl: './input-number.component.html',
+  styleUrl: './input-number.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: forwardRef(() => InputTextComponent),
+      useExisting: forwardRef(() => InputNumberComponent),
     },
   ],
 })
-export class InputTextComponent implements ControlValueAccessor, OnInit {
+export class InputNumberComponent implements ControlValueAccessor, OnInit {
   @Input() public class = '';
   @Input() public label = '';
-  @Input() public type = 'text';
+  public type = 'number';
   @Input() public id = '';
   @Input() public width = '100%';
   @Input() public required = false;
   @Input() public formGroup!: FormGroup;
   @Input() public formControlName!: string;
 
-  public readonly valueControl = new FormControl(null || '');
+  public readonly valueControl: FormControl<number | null> = new FormControl();
 
   ngOnInit(): void {
     combineLatest([this.valueControl.valueChanges]).subscribe(() => {
@@ -39,15 +39,15 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
     });
     if (this.required) this.valueControl.addValidators([Validators.required]);
   }
-  public writeValue(value: string | null): void {
-    if (typeof value === 'string' && value) {
+  public writeValue(value: number | null): void {
+    if (typeof value === 'number' && value) {
       const _value = value;
       this.valueControl.setValue(_value);
     } else {
       this.valueControl.setValue(null);
     }
   }
-  private _getValue(): string | null {
+  private _getValue(): number | null {
     try {
       if (this.valueControl.invalid) return null;
       const value = this.valueControl.value;
@@ -59,8 +59,8 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
   }
   // On change section
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  private _onChange = (_value: string | null): void => undefined;
-  public registerOnChange(fn: (value: string | null) => void): void {
+  private _onChange = (_value: number | null): void => undefined;
+  public registerOnChange(fn: (value: number | null) => void): void {
     this._onChange = fn;
   }
   // On touched section

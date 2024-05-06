@@ -24,9 +24,15 @@ export class QuestionModel {
     | LodgeTypes
     | IntensityTypes
     | null
+    | string
   >;
   public required: boolean;
   public nextStep: number | null;
+  public options?: {
+    label: string;
+    value: string | boolean;
+    disabled: boolean;
+  }[];
   constructor(structure: {
     step: number;
     question: string;
@@ -42,14 +48,17 @@ export class QuestionModel {
       | LodgeTypes
       | IntensityTypes
       | null
+      | string
     >;
     required: boolean;
     nextStep: number | null;
+    options?: { label: string; value: string | boolean; disabled: boolean }[];
   }) {
     this.step = structure.step;
     this.question = structure.question;
     this.answer = structure.answer;
     this.required = structure.required;
     this.nextStep = structure.nextStep;
+    this.options = structure.options;
   }
 }

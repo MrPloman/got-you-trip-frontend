@@ -9,29 +9,31 @@ import {
 import { combineLatest } from 'rxjs';
 
 @Component({
-  selector: 'app-input-text',
-  templateUrl: './input-text.component.html',
-  styleUrl: './input-text.component.scss',
+  selector: 'app-input-select',
+  templateUrl: './input-select.component.html',
+  styleUrl: './input-select.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputSelectComponent),
+
       multi: true,
-      useExisting: forwardRef(() => InputTextComponent),
     },
   ],
 })
-export class InputTextComponent implements ControlValueAccessor, OnInit {
+export class InputSelectComponent implements ControlValueAccessor, OnInit {
   @Input() public class = '';
   @Input() public label = '';
-  @Input() public type = 'text';
+
   @Input() public id = '';
   @Input() public width = '100%';
+  @Input() public disabled = false;
   @Input() public required = false;
+  @Input() public options: any[] = [];
   @Input() public formGroup!: FormGroup;
   @Input() public formControlName!: string;
 
-  public readonly valueControl = new FormControl(null || '');
-
+  public readonly valueControl = new FormControl('');
   ngOnInit(): void {
     combineLatest([this.valueControl.valueChanges]).subscribe(() => {
       const value = this._getValue();
