@@ -58,6 +58,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatDividerModule,
     MatButtonModule,
     ButtonComponent,
+    TranslateModule,
   ],
   providers: [FormService, MatDatepickerModule],
 })

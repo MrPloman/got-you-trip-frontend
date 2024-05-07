@@ -47,7 +47,8 @@ export class BudgetComponent implements OnInit {
   protected _formService = inject(FormService);
   protected budgetQuestions = signal(questions);
   public _budgetForm = budgetForm;
-  public position = 1;
+  protected formStarted = false;
+  public position = 0;
   ngOnInit(): void {
     console.log(this._budgetForm);
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -57,10 +58,16 @@ export class BudgetComponent implements OnInit {
   get getQuestion() {
     return this.budgetQuestions();
   }
+  public startForm() {
+    this.position = 0;
+    this.formStarted = !this.formStarted;
+  }
   public next() {
     this.position++;
   }
   public previous() {
+    console.log(this.position);
+    if (this.position == 0) this.formStarted = false;
     this.position--;
   }
 }

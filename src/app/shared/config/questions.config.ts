@@ -8,6 +8,7 @@ export const questions: QuestionModel[] = [
     answer: new FormControl(''),
     required: true,
     nextStep: 0.1,
+    information: '',
     options: [
       { label: 'family', value: 'family', disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },
@@ -20,6 +21,8 @@ export const questions: QuestionModel[] = [
     answer: new FormControl('spain'),
     required: true,
     nextStep: 1,
+    information: '',
+
     options: [
       { label: 'spain', value: 'spain', disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },
@@ -32,6 +35,7 @@ export const questions: QuestionModel[] = [
     answer: new FormControl(0),
     required: true,
     nextStep: 2,
+    information: '',
   }),
   new QuestionModel({
     step: 2,
@@ -39,6 +43,7 @@ export const questions: QuestionModel[] = [
     answer: new FormControl(0),
     required: true,
     nextStep: 3,
+    information: '',
   }),
   new QuestionModel({
     step: 3,
@@ -46,6 +51,8 @@ export const questions: QuestionModel[] = [
     answer: new FormControl('flight'),
     required: true,
     nextStep: 3.1,
+    information: '',
+
     options: [
       { label: 'flight', value: 'flight', disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },
@@ -58,6 +65,8 @@ export const questions: QuestionModel[] = [
     answer: new FormControl('vtc'),
     required: true,
     nextStep: 3.2,
+    information: '',
+
     options: [
       { label: 'vtc', value: 'vtc', disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },
@@ -70,6 +79,8 @@ export const questions: QuestionModel[] = [
     answer: new FormControl('airbnb'),
     required: true,
     nextStep: 4.1,
+    information: '',
+
     options: [
       { label: 'airbnb', value: 'airbnb', disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },
@@ -82,6 +93,8 @@ export const questions: QuestionModel[] = [
     answer: new FormControl('high'),
     required: true,
     nextStep: 4.3,
+    information: '',
+
     options: [
       { label: 'high', value: 'high', disabled: false },
       { label: 'medium', value: 'medium', disabled: false },
@@ -94,6 +107,8 @@ export const questions: QuestionModel[] = [
     answer: new FormControl(true),
     required: true,
     nextStep: 4.3,
+    information: '',
+
     options: [
       { label: 'yes', value: true, disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },
@@ -106,6 +121,8 @@ export const questions: QuestionModel[] = [
     answer: new FormControl(true),
     required: true,
     nextStep: 5,
+    information: '',
+
     options: [
       { label: 'yes', value: true, disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },
@@ -118,6 +135,8 @@ export const questions: QuestionModel[] = [
     answer: new FormControl(true),
     required: true,
     nextStep: 6,
+    information: '',
+
     options: [
       { label: 'yes', value: true, disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },
@@ -130,6 +149,8 @@ export const questions: QuestionModel[] = [
     answer: new FormControl(true),
     required: true,
     nextStep: 6.1,
+    information: '',
+
     options: [
       { label: 'yes', value: true, disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },
@@ -142,6 +163,8 @@ export const questions: QuestionModel[] = [
     answer: new FormControl(true),
     required: true,
     nextStep: 7,
+    information: '',
+
     options: [
       { label: 'yes', value: true, disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },
@@ -154,6 +177,7 @@ export const questions: QuestionModel[] = [
     answer: new FormControl(1),
     required: true,
     nextStep: 8,
+    information: '',
   }),
   new QuestionModel({
     step: 8,
@@ -161,6 +185,7 @@ export const questions: QuestionModel[] = [
     answer: new FormControl(new Date()),
     required: true,
     nextStep: 9,
+    information: '',
   }),
   new QuestionModel({
     step: 9,
@@ -168,6 +193,7 @@ export const questions: QuestionModel[] = [
     answer: new FormControl(new Date()),
     required: true,
     nextStep: 10,
+    information: '',
   }),
   new QuestionModel({
     step: 10,
@@ -175,6 +201,8 @@ export const questions: QuestionModel[] = [
     answer: new FormControl('usa'),
     required: true,
     nextStep: null,
+    information: '',
+
     options: [
       { label: 'usa', value: 'usa', disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },

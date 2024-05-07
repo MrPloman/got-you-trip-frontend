@@ -28,6 +28,7 @@ export class QuestionModel {
   >;
   public required: boolean;
   public nextStep: number | null;
+  public information: string;
   public options?: {
     label: string;
     value: string | boolean;
@@ -52,6 +53,7 @@ export class QuestionModel {
     >;
     required: boolean;
     nextStep: number | null;
+    information: string;
     options?: { label: string; value: string | boolean; disabled: boolean }[];
   }) {
     this.step = structure.step;
@@ -59,6 +61,7 @@ export class QuestionModel {
     this.answer = structure.answer;
     this.required = structure.required;
     this.nextStep = structure.nextStep;
+    this.information = structure.information;
     this.options = structure.options;
   }
 }
