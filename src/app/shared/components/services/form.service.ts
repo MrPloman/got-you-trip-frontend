@@ -47,7 +47,7 @@ export class FormService {
       label === 'question11' ||
       label === 'question12' ||
       label === 'question13' ||
-      label === 'question17'
+      label === 'question16'
     )
       return true;
     else return false;
@@ -69,7 +69,7 @@ export class FormService {
     else return false;
   }
   public isInputDate(label: string): boolean {
-    if (label === 'question15' || label === 'question16') return true;
+    if (label === 'question15') return true;
     else return false;
   }
 }

@@ -5,9 +5,9 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 0,
     question: 'question1',
-    answer: new FormControl(''),
+    answer: new FormControl(),
     required: true,
-    nextStep: 0.1,
+    nextStep: 1,
     information: '',
     options: [
       { label: 'family', value: 'family', disabled: false },
@@ -16,13 +16,12 @@ export const questions: QuestionModel[] = [
     ],
   }),
   new QuestionModel({
-    step: 0.1,
+    step: 1,
     question: 'question2',
-    answer: new FormControl('spain'),
+    answer: new FormControl(),
     required: true,
-    nextStep: 1,
+    nextStep: 2,
     information: '',
-
     options: [
       { label: 'spain', value: 'spain', disabled: false },
       { label: 'romantic', value: 'romantic', disabled: false },
@@ -30,27 +29,27 @@ export const questions: QuestionModel[] = [
     ],
   }),
   new QuestionModel({
-    step: 1,
+    step: 2,
     question: 'question3',
     answer: new FormControl(null),
     required: true,
-    nextStep: 2,
-    information: '',
-  }),
-  new QuestionModel({
-    step: 2,
-    question: 'question4',
-    answer: new FormControl(null),
-    required: false,
     nextStep: 3,
     information: '',
   }),
   new QuestionModel({
     step: 3,
+    question: 'question4',
+    answer: new FormControl(null),
+    required: false,
+    nextStep: 4,
+    information: '',
+  }),
+  new QuestionModel({
+    step: 4,
     question: 'question5',
     answer: new FormControl('flight'),
     required: true,
-    nextStep: 3.1,
+    nextStep: 5,
     information: '',
 
     options: [
@@ -60,11 +59,11 @@ export const questions: QuestionModel[] = [
     ],
   }),
   new QuestionModel({
-    step: 3.1,
+    step: 5,
     question: 'question6',
     answer: new FormControl('vtc'),
     required: true,
-    nextStep: 3.2,
+    nextStep: 6,
     information: '',
 
     options: [
@@ -74,11 +73,11 @@ export const questions: QuestionModel[] = [
     ],
   }),
   new QuestionModel({
-    step: 4,
+    step: 6,
     question: 'question7',
     answer: new FormControl('airbnb'),
     required: true,
-    nextStep: 4.1,
+    nextStep: 7,
     information: '',
 
     options: [
@@ -88,11 +87,11 @@ export const questions: QuestionModel[] = [
     ],
   }),
   new QuestionModel({
-    step: 4.1,
+    step: 7,
     question: 'question8',
     answer: new FormControl('high'),
     required: true,
-    nextStep: 4.3,
+    nextStep: 9,
     information: '',
 
     options: [
@@ -102,102 +101,94 @@ export const questions: QuestionModel[] = [
     ],
   }),
   new QuestionModel({
-    step: 4.2,
+    step: 8,
     question: 'question9',
     answer: new FormControl(true),
     required: true,
-    nextStep: 4.3,
-    information: '',
-
-    options: [
-      { label: 'yes', value: true, disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
-  }),
-  new QuestionModel({
-    step: 4.3,
-    question: 'question10',
-    answer: new FormControl(true),
-    required: true,
-    nextStep: 5,
-    information: '',
-
-    options: [
-      { label: 'yes', value: true, disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
-  }),
-  new QuestionModel({
-    step: 5,
-    question: 'question11',
-    answer: new FormControl(true),
-    required: true,
-    nextStep: 6,
-    information: '',
-
-    options: [
-      { label: 'yes', value: true, disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
-  }),
-  new QuestionModel({
-    step: 6,
-    question: 'question12',
-    answer: new FormControl(true),
-    required: true,
-    nextStep: 6.1,
-    information: '',
-
-    options: [
-      { label: 'yes', value: true, disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
-  }),
-  new QuestionModel({
-    step: 6.1,
-    question: 'question13',
-    answer: new FormControl(true),
-    required: true,
-    nextStep: 7,
-    information: '',
-
-    options: [
-      { label: 'yes', value: true, disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
-  }),
-  new QuestionModel({
-    step: 7,
-    question: 'question14',
-    answer: new FormControl(),
-    required: true,
-    nextStep: 8,
-    information: '',
-  }),
-  new QuestionModel({
-    step: 8,
-    question: 'question15',
-    answer: new FormControl(new Date()),
-    required: true,
     nextStep: 9,
     information: '',
+
+    options: [
+      { label: 'yes', value: true, disabled: false },
+      { label: 'romantic', value: 'romantic', disabled: false },
+      { label: 'friends', value: 'friends', disabled: false },
+    ],
   }),
   new QuestionModel({
     step: 9,
-    question: 'question16',
-    answer: new FormControl(new Date()),
+    question: 'question10',
+    answer: new FormControl(true),
     required: true,
     nextStep: 10,
     information: '',
+
+    options: [
+      { label: 'yes', value: true, disabled: false },
+      { label: 'romantic', value: 'romantic', disabled: false },
+      { label: 'friends', value: 'friends', disabled: false },
+    ],
   }),
   new QuestionModel({
     step: 10,
-    question: 'question17',
+    question: 'question11',
+    answer: new FormControl(true),
+    required: true,
+    nextStep: 11,
+    information: '',
+
+    options: [
+      { label: 'yes', value: true, disabled: false },
+      { label: 'romantic', value: 'romantic', disabled: false },
+      { label: 'friends', value: 'friends', disabled: false },
+    ],
+  }),
+  new QuestionModel({
+    step: 11,
+    question: 'question12',
+    answer: new FormControl(true),
+    required: true,
+    nextStep: 12,
+    information: '',
+
+    options: [
+      { label: 'yes', value: true, disabled: false },
+      { label: 'romantic', value: 'romantic', disabled: false },
+      { label: 'friends', value: 'friends', disabled: false },
+    ],
+  }),
+  new QuestionModel({
+    step: 12,
+    question: 'question13',
+    answer: new FormControl(true),
+    required: true,
+    nextStep: 13,
+    information: '',
+
+    options: [
+      { label: 'yes', value: true, disabled: false },
+      { label: 'romantic', value: 'romantic', disabled: false },
+      { label: 'friends', value: 'friends', disabled: false },
+    ],
+  }),
+  new QuestionModel({
+    step: 13,
+    question: 'question14',
+    answer: new FormControl(),
+    required: true,
+    nextStep: 14,
+    information: '',
+  }),
+  new QuestionModel({
+    step: 14,
+    question: 'question15',
+    answer: new FormControl(new Date()),
+    required: true,
+    nextStep: 15,
+    information: '',
+  }),
+  new QuestionModel({
+    step: 15,
+    question: 'question16',
     answer: new FormControl('usa'),
     required: true,
     nextStep: null,

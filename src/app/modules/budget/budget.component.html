@@ -14,8 +14,8 @@
         auctor convallis. Maecenas nec orci tincidunt.
       </p>
     </div>
-    <div *ngSwitchCase="true">
-      <div id="questions" *ngFor="let question of getQuestion; let i = index">
+    <div id="questions" *ngSwitchCase="true">
+      <div *ngFor="let question of getQuestion; let i = index">
         <div
           id="question"
           [@inOutPaneAnimation]="position == i"
@@ -68,6 +68,9 @@
           ></app-input-date>
         </div>
       </div>
+      <div @inOutPaneAnimation *ngIf="errorMessage" id="errorMessage">
+        {{ errorMessage | translate }}
+      </div>
     </div>
   </div>
 </form>
@@ -82,7 +85,7 @@
   <app-button
     @inOutPaneAnimation
     *ngIf="position < getQuestion.length - 1 && formStarted"
-    (click)="checkAnswer(getQuestion[position].question)"
+    (click)="checkAnswer(getQuestion[position].question, position)"
     [color]="'primary'"
     [label]="'next'"
   ></app-button>
@@ -92,5 +95,12 @@
     (click)="startForm()"
     [color]="'primary'"
     [label]="'start'"
+  ></app-button>
+  <app-button
+    @inOutPaneAnimation
+    *ngIf="position === getQuestion.length - 1 && formStarted"
+    (click)="submitForm()"
+    [color]="'primary'"
+    [label]="'finish'"
   ></app-button>
 </div>

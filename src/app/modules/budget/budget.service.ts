@@ -4,13 +4,12 @@ import { QuestionModel } from 'src/app/shared/models/question.model';
   providedIn: 'root',
 })
 export class BudgetService {
-  protected nextQuestionToShow(
+  public nextQuestionToShow(
     question: QuestionModel,
     questions: QuestionModel[]
-  ) {
-    questions.find((questionFound) => {
-      if (questionFound.question == question.question) {
-      }
-    });
+  ): number {
+    console.log(question);
+    if (!question || !question.nextStep) return 0;
+    return questions[question.nextStep].step;
   }
 }

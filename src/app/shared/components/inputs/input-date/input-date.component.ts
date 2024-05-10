@@ -28,11 +28,12 @@ export class InputDateComponent implements OnInit {
   @Input() public formGroup!: FormGroup;
   @Input() public formControlName!: string;
 
-  public readonly valueControl = new FormControl(Date);
+  public readonly valueControl = new FormControl(new Date());
 
   ngOnInit(): void {
     combineLatest([this.valueControl.valueChanges]).subscribe(() => {
       const value = this._getValue();
+      console.log(value);
       this._onChange(value);
     });
     if (this.required) this.valueControl.addValidators([Validators.required]);
@@ -40,7 +41,7 @@ export class InputDateComponent implements OnInit {
   public writeValue(value: any): void {
     if (value) {
       const _value = value;
-      this.valueControl.setValue(_value);
+      this.valueControl.setValue(new Date(_value));
     } else {
       this.valueControl.setValue(null);
     }

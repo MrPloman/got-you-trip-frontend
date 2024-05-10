@@ -3,6 +3,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormService } from 'src/app/shared/components/services/form.service';
 import { budgetForm } from 'src/app/shared/config/budget-form.config';
 import { questions } from 'src/app/shared/config/questions.config';
+import { BudgetService } from './budget.service';
 
 @Component({
   selector: 'app-budget',
@@ -17,7 +18,7 @@ import { questions } from 'src/app/shared/config/questions.config';
           display: 'none',
         }), //apply default styles before animation starts
         animate(
-          '400ms 400ms',
+          '300ms 300ms',
           style({
             opacity: 1,
             transform: 'translateY(0%)',
@@ -32,7 +33,7 @@ import { questions } from 'src/app/shared/config/questions.config';
           display: 'inline',
         }), //apply default styles before animation starts
         animate(
-          '400ms',
+          '300ms',
           style({
             opacity: 0,
             display: 'none',
@@ -45,7 +46,9 @@ import { questions } from 'src/app/shared/config/questions.config';
 })
 export class BudgetComponent implements OnInit {
   protected _formService = inject(FormService);
+  protected _budgetService = inject(BudgetService);
   protected budgetQuestions = signal(questions);
+  public errorMessage = '';
   public _budgetForm = budgetForm;
   protected formStarted = false;
   public position = 0;
@@ -58,22 +61,33 @@ export class BudgetComponent implements OnInit {
   get getQuestion() {
     return this.budgetQuestions();
   }
+  public submitForm() {}
   public startForm() {
     this.position = 0;
     this.formStarted = !this.formStarted;
   }
-  private next(question: string) {
-    this.position++;
+  private next(questionPosition: number) {
+    const newPosition = this._budgetService.nextQuestionToShow(
+      this.budgetQuestions()[questionPosition],
+      this.budgetQuestions()
+    );
+    if (newPosition) {
+      this.position = newPosition;
+    }
   }
   public previous() {
-    console.log(this.position);
-    if (this.position == 0) this.formStarted = false;
+    if (this.position <= 0) this.formStarted = false;
     this.position--;
+    this.errorMessage = ``;
   }
-  public checkAnswer(question: string) {
+  public checkAnswer(question: string, questionPosition: number) {
     if (!question) return;
     if (this._budgetForm.structure.controls[question].valid) {
-      this.next(question);
+      this.errorMessage = ``;
+      this.next(questionPosition);
+    } else {
+      this.errorMessage = `questions.${question}_error`;
+      this._budgetForm.structure.get(question)?.markAsTouched();
     }
   }
 }

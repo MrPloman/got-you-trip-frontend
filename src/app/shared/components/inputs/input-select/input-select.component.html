@@ -1,7 +1,8 @@
 <mat-form-field class="input-field" [formGroup]="formGroup">
-  <mat-label>{{ label | translate }} </mat-label>
+  <mat-label class="control-label required">{{ label | translate }} </mat-label>
   <mat-select
     matInput
+    class="form-control"
     [id]="id"
     [formControl]="valueControl"
     [formControlName]="formControlName"
