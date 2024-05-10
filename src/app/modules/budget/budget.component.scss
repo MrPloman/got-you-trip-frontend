@@ -1,7 +1,19 @@
+@import "src/variables.scss";
+
 .container {
   padding: 100px 0px 0px;
   width: 80% !important;
   margin: 0 auto;
+}
+#information {
+  #title {
+    font-size: 50px;
+    color: $secondary;
+  }
+  p {
+    font-size: 25px;
+    letter-spacing: 2.5px;
+  }
 }
 #questions {
   margin-top: 50px;
@@ -10,7 +22,8 @@
     width: 100%;
     #questionInformation {
       #questionTitle {
-        font-size: 50px;
+        font-size: 35px;
+        color: $secondary;
       }
       #questionDescription {
         font-size: 25px;
@@ -25,13 +38,5 @@
   justify-content: space-between;
   flex-direction: row;
   margin: 0 auto;
-}
-#information {
-  #title {
-    font-size: 50px;
-  }
-  p {
-    font-size: 25px;
-    letter-spacing: 2.5px;
-  }
+  padding: 20px 0;
 }

@@ -12,6 +12,10 @@
   div.mat-mdc-select-panel {
   background-color: transparent !important;
 }
+::ng-deep .mdc-text-field--filled {
+  background-color: transparent !important;
+}
+
 // material components colors
 ::ng-deep mat-form-field {
   width: 100%;

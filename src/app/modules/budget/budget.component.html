@@ -77,20 +77,20 @@
     *ngIf="formStarted"
     (click)="previous()"
     [label]="'previous'"
-    [color]="'primary'"
+    [color]="'accent'"
   ></app-button>
   <app-button
     @inOutPaneAnimation
     *ngIf="position < getQuestion.length - 1 && formStarted"
-    (click)="next()"
-    [color]="'accent'"
+    (click)="checkAnswer(getQuestion[position].question)"
+    [color]="'primary'"
     [label]="'next'"
   ></app-button>
   <app-button
     @inOutPaneAnimation
     *ngIf="position < getQuestion.length - 1 && !formStarted"
     (click)="startForm()"
-    [color]="'accent'"
+    [color]="'primary'"
     [label]="'start'"
   ></app-button>
 </div>

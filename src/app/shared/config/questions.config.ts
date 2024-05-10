@@ -32,7 +32,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 1,
     question: 'question3',
-    answer: new FormControl(0),
+    answer: new FormControl(null),
     required: true,
     nextStep: 2,
     information: '',
@@ -40,8 +40,8 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 2,
     question: 'question4',
-    answer: new FormControl(0),
-    required: true,
+    answer: new FormControl(null),
+    required: false,
     nextStep: 3,
     information: '',
   }),
@@ -174,7 +174,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 7,
     question: 'question14',
-    answer: new FormControl(1),
+    answer: new FormControl(),
     required: true,
     nextStep: 8,
     information: '',

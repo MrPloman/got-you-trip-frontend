@@ -62,12 +62,18 @@ export class BudgetComponent implements OnInit {
     this.position = 0;
     this.formStarted = !this.formStarted;
   }
-  public next() {
+  private next(question: string) {
     this.position++;
   }
   public previous() {
     console.log(this.position);
     if (this.position == 0) this.formStarted = false;
     this.position--;
+  }
+  public checkAnswer(question: string) {
+    if (!question) return;
+    if (this._budgetForm.structure.controls[question].valid) {
+      this.next(question);
+    }
   }
 }
