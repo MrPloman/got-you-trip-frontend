@@ -29,6 +29,7 @@ export class InputNumberComponent implements ControlValueAccessor, OnInit {
   @Input() public required = false;
   @Input() public formGroup!: FormGroup;
   @Input() public formControlName!: string;
+  @Input() public errorMessage = '';
 
   public readonly valueControl: FormControl<number | null> = new FormControl();
 
@@ -40,6 +41,8 @@ export class InputNumberComponent implements ControlValueAccessor, OnInit {
     if (this.required) this.valueControl.addValidators([Validators.required]);
   }
   public writeValue(value: number | null): void {
+    console.log(this.valueControl);
+
     if (typeof value === 'number' && value) {
       const _value = value;
       this.valueControl.setValue(_value);

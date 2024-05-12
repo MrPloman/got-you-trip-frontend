@@ -1,5 +1,15 @@
 import { FormControl } from '@angular/forms';
 import { QuestionModel } from '../models/question.model';
+import {
+  BundleOptions,
+  CityTransportationOptions,
+  DestinationOptions,
+  IntensityOptions,
+  LodgeOptions,
+  OriginOptions,
+  TransportationOptions,
+  YesOrNoOptions,
+} from './answer-options.config';
 
 export const questions: QuestionModel[] = [
   new QuestionModel({
@@ -9,11 +19,8 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 1,
     information: '',
-    options: [
-      { label: 'family', value: 'family', disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
+    errorMessage: 'questions.question1_error',
+    options: BundleOptions,
   }),
   new QuestionModel({
     step: 1,
@@ -22,11 +29,8 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 2,
     information: '',
-    options: [
-      { label: 'spain', value: 'spain', disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
+    options: DestinationOptions,
+    errorMessage: 'questions.question2_error',
   }),
   new QuestionModel({
     step: 2,
@@ -35,6 +39,7 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 3,
     information: '',
+    errorMessage: 'questions.question3_error',
   }),
   new QuestionModel({
     step: 3,
@@ -43,6 +48,7 @@ export const questions: QuestionModel[] = [
     required: false,
     nextStep: 4,
     information: '',
+    errorMessage: 'questions.question4_error',
   }),
   new QuestionModel({
     step: 4,
@@ -51,12 +57,9 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 5,
     information: '',
+    errorMessage: 'questions.question5_error',
 
-    options: [
-      { label: 'flight', value: 'flight', disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
+    options: TransportationOptions,
   }),
   new QuestionModel({
     step: 5,
@@ -65,12 +68,9 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 6,
     information: '',
+    errorMessage: 'questions.question6_error',
 
-    options: [
-      { label: 'vtc', value: 'vtc', disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
+    options: CityTransportationOptions,
   }),
   new QuestionModel({
     step: 6,
@@ -79,12 +79,9 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 7,
     information: '',
+    errorMessage: 'questions.question7_error',
 
-    options: [
-      { label: 'airbnb', value: 'airbnb', disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
+    options: LodgeOptions,
   }),
   new QuestionModel({
     step: 7,
@@ -93,12 +90,9 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 9,
     information: '',
+    errorMessage: 'questions.question8_error',
 
-    options: [
-      { label: 'high', value: 'high', disabled: false },
-      { label: 'medium', value: 'medium', disabled: false },
-      { label: 'low', value: 'low', disabled: false },
-    ],
+    options: IntensityOptions,
   }),
   new QuestionModel({
     step: 8,
@@ -107,12 +101,9 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 9,
     information: '',
+    errorMessage: 'questions.question9_error',
 
-    options: [
-      { label: 'yes', value: true, disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
+    options: YesOrNoOptions,
   }),
   new QuestionModel({
     step: 9,
@@ -121,12 +112,9 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 10,
     information: '',
+    errorMessage: 'questions.question10_error',
 
-    options: [
-      { label: 'yes', value: true, disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
+    options: YesOrNoOptions,
   }),
   new QuestionModel({
     step: 10,
@@ -135,12 +123,9 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 11,
     information: '',
+    errorMessage: 'questions.question11_error',
 
-    options: [
-      { label: 'yes', value: true, disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
+    options: YesOrNoOptions,
   }),
   new QuestionModel({
     step: 11,
@@ -149,12 +134,9 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 12,
     information: '',
+    errorMessage: 'questions.question12_error',
 
-    options: [
-      { label: 'yes', value: true, disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
+    options: YesOrNoOptions,
   }),
   new QuestionModel({
     step: 12,
@@ -163,12 +145,9 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 13,
     information: '',
+    errorMessage: 'questions.question13_error',
 
-    options: [
-      { label: 'yes', value: true, disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
+    options: YesOrNoOptions,
   }),
   new QuestionModel({
     step: 13,
@@ -177,6 +156,7 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 14,
     information: '',
+    errorMessage: 'questions.question14_error',
   }),
   new QuestionModel({
     step: 14,
@@ -185,6 +165,7 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: 15,
     information: '',
+    errorMessage: 'questions.question15_error',
   }),
   new QuestionModel({
     step: 15,
@@ -193,11 +174,8 @@ export const questions: QuestionModel[] = [
     required: true,
     nextStep: null,
     information: '',
+    errorMessage: 'questions.question16_error',
 
-    options: [
-      { label: 'usa', value: 'usa', disabled: false },
-      { label: 'romantic', value: 'romantic', disabled: false },
-      { label: 'friends', value: 'friends', disabled: false },
-    ],
+    options: OriginOptions,
   }),
 ];

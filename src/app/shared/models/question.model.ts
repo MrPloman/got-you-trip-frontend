@@ -8,6 +8,7 @@ import {
   OriginTypes,
   TransportationTypes,
 } from '../types/budget.types';
+import { AnswerOption } from './answer-options.model';
 
 export class QuestionModel {
   public step: number;
@@ -29,11 +30,8 @@ export class QuestionModel {
   public required: boolean;
   public nextStep: number | null;
   public information: string;
-  public options?: {
-    label: string;
-    value: string | boolean;
-    disabled: boolean;
-  }[];
+  public errorMessage: string;
+  public options?: AnswerOption[];
   constructor(structure: {
     step: number;
     question: string;
@@ -54,7 +52,8 @@ export class QuestionModel {
     required: boolean;
     nextStep: number | null;
     information: string;
-    options?: { label: string; value: string | boolean; disabled: boolean }[];
+    errorMessage: string;
+    options?: AnswerOption[];
   }) {
     this.step = structure.step;
     this.question = structure.question;
@@ -62,6 +61,7 @@ export class QuestionModel {
     this.required = structure.required;
     this.nextStep = structure.nextStep;
     this.information = structure.information;
+    this.errorMessage = structure.errorMessage;
     this.options = structure.options;
   }
 }

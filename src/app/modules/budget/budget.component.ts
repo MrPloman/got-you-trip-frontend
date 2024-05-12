@@ -48,7 +48,6 @@ export class BudgetComponent implements OnInit {
   protected _formService = inject(FormService);
   protected _budgetService = inject(BudgetService);
   protected budgetQuestions = signal(questions);
-  public errorMessage = '';
   public _budgetForm = budgetForm;
   protected formStarted = false;
   public position = 0;
@@ -78,15 +77,12 @@ export class BudgetComponent implements OnInit {
   public previous() {
     if (this.position <= 0) this.formStarted = false;
     this.position--;
-    this.errorMessage = ``;
   }
   public checkAnswer(question: string, questionPosition: number) {
     if (!question) return;
     if (this._budgetForm.structure.controls[question].valid) {
-      this.errorMessage = ``;
       this.next(questionPosition);
     } else {
-      this.errorMessage = `questions.${question}_error`;
       this._budgetForm.structure.get(question)?.markAsTouched();
     }
   }

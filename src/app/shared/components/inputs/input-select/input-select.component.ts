@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, forwardRef, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  forwardRef,
+  inject,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -7,6 +15,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { combineLatest } from 'rxjs';
+import { AnswerOption } from 'src/app/shared/models/answer-options.model';
 
 @Component({
   selector: 'app-input-select',
@@ -24,14 +33,14 @@ import { combineLatest } from 'rxjs';
 export class InputSelectComponent implements ControlValueAccessor, OnInit {
   @Input() public class = '';
   @Input() public label = '';
-
   @Input() public id = '';
   @Input() public width = '100%';
   @Input() public disabled = false;
   @Input() public required = false;
-  @Input() public options: any[] = [];
+  @Input() public options: AnswerOption[] = [];
   @Input() public formGroup!: FormGroup;
   @Input() public formControlName!: string;
+  @Input() public errorMessage = '';
 
   public readonly valueControl = new FormControl('');
   ngOnInit(): void {

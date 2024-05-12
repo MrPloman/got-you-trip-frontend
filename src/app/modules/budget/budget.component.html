@@ -38,6 +38,7 @@
             [formGroup]="_budgetForm.structure"
             [label]="'questions.' + question.question"
             [options]="question.options ? question.options : []"
+            [errorMessage]="question.errorMessage"
           ></app-input-select>
           <app-input-number
             *ngIf="_formService.isInputNumber(question.question)"
@@ -47,6 +48,7 @@
             [formControlName]="question.question"
             [formGroup]="_budgetForm.structure"
             [label]="'questions.' + question.question"
+            [errorMessage]="question.errorMessage"
           ></app-input-number>
           <app-input-text
             *ngIf="_formService.isInputText(question.question)"
@@ -56,6 +58,7 @@
             [formControlName]="question.question"
             [formGroup]="_budgetForm.structure"
             [label]="'questions.' + question.question"
+            [errorMessage]="question.errorMessage"
           ></app-input-text>
           <app-input-date
             *ngIf="_formService.isInputDate(question.question)"
@@ -65,11 +68,9 @@
             [formControlName]="question.question"
             [formGroup]="_budgetForm.structure"
             [label]="'questions.' + question.question"
+            [errorMessage]="question.errorMessage"
           ></app-input-date>
         </div>
-      </div>
-      <div @inOutPaneAnimation *ngIf="errorMessage" id="errorMessage">
-        {{ errorMessage | translate }}
       </div>
     </div>
   </div>

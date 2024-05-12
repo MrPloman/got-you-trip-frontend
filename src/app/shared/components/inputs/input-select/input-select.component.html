@@ -9,9 +9,16 @@
     ngDefaultControl
   >
     @for (option of options; track option) {
-    <mat-option [disabled]="option.disabled" [value]="option.value">{{
-      option.label
-    }}</mat-option>
+    <mat-option
+      [disabled]="option.structure.disabled"
+      [value]="option.structure.value"
+      >{{ option.structure.label | translate }}</mat-option
+    >
     }
   </mat-select>
+  @if (valueControl.hasError('required')) {
+  <mat-error>{{ "questions.required_error" | translate }}</mat-error>
+  } @if (valueControl.hasError('invalid')) {
+  <mat-error>{{ errorMessage | translate }}</mat-error>
+  }
 </mat-form-field>

@@ -46,6 +46,30 @@
     "question15": "When would you begin your trip?",
     "question16_error": "Which kind of trip do you want?",
     "information16": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-    "question16": "From which country would you come in?"
+    "question16": "From which country would you come in?",
+    "required_error": "Required field"
+  },
+  "answer": {
+    "romantic": "Romantic",
+    "family": "Familiar",
+    "friends": "Friends",
+    "spain": "Spain",
+    "italy": "Italy",
+    "france": "France",
+    "car": "By car",
+    "flight": "Flight",
+    "train": "By train",
+    "vtc": "Uber/Lift/Cabify",
+    "public_transport": "Public Transport",
+    "rental_car": "Renting car",
+    "hotel": "Hotel",
+    "hostel": "Hostel",
+    "airbnb": "Airbnb",
+    "low": "Not much",
+    "medium": "Normal",
+    "high": "A lot",
+    "usa": "USA",
+    "yes": "Yes",
+    "no": "No"
   }
 }

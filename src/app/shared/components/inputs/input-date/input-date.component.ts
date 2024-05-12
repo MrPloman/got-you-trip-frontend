@@ -27,6 +27,7 @@ export class InputDateComponent implements OnInit {
   @Input() public required = false;
   @Input() public formGroup!: FormGroup;
   @Input() public formControlName!: string;
+  @Input() public errorMessage = '';
 
   public readonly valueControl = new FormControl(new Date());
 

@@ -29,6 +29,7 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
   @Input() public required = false;
   @Input() public formGroup!: FormGroup;
   @Input() public formControlName!: string;
+  @Input() public errorMessage = '';
 
   public readonly valueControl = new FormControl(null || '');
 
@@ -40,6 +41,7 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
     if (this.required) this.valueControl.addValidators([Validators.required]);
   }
   public writeValue(value: string | null): void {
+    console.log(this.valueControl.errors);
     if (typeof value === 'string' && value) {
       const _value = value;
       this.valueControl.setValue(_value);

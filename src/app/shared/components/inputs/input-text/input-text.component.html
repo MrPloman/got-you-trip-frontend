@@ -10,4 +10,9 @@
     (blur)="onTouched()"
     (input)="onTouched()"
   />
+  @if (valueControl.hasError('required')) {
+  <mat-error>{{ "questions.required_error" | translate }}</mat-error>
+  } @if (valueControl.hasError('invalid')) {
+  <mat-error>{{ errorMessage | translate }}</mat-error>
+  }
 </mat-form-field>
