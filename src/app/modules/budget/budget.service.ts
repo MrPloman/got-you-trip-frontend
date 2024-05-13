@@ -62,26 +62,8 @@ export class BudgetService {
       } else {
         return question.previousStep;
       }
-      //   if (
-      //     (question.step === 3 &&
-      //       form.structure.controls['question1'].value === 'romantic') ||
-      //     (question.step === 7 &&
-      //       form.structure.controls['question7'].value === 'airbnb') ||
-      //     (question.step === 9 &&
-      //       form.structure.controls['question9'].value !== 'dinne')
-      //   ) {
-      //     return questions[question.previousStep - 1].step;
-      //   } else if (
-      //     question.step === 11 &&
-      //     form.structure.controls['question11'].value !== 'city'
-      //   ) {
-      //     return questions[question.previousStep - 2].step;
-      //   } else {
-      //     return questions[question.previousStep].step;
-      //   }
     }
   }
-
   public updateSelectableOrWritabbleValues(form: BudgetModel): BudgetModel {
     if (
       form.structure.controls['question3'].value &&

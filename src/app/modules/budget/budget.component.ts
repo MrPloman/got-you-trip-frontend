@@ -85,6 +85,13 @@ export class BudgetComponent implements OnInit {
     );
     if (previousPosition === null) this.formStarted = false;
     else {
+      this._budgetForm.structure.controls[
+        this.budgetQuestions()[questionPosition].question
+      ].setValue('');
+      this._budgetForm.structure.controls[
+        this.budgetQuestions()[questionPosition].question
+      ].markAsUntouched();
+
       this.position = previousPosition;
     }
   }
