@@ -12,7 +12,7 @@
   />
   @if (valueControl.hasError('required')) {
   <mat-error>{{ "questions.required_error" | translate }}</mat-error>
-  } @if (valueControl.hasError('max')) {
+  } @else {
   <mat-error>{{ errorMessage | translate }}</mat-error>
   }
 </mat-form-field>

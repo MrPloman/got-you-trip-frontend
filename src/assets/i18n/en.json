@@ -44,9 +44,16 @@
     "question14_error": "Which kind of trip do you want?",
     "information15": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
     "question15": "When would you begin your trip?",
+    "question15_error": "Which kind of trip do you want?",
     "question16_error": "Which kind of trip do you want?",
     "information16": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
     "question16": "From which country would you come in?",
+    "question17_error": "Which kind of trip do you want?",
+    "information17": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+    "question17": "What is your name?",
+    "question18_error": "Which kind of trip do you want?",
+    "information18": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+    "question18": "What is you email? We're going to use it to reach you out and email you your personal budget.",
     "required_error": "Required field"
   },
   "answer": {
@@ -69,6 +76,14 @@
     "medium": "Normal",
     "high": "A lot",
     "usa": "USA",
+    "city": "City",
+    "nature": "Nature",
+    "groceries": "Buy groceries",
+    "low_hotel": "Cheap hotel",
+    "medium_hotel": "Average Hotel",
+    "high_hotel": "Luxury Hotel",
+    "dinne": "Dinne in a restaurant",
+    "takeaway": "Get a takeaway food",
     "yes": "Yes",
     "no": "No"
   }

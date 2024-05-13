@@ -128,6 +128,53 @@ export const OriginOptions: AnswerOption[] = [
     disabled: false,
   }),
 ];
+export const PlaceOptions: AnswerOption[] = [
+  new AnswerOption({
+    label: 'answer.city',
+    value: 'city',
+    disabled: false,
+  }),
+  new AnswerOption({
+    label: 'answer.nature',
+    value: 'nature',
+    disabled: false,
+  }),
+];
+export const FoodOptions: AnswerOption[] = [
+  new AnswerOption({
+    label: 'answer.dinne',
+    value: 'dinne',
+    disabled: false,
+  }),
+  new AnswerOption({
+    label: 'answer.groceries',
+    value: 'groceries',
+    disabled: false,
+  }),
+  new AnswerOption({
+    label: 'answer.takeaway',
+    value: 'takeaway',
+    disabled: false,
+  }),
+];
+
+export const HotelOptions: AnswerOption[] = [
+  new AnswerOption({
+    label: 'answer.low_hotel',
+    value: 'low',
+    disabled: false,
+  }),
+  new AnswerOption({
+    label: 'answer.medium_hotel',
+    value: 'medium',
+    disabled: false,
+  }),
+  new AnswerOption({
+    label: 'answer.high_hotel',
+    value: 'high',
+    disabled: false,
+  }),
+];
 export const YesOrNoOptions: AnswerOption[] = [
   new AnswerOption({
     label: 'answer.yes',

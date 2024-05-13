@@ -6,6 +6,8 @@ import {
   LodgeTypes,
   IntensityTypes,
   OriginTypes,
+  FoodTypes,
+  PlaceTypes,
 } from '../types/budget.types';
 
 export class AnswerOption {
@@ -19,6 +21,8 @@ export class AnswerOption {
       | LodgeTypes
       | IntensityTypes
       | OriginTypes
+      | FoodTypes
+      | PlaceTypes
       | boolean;
     disabled: boolean;
   };
@@ -33,6 +37,8 @@ export class AnswerOption {
       | LodgeTypes
       | IntensityTypes
       | OriginTypes
+      | FoodTypes
+      | PlaceTypes
       | boolean;
     disabled: boolean;
   }) {

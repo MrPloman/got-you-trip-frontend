@@ -66,17 +66,31 @@ export class BudgetComponent implements OnInit {
     this.formStarted = !this.formStarted;
   }
   private next(questionPosition: number) {
+    this._budgetForm = this._budgetService.updateSelectableOrWritabbleValues(
+      this._budgetForm
+    );
     const newPosition = this._budgetService.nextQuestionToShow(
       this.budgetQuestions()[questionPosition],
-      this.budgetQuestions()
+      this.budgetQuestions(),
+      this._budgetForm
     );
     if (newPosition) {
       this.position = newPosition;
     }
   }
-  public previous() {
-    if (this.position <= 0) this.formStarted = false;
-    this.position--;
+  public previous(questionPosition: number) {
+    const previousPosition = this._budgetService.previousQuestionToShow(
+      this.budgetQuestions()[questionPosition],
+      this.budgetQuestions(),
+      this._budgetForm
+    );
+
+    console.log(previousPosition);
+
+    if (previousPosition === null) this.formStarted = false;
+    else {
+      this.position = previousPosition;
+    }
   }
   public checkAnswer(question: string, questionPosition: number) {
     if (!question) return;

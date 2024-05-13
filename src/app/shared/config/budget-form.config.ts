@@ -28,7 +28,6 @@ _questions.forEach((question) => {
 
   if (question.step == 2) {
     budgetForm.structure.controls[question.question].addValidators([
-      Validators.nullValidator,
       Validators.required,
       Validators.minLength(1),
       Validators.maxLength(2),
@@ -58,6 +57,19 @@ _questions.forEach((question) => {
       Validators.nullValidator,
       Validators.required,
       InferiorDateValidator,
+    ]);
+  }
+  if (question.step == 16) {
+    budgetForm.structure.controls[question.question].addValidators([
+      Validators.nullValidator,
+      Validators.required,
+    ]);
+  }
+  if (question.step == 17) {
+    budgetForm.structure.controls[question.question].addValidators([
+      Validators.nullValidator,
+      Validators.required,
+      Validators.email,
     ]);
   }
 });

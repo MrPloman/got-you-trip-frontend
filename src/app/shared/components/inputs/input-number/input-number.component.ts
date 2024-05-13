@@ -21,9 +21,9 @@ import { combineLatest } from 'rxjs';
   ],
 })
 export class InputNumberComponent implements ControlValueAccessor, OnInit {
+  public type = 'number';
   @Input() public class = '';
   @Input() public label = '';
-  public type = 'number';
   @Input() public id = '';
   @Input() public width = '100%';
   @Input() public required = false;
@@ -41,8 +41,6 @@ export class InputNumberComponent implements ControlValueAccessor, OnInit {
     if (this.required) this.valueControl.addValidators([Validators.required]);
   }
   public writeValue(value: number | null): void {
-    console.log(this.valueControl);
-
     if (typeof value === 'number' && value) {
       const _value = value;
       this.valueControl.setValue(_value);
