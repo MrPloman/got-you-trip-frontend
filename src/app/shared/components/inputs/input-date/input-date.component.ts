@@ -34,7 +34,6 @@ export class InputDateComponent implements OnInit {
   ngOnInit(): void {
     combineLatest([this.valueControl.valueChanges]).subscribe(() => {
       const value = this._getValue();
-      console.log(value);
       this._onChange(value);
     });
     if (this.required) this.valueControl.addValidators([Validators.required]);

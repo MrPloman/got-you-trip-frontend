@@ -21,7 +21,6 @@ import { combineLatest } from 'rxjs';
   ],
 })
 export class InputNumberComponent implements ControlValueAccessor, OnInit {
-  public type = 'number';
   @Input() public class = '';
   @Input() public label = '';
   @Input() public id = '';
@@ -31,7 +30,7 @@ export class InputNumberComponent implements ControlValueAccessor, OnInit {
   @Input() public formControlName!: string;
   @Input() public errorMessage = '';
 
-  public readonly valueControl: FormControl<number | null> = new FormControl();
+  public readonly valueControl: FormControl = new FormControl();
 
   ngOnInit(): void {
     combineLatest([this.valueControl.valueChanges]).subscribe(() => {
@@ -42,7 +41,8 @@ export class InputNumberComponent implements ControlValueAccessor, OnInit {
   }
   public writeValue(value: number | null): void {
     if (typeof value === 'number' && value) {
-      const _value = value;
+      const _value = Number(value);
+
       this.valueControl.setValue(_value);
     } else {
       this.valueControl.setValue(null);

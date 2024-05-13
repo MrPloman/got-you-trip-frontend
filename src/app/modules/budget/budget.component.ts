@@ -52,7 +52,6 @@ export class BudgetComponent implements OnInit {
   protected formStarted = false;
   public position = 0;
   ngOnInit(): void {
-    console.log(this._budgetForm);
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
   }
@@ -84,9 +83,6 @@ export class BudgetComponent implements OnInit {
       this.budgetQuestions(),
       this._budgetForm
     );
-
-    console.log(previousPosition);
-
     if (previousPosition === null) this.formStarted = false;
     else {
       this.position = previousPosition;

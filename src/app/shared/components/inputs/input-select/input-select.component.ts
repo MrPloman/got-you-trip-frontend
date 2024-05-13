@@ -51,7 +51,7 @@ export class InputSelectComponent implements ControlValueAccessor, OnInit {
     if (this.required) this.valueControl.addValidators([Validators.required]);
   }
   public writeValue(value: string | null): void {
-    if (typeof value === 'string' && value) {
+    if ((typeof value === 'string' || typeof value === 'boolean') && value) {
       const _value = value;
       this.valueControl.setValue(_value);
     } else {

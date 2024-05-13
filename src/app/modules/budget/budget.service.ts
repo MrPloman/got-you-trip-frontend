@@ -40,7 +40,6 @@ export class BudgetService {
     questions: QuestionModel[],
     form: BudgetModel
   ): number | null {
-    console.log(question);
     if (!question || question.previousStep === null) return null;
     else {
       if (
