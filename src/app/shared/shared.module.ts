@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { InputSelectComponent } from './components/inputs/input-select/input-select.component';
 import { InputNumberComponent } from './components/inputs/input-number/input-number.component';
-import { FormService } from './components/services/form.service';
+import { FormService } from './services/form.service';
 import { InputDateComponent } from './components/inputs/input-date/input-date.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -19,6 +19,8 @@ import { ButtonComponent } from './components/button/button.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -43,6 +45,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatDividerModule,
     MatButtonModule,
+    MatGridListModule,
   ],
   exports: [
     NavbarComponent,
@@ -59,6 +62,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
     ButtonComponent,
     TranslateModule,
+    MatGridListModule,
   ],
   providers: [FormService, MatDatepickerModule],
 })

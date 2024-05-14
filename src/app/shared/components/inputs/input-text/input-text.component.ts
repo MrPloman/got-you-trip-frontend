@@ -30,6 +30,7 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
   @Input() public formGroup!: FormGroup;
   @Input() public formControlName!: string;
   @Input() public errorMessage = '';
+  @Input() public disabled = false;
 
   public readonly valueControl = new FormControl(null || '');
 

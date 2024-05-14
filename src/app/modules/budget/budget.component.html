@@ -1,107 +1,171 @@
-<form class="container" [formGroup]="_budgetForm.structure">
-  <div [ngSwitch]="formStarted">
-    <div id="information" @inOutPaneAnimation *ngSwitchCase="false">
-      <h2 id="title">What about our budget</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna
-        justo, imperdiet ut nibh at, ultricies porttitor lorem. Suspendisse
-        potenti. Duis imperdiet eros turpis, et ultrices mauris porta nec.
-        Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem
-        ipsum dolor sit amet, consectetur adipiscing elit. Aenean erat dui,
-        aliquam tincidunt lobortis non, sodales quis velit. Vestibulum nec porta
-        nulla. Vivamus porttitor felis vel dictum aliquam. Fusce ut dolor
-        aliquam, hendrerit lorem at, tincidunt nisl. Cras blandit justo id
-        auctor convallis. Maecenas nec orci tincidunt.
-      </p>
-    </div>
-    <div id="questions" *ngSwitchCase="true">
-      <div *ngFor="let question of getQuestion; let i = index">
-        <div
-          id="question"
-          [@inOutPaneAnimation]="position == i"
-          *ngIf="position == i"
-        >
-          <div id="questionInformation">
-            <h2 id="questionTitle">
-              {{ "questions." + question.question | translate }}
-            </h2>
-            <p id="questionDescription">
-              {{ "questions.information" + (position + 1) | translate }}
-            </p>
+<div [ngSwitch]="formFulfilled">
+  <div *ngSwitchCase="false">
+    <form class="container" [formGroup]="_budgetForm.structure">
+      <div [ngSwitch]="formStarted">
+        <div id="information" @inOutPaneAnimation *ngSwitchCase="false">
+          <h2 id="title">What about our budget</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+            magna justo, imperdiet ut nibh at, ultricies porttitor lorem.
+            Suspendisse potenti. Duis imperdiet eros turpis, et ultrices mauris
+            porta nec. Interdum et malesuada fames ac ante ipsum primis in
+            faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Aenean erat dui, aliquam tincidunt lobortis non, sodales quis velit.
+            Vestibulum nec porta nulla. Vivamus porttitor felis vel dictum
+            aliquam. Fusce ut dolor aliquam, hendrerit lorem at, tincidunt nisl.
+            Cras blandit justo id auctor convallis. Maecenas nec orci tincidunt.
+          </p>
+        </div>
+        <div id="questions" *ngSwitchCase="true">
+          <div *ngFor="let question of getQuestion; let i = index">
+            <div
+              id="question"
+              [@inOutPaneAnimation]="position == i"
+              *ngIf="position == i"
+            >
+              <div id="questionInformation">
+                <h2 id="questionTitle">
+                  {{ "questions." + question.question | translate }}
+                </h2>
+                <p id="questionDescription">
+                  {{ "questions.information" + (position + 1) | translate }}
+                </p>
+              </div>
+              <app-input-select
+                *ngIf="_formService.isInputSelector(question.question)"
+                class="input"
+                [required]="question.required"
+                [id]="question.question"
+                [formControlName]="question.question"
+                [formGroup]="_budgetForm.structure"
+                [label]="'questions.' + question.question"
+                [options]="question.options ? question.options : []"
+                [errorMessage]="question.errorMessage"
+              ></app-input-select>
+              <app-input-number
+                *ngIf="_formService.isInputNumber(question.question)"
+                class="input"
+                [required]="question.required"
+                [id]="question.question"
+                [formControlName]="question.question"
+                [formGroup]="_budgetForm.structure"
+                [label]="'questions.' + question.question"
+                [errorMessage]="question.errorMessage"
+              ></app-input-number>
+              <app-input-text
+                *ngIf="_formService.isInputText(question.question)"
+                class="input"
+                [required]="question.required"
+                [id]="question.question"
+                [formControlName]="question.question"
+                [formGroup]="_budgetForm.structure"
+                [label]="'questions.' + question.question"
+                [errorMessage]="question.errorMessage"
+              ></app-input-text>
+              <app-input-date
+                *ngIf="_formService.isInputDate(question.question)"
+                class="input"
+                [required]="question.required"
+                [id]="question.question"
+                [formControlName]="question.question"
+                [formGroup]="_budgetForm.structure"
+                [label]="'questions.' + question.question"
+                [errorMessage]="question.errorMessage"
+              ></app-input-date>
+            </div>
           </div>
-          <app-input-select
-            *ngIf="_formService.isInputSelector(question.question)"
-            class="input"
-            [required]="question.required"
-            [id]="question.question"
-            [formControlName]="question.question"
-            [formGroup]="_budgetForm.structure"
-            [label]="'questions.' + question.question"
-            [options]="question.options ? question.options : []"
-            [errorMessage]="question.errorMessage"
-          ></app-input-select>
-          <app-input-number
-            *ngIf="_formService.isInputNumber(question.question)"
-            class="input"
-            [required]="question.required"
-            [id]="question.question"
-            [formControlName]="question.question"
-            [formGroup]="_budgetForm.structure"
-            [label]="'questions.' + question.question"
-            [errorMessage]="question.errorMessage"
-          ></app-input-number>
-          <app-input-text
-            *ngIf="_formService.isInputText(question.question)"
-            class="input"
-            [required]="question.required"
-            [id]="question.question"
-            [formControlName]="question.question"
-            [formGroup]="_budgetForm.structure"
-            [label]="'questions.' + question.question"
-            [errorMessage]="question.errorMessage"
-          ></app-input-text>
-          <app-input-date
-            *ngIf="_formService.isInputDate(question.question)"
-            class="input"
-            [required]="question.required"
-            [id]="question.question"
-            [formControlName]="question.question"
-            [formGroup]="_budgetForm.structure"
-            [label]="'questions.' + question.question"
-            [errorMessage]="question.errorMessage"
-          ></app-input-date>
         </div>
       </div>
+    </form>
+    <div id="actions">
+      <app-button
+        @inOutPaneAnimation
+        *ngIf="formStarted"
+        (click)="previous(position)"
+        [label]="'previous'"
+        [color]="'accent'"
+      ></app-button>
+      <app-button
+        @inOutPaneAnimation
+        *ngIf="position < getQuestion.length - 1 && formStarted"
+        (click)="checkAnswer(getQuestion[position].question, position)"
+        [color]="'primary'"
+        [label]="'next'"
+      ></app-button>
+      <app-button
+        @inOutPaneAnimation
+        *ngIf="position < getQuestion.length - 1 && !formStarted"
+        (click)="startForm()"
+        [color]="'primary'"
+        [label]="'start'"
+      ></app-button>
+      <app-button
+        @inOutPaneAnimation
+        *ngIf="position === getQuestion.length - 1 && formStarted"
+        (click)="submitForm()"
+        [color]="'primary'"
+        [label]="'finish'"
+      ></app-button>
     </div>
   </div>
-</form>
-<div id="actions">
-  <app-button
-    @inOutPaneAnimation
-    *ngIf="formStarted"
-    (click)="previous(position)"
-    [label]="'previous'"
-    [color]="'accent'"
-  ></app-button>
-  <app-button
-    @inOutPaneAnimation
-    *ngIf="position < getQuestion.length - 1 && formStarted"
-    (click)="checkAnswer(getQuestion[position].question, position)"
-    [color]="'primary'"
-    [label]="'next'"
-  ></app-button>
-  <app-button
-    @inOutPaneAnimation
-    *ngIf="position < getQuestion.length - 1 && !formStarted"
-    (click)="startForm()"
-    [color]="'primary'"
-    [label]="'start'"
-  ></app-button>
-  <app-button
-    @inOutPaneAnimation
-    *ngIf="position === getQuestion.length - 1 && formStarted"
-    (click)="submitForm()"
-    [color]="'primary'"
-    [label]="'finish'"
-  ></app-button>
+  <div *ngSwitchCase="true">
+    <div id="budgetContainer">
+      <h2>Your Answers</h2>
+      <div class="answersInformation" id="answersFirstSection">
+        <mat-grid-list
+          cols="4"
+          rowHeight="44px"
+          [formGroup]="_budgetForm.structure"
+        >
+          <span *ngFor="let question of getFulfilledQuestion; let i = index">
+            <mat-grid-tile [colspan]="2" [rowspan]="2" *ngIf="i <= 9">
+              <div id="question">
+                <tr>
+                  <th mat-sort-header="name">
+                    {{ "questions." + question.question | translate }}:
+                  </th>
+                </tr>
+                <tr>
+                  <td>{{ question.answer.value }}</td>
+                </tr>
+              </div>
+            </mat-grid-tile>
+          </span>
+        </mat-grid-list>
+        <div id="picture">
+          <img
+            width="100%"
+            height="400px"
+            src="https://cdn.kimkim.com/files/a/images/55d7ea8718fda7b5b1c4c3a68f239c128e5b29a6/original-3e27ca9d22872719551bce400ed6a7db.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="answersInformation">
+        <mat-grid-list
+          cols="4"
+          rowHeight="44px"
+          [formGroup]="_budgetForm.structure"
+        >
+          <span *ngFor="let question of getFulfilledQuestion; let i = index">
+            <mat-grid-tile [colspan]="1" [rowspan]="2" *ngIf="i > 9">
+              <div id="question">
+                <tr>
+                  <th mat-sort-header="name">
+                    {{ "questions." + question.question | translate }}:
+                  </th>
+                </tr>
+                <tr>
+                  <td>{{ question.answer.value }}</td>
+                </tr>
+              </div>
+            </mat-grid-tile>
+          </span>
+        </mat-grid-list>
+      </div>
+      <h2>Your Budget</h2>
+
+      <div id="budgetInformation"></div>
+    </div>
+  </div>
 </div>

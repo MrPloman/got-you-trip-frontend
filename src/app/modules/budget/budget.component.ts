@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { FormService } from 'src/app/shared/components/services/form.service';
+import { FormService } from 'src/app/shared/services/form.service';
 import { budgetForm } from 'src/app/shared/config/budget-form.config';
 import { questions } from 'src/app/shared/config/questions.config';
 import { BudgetService } from './budget.service';
@@ -50,6 +50,7 @@ export class BudgetComponent implements OnInit {
   protected budgetQuestions = signal(questions);
   public _budgetForm = budgetForm;
   protected formStarted = false;
+  protected formFulfilled = false;
   public position = 0;
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -59,7 +60,15 @@ export class BudgetComponent implements OnInit {
   get getQuestion() {
     return this.budgetQuestions();
   }
-  public submitForm() {}
+  get getFulfilledQuestion() {
+    return this.budgetQuestions().filter((question) => {
+      if (question.answer.value) return question;
+      else return;
+    });
+  }
+  public submitForm() {
+    this.formFulfilled = true;
+  }
   public startForm() {
     this.position = 0;
     this.formStarted = !this.formStarted;
