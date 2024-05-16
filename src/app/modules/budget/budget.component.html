@@ -1,8 +1,8 @@
 <div [ngSwitch]="formFulfilled">
-  <div *ngSwitchCase="false">
+  <div *ngSwitchCase="false" @globalInOut>
     <form class="container" [formGroup]="_budgetForm.structure">
-      <div [ngSwitch]="formStarted">
-        <div id="information" @inOutPaneAnimation *ngSwitchCase="false">
+      <div [ngSwitch]="formStarted" @inOutInformation>
+        <div id="information" *ngSwitchCase="false" @inOutInformation>
           <h2 id="title">What about our budget</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
@@ -16,12 +16,12 @@
             Cras blandit justo id auctor convallis. Maecenas nec orci tincidunt.
           </p>
         </div>
-        <div id="questions" *ngSwitchCase="true">
+        <div id="questions" *ngSwitchCase="true" @inOutInformation>
           <div *ngFor="let question of getQuestion; let i = index">
             <div
               id="question"
-              [@inOutPaneAnimation]="position == i"
               *ngIf="position == i"
+              [@inOutIndividualQuestionAnimation]="position !== i"
             >
               <div id="questionInformation">
                 <h2 id="questionTitle">
@@ -79,28 +79,28 @@
     </form>
     <div id="actions">
       <app-button
-        @inOutPaneAnimation
+        @inOutInformation
         *ngIf="formStarted"
         (click)="previous(position)"
         [label]="'previous'"
         [color]="'accent'"
       ></app-button>
       <app-button
-        @inOutPaneAnimation
+        @inOutInformation
         *ngIf="position < getQuestion.length - 1 && formStarted"
         (click)="checkAnswer(getQuestion[position].question, position)"
         [color]="'primary'"
         [label]="'next'"
       ></app-button>
       <app-button
-        @inOutPaneAnimation
+        @inOutInformation
         *ngIf="position < getQuestion.length - 1 && !formStarted"
         (click)="startForm()"
         [color]="'primary'"
         [label]="'start'"
       ></app-button>
       <app-button
-        @inOutPaneAnimation
+        @inOutInformation
         *ngIf="position === getQuestion.length - 1 && formStarted"
         (click)="fulfillForm()"
         [color]="'primary'"
@@ -108,20 +108,21 @@
       ></app-button>
     </div>
   </div>
-  <div *ngSwitchCase="true">
+  <div *ngSwitchCase="true" @globalInOut>
     <div [ngSwitch]="formSubmitted">
-      <div class="resumeContainer" *ngSwitchCase="false">
+      <div class="resumeContainer" *ngSwitchCase="false" @inOutInformation>
         <h2>Your Answers</h2>
         <div class="answersInformation" id="answersFirstSection">
           <mat-grid-list
             id="gridListFirstAnswers"
             [cols]="getBreakpoint"
-            rowHeight="50px"
+            rowHeight="30px"
+            colsWidth="50%"
             [formGroup]="_budgetForm.structure"
             (window:resize)="checkWindowSize($event)"
           >
             <span *ngFor="let question of getFulfilledQuestion; let i = index">
-              <mat-grid-tile [colspan]="1" [rowspan]="2">
+              <mat-grid-tile [colspan]="1" [rowspan]="3">
                 <div id="question" (click)="goToThisAnswer(i)">
                   <tr>
                     <th>
@@ -129,7 +130,9 @@
                     </th>
                   </tr>
                   <tr>
-                    <td>{{ question.answer.value }}</td>
+                    <td>
+                      {{ question.answer.value }}
+                    </td>
                   </tr>
                 </div>
               </mat-grid-tile>
@@ -149,13 +152,47 @@
           ></app-button>
         </div>
       </div>
-      <div id="budgetContainer" *ngSwitchCase="true">
-        <app-loader></app-loader>
+      <div
+        id="budgetContainer"
+        *ngSwitchCase="true"
+        @inOutInformation
+        [ngSwitch]="loading"
+      >
+        <app-loader *ngSwitchCase="true" [loading]="loading"></app-loader>
+        <article *ngSwitchCase="false" id="budgetModal">
+          <section id="budgetTitle">
+            <h2>
+              {{
+                _budgetForm.structure.controls["question17"].value | titlecase
+              }}'s Budget
+            </h2>
+          </section>
+          <section id="budgetInformation">
+            <div id="budgetBasicInformation">
+              <div id="budgetDetails">
+                <span class="detail">
+                  <label for=""
+                    >Nº People <i class="fa-solid fa-people-group"></i
+                  ></label>
+                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                </span>
+                <span class="detail">
+                  <label for=""
+                    >Children <i class="fa-solid fa-children"></i
+                  ></label>
+                  <span><i class="fa-solid fa-child-reaching"></i> * 2</span>
+                </span>
+                <label for="">Label1</label>
+                <span>asdasdadsa</span>
+                <label for="">Label1</label>
+                <span>asdasdadsa</span>
+              </div>
+              <div id="budgetMainPrice">$ {{ budgetPrice }}</div>
+            </div>
 
-        <!-- <div class="budgetContainer">
-    <h2>Your Budget</h2>
-    <div id="budgetInformation"></div>
-  </div> -->
+            <div id="budgetExpensuresInformation"></div>
+          </section>
+        </article>
       </div>
     </div>
   </div>
