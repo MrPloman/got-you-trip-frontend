@@ -109,7 +109,7 @@
     </div>
   </div>
   <div *ngSwitchCase="true">
-    <span [ngSwitch]="formSubmitted">
+    <div [ngSwitch]="formSubmitted">
       <div class="resumeContainer" *ngSwitchCase="false">
         <h2>Your Answers</h2>
         <div class="answersInformation" id="answersFirstSection">
@@ -149,14 +149,14 @@
           ></app-button>
         </div>
       </div>
-      <div *ngSwitchCase="true">
-        <div><app-loader></app-loader></div>
+      <div id="budgetContainer" *ngSwitchCase="true">
+        <app-loader></app-loader>
 
         <!-- <div class="budgetContainer">
     <h2>Your Budget</h2>
     <div id="budgetInformation"></div>
   </div> -->
       </div>
-    </span>
+    </div>
   </div>
 </div>
