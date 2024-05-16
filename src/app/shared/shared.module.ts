@@ -20,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     InputNumberComponent,
     InputDateComponent,
     ButtonComponent,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +56,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     InputSelectComponent,
     InputNumberComponent,
     InputDateComponent,
+    LoaderComponent,
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,

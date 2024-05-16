@@ -102,70 +102,61 @@
       <app-button
         @inOutPaneAnimation
         *ngIf="position === getQuestion.length - 1 && formStarted"
-        (click)="submitForm()"
+        (click)="fulfillForm()"
         [color]="'primary'"
         [label]="'finish'"
       ></app-button>
     </div>
   </div>
   <div *ngSwitchCase="true">
-    <div id="budgetContainer">
-      <h2>Your Answers</h2>
-      <div class="answersInformation" id="answersFirstSection">
-        <mat-grid-list
-          cols="4"
-          rowHeight="44px"
-          [formGroup]="_budgetForm.structure"
-        >
-          <span *ngFor="let question of getFulfilledQuestion; let i = index">
-            <mat-grid-tile [colspan]="2" [rowspan]="2" *ngIf="i <= 9">
-              <div id="question">
-                <tr>
-                  <th mat-sort-header="name">
-                    {{ "questions." + question.question | translate }}:
-                  </th>
-                </tr>
-                <tr>
-                  <td>{{ question.answer.value }}</td>
-                </tr>
-              </div>
-            </mat-grid-tile>
-          </span>
-        </mat-grid-list>
-        <div id="picture">
-          <img
-            width="100%"
-            height="400px"
-            src="https://cdn.kimkim.com/files/a/images/55d7ea8718fda7b5b1c4c3a68f239c128e5b29a6/original-3e27ca9d22872719551bce400ed6a7db.jpg"
-            alt=""
-          />
+    <span [ngSwitch]="formSubmitted">
+      <div class="resumeContainer" *ngSwitchCase="false">
+        <h2>Your Answers</h2>
+        <div class="answersInformation" id="answersFirstSection">
+          <mat-grid-list
+            id="gridListFirstAnswers"
+            [cols]="getBreakpoint"
+            rowHeight="50px"
+            [formGroup]="_budgetForm.structure"
+            (window:resize)="checkWindowSize($event)"
+          >
+            <span *ngFor="let question of getFulfilledQuestion; let i = index">
+              <mat-grid-tile [colspan]="1" [rowspan]="2">
+                <div id="question" (click)="goToThisAnswer(i)">
+                  <tr>
+                    <th>
+                      {{ "questions." + question.question | translate }}
+                    </th>
+                  </tr>
+                  <tr>
+                    <td>{{ question.answer.value }}</td>
+                  </tr>
+                </div>
+              </mat-grid-tile>
+            </span>
+          </mat-grid-list>
+        </div>
+
+        <div id="submitActions">
+          <app-button
+            (click)="goToThisAnswer(0)"
+            [label]="'Check answers'"
+          ></app-button>
+          <app-button
+            [color]="'primary'"
+            [label]="'submit'"
+            (click)="submitForm()"
+          ></app-button>
         </div>
       </div>
-      <div class="answersInformation">
-        <mat-grid-list
-          cols="4"
-          rowHeight="44px"
-          [formGroup]="_budgetForm.structure"
-        >
-          <span *ngFor="let question of getFulfilledQuestion; let i = index">
-            <mat-grid-tile [colspan]="1" [rowspan]="2" *ngIf="i > 9">
-              <div id="question">
-                <tr>
-                  <th mat-sort-header="name">
-                    {{ "questions." + question.question | translate }}:
-                  </th>
-                </tr>
-                <tr>
-                  <td>{{ question.answer.value }}</td>
-                </tr>
-              </div>
-            </mat-grid-tile>
-          </span>
-        </mat-grid-list>
-      </div>
-      <h2>Your Budget</h2>
+      <div *ngSwitchCase="true">
+        <div><app-loader></app-loader></div>
 
-      <div id="budgetInformation"></div>
-    </div>
+        <!-- <div class="budgetContainer">
+    <h2>Your Budget</h2>
+    <div id="budgetInformation"></div>
+  </div> -->
+      </div>
+    </span>
   </div>
 </div>

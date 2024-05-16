@@ -59,7 +59,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 4,
     question: 'question5',
-    answer: new FormControl(),
+    answer: new FormControl('flight'),
     required: true,
     previousStep: 3,
     nextStep: 5,
@@ -71,7 +71,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 5,
     question: 'question6',
-    answer: new FormControl(),
+    answer: new FormControl('vtc'),
     required: true,
     previousStep: 4,
     nextStep: 6,
@@ -83,7 +83,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 6,
     question: 'question7',
-    answer: new FormControl(),
+    answer: new FormControl('hotel'),
     required: true,
     previousStep: 5,
 
@@ -95,7 +95,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 7,
     question: 'question8',
-    answer: new FormControl(),
+    answer: new FormControl('medium'),
     required: true,
     previousStep: 6,
     nextStep: 9,
@@ -106,7 +106,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 8,
     question: 'question9',
-    answer: new FormControl(),
+    answer: new FormControl('groceries'),
     required: true,
     previousStep: 7,
     nextStep: 9,
@@ -118,7 +118,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 9,
     question: 'question10',
-    answer: new FormControl(),
+    answer: new FormControl(true),
     required: true,
     previousStep: 8,
     nextStep: 10,
@@ -129,7 +129,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 10,
     question: 'question11',
-    answer: new FormControl(),
+    answer: new FormControl(true),
     required: true,
     previousStep: 9,
 
@@ -142,7 +142,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 11,
     question: 'question12',
-    answer: new FormControl(),
+    answer: new FormControl(true),
     required: true,
     previousStep: 10,
 
@@ -155,7 +155,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 12,
     question: 'question13',
-    answer: new FormControl(),
+    answer: new FormControl(true),
     required: true,
     nextStep: 13,
     previousStep: 11,
@@ -168,7 +168,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 13,
     question: 'question14',
-    answer: new FormControl(),
+    answer: new FormControl(8),
     required: true,
     previousStep: 12,
 
@@ -202,7 +202,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 16,
     question: 'question17',
-    answer: new FormControl(),
+    answer: new FormControl('pol'),
     required: true,
     previousStep: 15,
 
@@ -213,7 +213,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 17,
     question: 'question18',
-    answer: new FormControl(),
+    answer: new FormControl('pa@a.com'),
     required: true,
     previousStep: 16,
     nextStep: null,

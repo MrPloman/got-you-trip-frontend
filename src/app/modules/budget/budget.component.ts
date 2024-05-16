@@ -1,5 +1,12 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import {
+  afterNextRender,
+  AfterRenderPhase,
+  Component,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { FormService } from 'src/app/shared/services/form.service';
 import { budgetForm } from 'src/app/shared/config/budget-form.config';
 import { questions } from 'src/app/shared/config/questions.config';
@@ -18,7 +25,7 @@ import { BudgetService } from './budget.service';
           display: 'none',
         }), //apply default styles before animation starts
         animate(
-          '300ms 300ms',
+          '200ms 200ms',
           style({
             opacity: 1,
             transform: 'translateY(0%)',
@@ -33,7 +40,7 @@ import { BudgetService } from './budget.service';
           display: 'inline',
         }), //apply default styles before animation starts
         animate(
-          '300ms',
+          '200ms',
           style({
             opacity: 0,
             display: 'none',
@@ -44,17 +51,26 @@ import { BudgetService } from './budget.service';
     ]),
   ],
 })
-export class BudgetComponent implements OnInit {
+export class BudgetComponent {
+  private breakPoint = 3;
   protected _formService = inject(FormService);
   protected _budgetService = inject(BudgetService);
   protected budgetQuestions = signal(questions);
   public _budgetForm = budgetForm;
   protected formStarted = false;
-  protected formFulfilled = false;
+  protected formFulfilled = true;
+  protected formSubmitted = false;
   public position = 0;
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+  constructor() {
+    // afterNextRender(
+    //   () => {
+    //     this.breakPoint = window.innerWidth <= 1000 ? 1 : 2;
+    //   },
+    //   { phase: AfterRenderPhase.Write }
+    // );
+  }
+  get getBreakpoint() {
+    return this.breakPoint;
   }
 
   get getQuestion() {
@@ -66,9 +82,10 @@ export class BudgetComponent implements OnInit {
       else return;
     });
   }
-  public submitForm() {
+  public fulfillForm() {
     this.formFulfilled = true;
   }
+
   public startForm() {
     this.position = 0;
     this.formStarted = !this.formStarted;
@@ -111,5 +128,18 @@ export class BudgetComponent implements OnInit {
     } else {
       this._budgetForm.structure.get(question)?.markAsTouched();
     }
+  }
+  protected checkWindowSize(event: any) {
+    this.breakPoint = event.target.innerWidth <= 1000 ? 1 : 3;
+  }
+
+  protected goToThisAnswer(position: number) {
+    this.formFulfilled = false;
+    this.formStarted = true;
+    this.position = position;
+  }
+  protected submitForm() {
+    this.formSubmitted = true;
+    this.formFulfilled = true;
   }
 }
