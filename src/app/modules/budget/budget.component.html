@@ -169,32 +169,92 @@
           </section>
           <section id="budgetInformation">
             <div id="budgetBasicInformation">
-              <div id="budgetDetails">
-                <span class="detail">
-                  <label for=""
-                    >Nº People <i class="fa-solid fa-people-group"></i
-                  ></label>
+              <mat-grid-list
+                [cols]="3"
+                rowHeight="30px"
+                (window:resize)="checkWindowSize($event)"
+                id="budgetBasicInformation"
+              >
+                <mat-grid-tile class="detail" colspan="1" rowspan="2">
+                  <h5>Nº People <i class="fa-solid fa-people-group"></i></h5>
                   <span><i class="fa-solid fa-person"></i> * 8</span>
-                </span>
-                <span class="detail">
-                  <label for=""
-                    >Children <i class="fa-solid fa-children"></i
-                  ></label>
+                </mat-grid-tile>
+                <mat-grid-tile class="detail" colspan="1" rowspan="2">
+                  <h5>Children <i class="fa-solid fa-children"></i></h5>
                   <span><i class="fa-solid fa-child-reaching"></i> * 2</span>
-                </span>
-                <label for="">Label1</label>
-                <span>asdasdadsa</span>
-                <label for="">Label1</label>
-                <span>asdasdadsa</span>
-              </div>
-              <div id="budgetMainPrice">$ {{ budgetPrice }}</div>
+                </mat-grid-tile>
+                <mat-grid-tile class="detail" colspan="1" rowspan="2">
+                  <h5>Label1</h5>
+                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                </mat-grid-tile>
+                <mat-grid-tile class="detail" colspan="1" rowspan="2">
+                  <h5>Label1</h5>
+                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                </mat-grid-tile>
+                <mat-grid-tile class="detail" colspan="1" rowspan="2">
+                  <h5>Label1</h5>
+                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                </mat-grid-tile>
+                <mat-grid-tile class="detail" colspan="1" rowspan="2">
+                  <h5>Label1</h5>
+                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                </mat-grid-tile>
+                <mat-grid-tile class="detail" colspan="1" rowspan="2">
+                  <h5>Label1</h5>
+                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                </mat-grid-tile>
+                <mat-grid-tile class="detail" colspan="1" rowspan="2">
+                  <h5>Label1</h5>
+                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                </mat-grid-tile>
+              </mat-grid-list>
+              <mat-grid-list
+                [cols]="2"
+                rowHeight="200px"
+                colsWidth="100%"
+                id="budgetMainPrice"
+              >
+                $13035.12
+              </mat-grid-list>
             </div>
 
             <div id="budgetExpensesInformation">
-              <div class="expenseColumn" id="transportExpenses"></div>
-              <div class="expenseColumn" id="lodgeExpenses"></div>
-              <div class="expenseColumn" id="foodExpenses"></div>
-              <div class="expenseColumn" id="tourExpenses"></div>
+              <div class="expenseColumn" id="transportExpenses">
+                <h3>Transport</h3>
+                <div class="expense" *ngFor="let item of [1, 2, 3]">
+                  <h5>Expense {{ item }}</h5>
+                  <span>{{ 231 * item }}</span>
+                </div>
+                <hr class="line" />
+                <h4 id="transportExpensesTotal">Total: $1263.3</h4>
+              </div>
+              <div class="expenseColumn" id="lodgeExpenses">
+                <h3>Lodge</h3>
+                <div class="expense" *ngFor="let item of [1, 2, 3]">
+                  <h5>Expense {{ item }}</h5>
+                  <span>{{ 231 * item }}</span>
+                </div>
+                <hr class="line" />
+                <h4 id="lodgeExpensesTotal">Total: $1263.3</h4>
+              </div>
+              <div class="expenseColumn" id="foodExpenses">
+                <h3>Food</h3>
+                <div class="expense" *ngFor="let item of [1, 2, 3]">
+                  <h5>Expense {{ item }}</h5>
+                  <span>{{ 231 * item }}</span>
+                </div>
+                <hr class="line" />
+                <h4 id="foodExpensesTotal">Total: $1263.3</h4>
+              </div>
+              <div class="expenseColumn" id="tourExpenses">
+                <h3>Activities</h3>
+                <div class="expense" *ngFor="let item of [1, 2, 3]">
+                  <h5>Expense {{ item }}</h5>
+                  <span>{{ 231 * item }}</span>
+                </div>
+                <hr class="line" />
+                <h4 id="activitiesExpensesTotal">Total: $1263.3</h4>
+              </div>
             </div>
           </section>
         </article>
