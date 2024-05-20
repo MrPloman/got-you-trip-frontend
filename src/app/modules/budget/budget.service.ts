@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { EmptyBudgetCalculation } from 'src/app/shared/config/empty-budget-calculation.config';
 import { BudgetModel } from 'src/app/shared/models/budget.model';
+import { CalculationModel } from 'src/app/shared/models/calculation.model';
 import { QuestionModel } from 'src/app/shared/models/question.model';
 @Injectable({
   providedIn: 'root',
 })
 export class BudgetService {
+  private budgetExpenses: CalculationModel = EmptyBudgetCalculation;
+
   public nextQuestionToShow(
     question: QuestionModel,
     questions: QuestionModel[],
@@ -34,7 +38,6 @@ export class BudgetService {
       }
     }
   }
-
   public previousQuestionToShow(
     question: QuestionModel,
     questions: QuestionModel[],
@@ -74,5 +77,75 @@ export class BudgetService {
       ]);
     }
     return form;
+  }
+  public getBudget(form: BudgetModel): CalculationModel {
+    // Setting Budget Title
+    this.budgetExpenses.data.name = `${form.structure.controls['question17'].value}'s Budget`;
+    this.budgetExpenses.data.type = form.structure.controls['question1'].value;
+    this.budgetExpenses.data.destination =
+      form.structure.controls['question2'].value;
+    this.budgetExpenses.data.people =
+      form.structure.controls['question3'].value;
+    this.budgetExpenses.data.child = form.structure.controls['question4'].value
+      ? form.structure.controls['question4'].value
+      : 0;
+    this.budgetExpenses.data.duration =
+      form.structure.controls['question14'].value;
+    this.budgetExpenses.data.lodge = form.structure.controls['question7'].value;
+    this.budgetExpenses.data.transportation =
+      form.structure.controls['question5'].value;
+
+    // Getting Month
+    const month = form.structure.controls['question15'].value.toLocaleString(
+      'default',
+      { month: 'long' }
+    );
+    this.budgetExpenses.data.season = month;
+
+    // Setting factors
+    this.setFactors();
+
+    // Getting calculation
+    this.budgetExpenses.data.budget.transportation =
+      this.calculateTransportation(form);
+    this.budgetExpenses.data.budget.lodge = this.calculateLodge(form);
+    this.budgetExpenses.data.budget.activities = this.calculateActivities(form);
+    this.budgetExpenses.data.budget.food = this.calculateFood(form);
+    this.budgetExpenses.data.budget.total = this.calculateTotal();
+    console.log(this.budgetExpenses);
+    return this.budgetExpenses;
+  }
+  private setFactors() {}
+  private calculateTransportation(form: BudgetModel) {
+    return {
+      total: 10,
+      expenses: [],
+    };
+  }
+  private calculateLodge(form: BudgetModel) {
+    return {
+      total: 20,
+      expenses: [],
+    };
+  }
+  private calculateFood(form: BudgetModel) {
+    return {
+      total: 30,
+      expenses: [],
+    };
+  }
+  private calculateActivities(form: BudgetModel) {
+    return {
+      total: 40,
+      expenses: [],
+    };
+  }
+  private calculateTotal(): number {
+    return (
+      this.budgetExpenses.data.budget.activities.total +
+      this.budgetExpenses.data.budget.lodge.total +
+      this.budgetExpenses.data.budget.food.total +
+      this.budgetExpenses.data.budget.transportation.total
+    );
   }
 }

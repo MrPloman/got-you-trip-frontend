@@ -11,6 +11,8 @@ import { FormService } from 'src/app/shared/services/form.service';
 import { budgetForm } from 'src/app/shared/config/budget-form.config';
 import { questions } from 'src/app/shared/config/questions.config';
 import { BudgetService } from './budget.service';
+import { CalculationModel } from 'src/app/shared/models/calculation.model';
+import { EmptyBudgetCalculation } from 'src/app/shared/config/empty-budget-calculation.config';
 
 @Component({
   selector: 'app-budget',
@@ -109,13 +111,16 @@ export class BudgetComponent {
   protected _budgetService = inject(BudgetService);
   protected budgetQuestions = signal(questions);
   public _budgetForm = budgetForm;
-  protected formStarted = true;
-  protected formFulfilled = true;
-  protected formSubmitted = true;
-  public position = 17;
+  public _budgetExpenses: CalculationModel = EmptyBudgetCalculation;
+  protected formStarted = false;
+  protected formFulfilled = false;
+  protected formSubmitted = false;
+  public position = 0;
   public loading: boolean = false;
   public budgetPrice = 0;
   constructor() {
+    this._budgetExpenses = this._budgetService.getBudget(this._budgetForm);
+
     // afterNextRender(
     //   () => {
     //     this.breakPoint = window.innerWidth <= 1000 ? 1 : 2;
@@ -196,8 +201,10 @@ export class BudgetComponent {
     this.formSubmitted = true;
     this.formFulfilled = true;
     this.loading = true;
+
     setTimeout(() => {
       this.loading = false;
+      this._budgetExpenses = this._budgetService.getBudget(this._budgetForm);
     }, 2000);
   }
 }

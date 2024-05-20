@@ -162,98 +162,144 @@
         <article *ngSwitchCase="false" id="budgetModal">
           <section id="budgetTitle">
             <h2>
-              {{
-                _budgetForm.structure.controls["question17"].value | titlecase
-              }}'s Budget
+              {{ _budgetExpenses.data.name | titlecase }}
             </h2>
           </section>
           <section id="budgetInformation">
             <div id="budgetBasicInformation">
               <mat-grid-list
                 [cols]="3"
-                rowHeight="30px"
+                rowHeight="40px"
                 (window:resize)="checkWindowSize($event)"
                 id="budgetBasicInformation"
               >
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
                   <h5>Nº People <i class="fa-solid fa-people-group"></i></h5>
-                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                  <span
+                    ><i class="fa-solid fa-person"></i> *
+                    {{
+                      _budgetExpenses.data.people -
+                        (_budgetExpenses.data.child
+                          ? _budgetExpenses.data.child
+                          : 0)
+                    }}</span
+                  >
                 </mat-grid-tile>
-                <mat-grid-tile class="detail" colspan="1" rowspan="2">
+                <mat-grid-tile
+                  *ngIf="_budgetExpenses.data.child"
+                  class="detail"
+                  colspan="1"
+                  rowspan="2"
+                >
                   <h5>Children <i class="fa-solid fa-children"></i></h5>
-                  <span><i class="fa-solid fa-child-reaching"></i> * 2</span>
+                  <span
+                    ><i class="fa-solid fa-child-reaching"></i> *
+                    {{ _budgetExpenses.data.child }}</span
+                  >
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Label1</h5>
-                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                  <h5>Duration <i class="fa-solid fa-calendar-days"></i></h5>
+                  <span
+                    ><i class="fa-regular fa-sun"></i> *
+                    {{ _budgetExpenses.data.duration }}</span
+                  >
+                  <span
+                    ><i class="fa-solid fa-moon"></i> *
+                    {{ _budgetExpenses.data.duration - 1 }}</span
+                  >
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Label1</h5>
-                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                  <h5>Type <i class="fa-solid fa-plane"></i></h5>
+                  <span>{{ _budgetExpenses.data.type }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Label1</h5>
-                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                  <h5>Destination <i class="fa-solid fa-globe"></i></h5>
+                  <span>{{ _budgetExpenses.data.destination }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Label1</h5>
-                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                  <h5>When <i class="fa-solid fa-tree"></i></h5>
+                  <span>{{ _budgetExpenses.data.season }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Label1</h5>
-                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                  <h5>Lodge <i class="fa-solid fa-bed"></i></h5>
+                  <span>{{ _budgetExpenses.data.lodge }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Label1</h5>
-                  <span><i class="fa-solid fa-person"></i> * 8</span>
+                  <h5>Transportation <i class="fa-solid fa-car"></i></h5>
+                  <span>{{ _budgetExpenses.data.transportation }}</span>
                 </mat-grid-tile>
               </mat-grid-list>
-              <mat-grid-list
-                [cols]="2"
-                rowHeight="200px"
-                colsWidth="100%"
-                id="budgetMainPrice"
-              >
-                $13035.12
+              <mat-grid-list [cols]="2" rowHeight="200px" id="budgetMainPrice">
+                {{ _budgetExpenses.data.budget.total }}
               </mat-grid-list>
             </div>
 
             <div id="budgetExpensesInformation">
               <div class="expenseColumn" id="transportExpenses">
                 <h3>Transport</h3>
-                <div class="expense" *ngFor="let item of [1, 2, 3]">
-                  <h5>Expense {{ item }}</h5>
-                  <span>{{ 231 * item }}</span>
+                <div
+                  class="expense"
+                  *ngFor="
+                    let expense of _budgetExpenses.data.budget.transportation
+                      .expenses
+                  "
+                >
+                  <h5>{{ expense.name }}</h5>
+                  <span>{{ expense.value }}</span>
                 </div>
                 <hr class="line" />
-                <h4 id="transportExpensesTotal">Total: $1263.3</h4>
+                <h4 id="transportExpensesTotal">
+                  Total: ${{ _budgetExpenses.data.budget.transportation.total }}
+                </h4>
               </div>
               <div class="expenseColumn" id="lodgeExpenses">
                 <h3>Lodge</h3>
-                <div class="expense" *ngFor="let item of [1, 2, 3]">
-                  <h5>Expense {{ item }}</h5>
-                  <span>{{ 231 * item }}</span>
+                <div
+                  class="expense"
+                  *ngFor="
+                    let expense of _budgetExpenses.data.budget.lodge.expenses
+                  "
+                >
+                  <h5>{{ expense.name }}</h5>
+                  <span>{{ expense.value }}</span>
                 </div>
                 <hr class="line" />
-                <h4 id="lodgeExpensesTotal">Total: $1263.3</h4>
+                <h4 id="lodgeExpensesTotal">
+                  Total: ${{ _budgetExpenses.data.budget.lodge.total }}
+                </h4>
               </div>
               <div class="expenseColumn" id="foodExpenses">
                 <h3>Food</h3>
-                <div class="expense" *ngFor="let item of [1, 2, 3]">
-                  <h5>Expense {{ item }}</h5>
-                  <span>{{ 231 * item }}</span>
+                <div
+                  class="expense"
+                  *ngFor="
+                    let expense of _budgetExpenses.data.budget.food.expenses
+                  "
+                >
+                  <h5>{{ expense.name }}</h5>
+                  <span>{{ expense.value }}</span>
                 </div>
                 <hr class="line" />
-                <h4 id="foodExpensesTotal">Total: $1263.3</h4>
+                <h4 id="foodExpensesTotal">
+                  Total: ${{ _budgetExpenses.data.budget.food.total }}
+                </h4>
               </div>
               <div class="expenseColumn" id="tourExpenses">
                 <h3>Activities</h3>
-                <div class="expense" *ngFor="let item of [1, 2, 3]">
-                  <h5>Expense {{ item }}</h5>
-                  <span>{{ 231 * item }}</span>
+                <div
+                  class="expense"
+                  *ngFor="
+                    let expense of _budgetExpenses.data.budget.activities
+                      .expenses
+                  "
+                >
+                  <h5>{{ expense.name }}</h5>
+                  <span>{{ expense.value }}</span>
                 </div>
                 <hr class="line" />
-                <h4 id="activitiesExpensesTotal">Total: $1263.3</h4>
+                <h4 id="activitiesExpensesTotal">
+                  Total: ${{ _budgetExpenses.data.budget.activities.total }}
+                </h4>
               </div>
             </div>
           </section>
