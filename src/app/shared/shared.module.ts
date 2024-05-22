@@ -21,7 +21,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { LoaderComponent } from './components/loader/loader.component';
-
+import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -32,6 +33,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     InputDateComponent,
     ButtonComponent,
     LoaderComponent,
+    LanguageSelectorComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +50,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatDividerModule,
     MatButtonModule,
     MatGridListModule,
+    MatListModule,
   ],
   exports: [
     NavbarComponent,
@@ -57,6 +60,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     InputNumberComponent,
     InputDateComponent,
     LoaderComponent,
+    LanguageSelectorComponent,
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
@@ -66,6 +70,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     ButtonComponent,
     TranslateModule,
     MatGridListModule,
+    MatListModule,
   ],
   providers: [FormService, MatDatepickerModule],
 })

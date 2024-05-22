@@ -129,7 +129,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 10,
     question: 'question11',
-    answer: new FormControl(true),
+    answer: new FormControl('city'),
     required: true,
     previousStep: 9,
 

@@ -1,4 +1,46 @@
-<header class="container">
+<header
+  class="container-mobile"
+  *ngIf="mobile"
+  [ngClass]="{ hidden: !mobile }"
+  (window:resize)="resize()"
+>
+  <nav class="nav-closed">
+    <ul class="nav--list">
+      <li class="item" (click)="navbarOpened = true">
+        <i class="fa-solid fa-bars"></i>
+      </li>
+      <li class="item">
+        <h1>GotYouTrip!</h1>
+      </li>
+      <li class="item">
+        <app-language-selector></app-language-selector>
+      </li>
+    </ul>
+  </nav>
+  <nav class="nav-opened" *ngIf="navbarOpened && mobile" @globalInOut>
+    <ul class="nav--list">
+      <li class="active"></li>
+      <li class="item">
+        <a (click)="goTo('')">Home</a>
+      </li>
+      <li class="item">
+        <a (click)="goTo('bundles')">Bundles</a>
+      </li>
+      <li class="item">
+        <a (click)="goTo('budget')">Budgets</a>
+      </li>
+      <li class="item">
+        <a (click)="goTo('about')">About this</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<header
+  class="container"
+  (window:resize)="resize()"
+  *ngIf="!mobile"
+  [ngClass]="{ hidden: mobile }"
+>
   <nav class="navbar">
     <ul class="nav--list">
       <li class="active"></li>

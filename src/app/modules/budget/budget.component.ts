@@ -161,6 +161,7 @@ export class BudgetComponent {
     if (newPosition) {
       this.position = newPosition;
     }
+    console.log(this._budgetForm);
   }
   public previous(questionPosition: number) {
     const previousPosition = this._budgetService.previousQuestionToShow(
