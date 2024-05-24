@@ -12,9 +12,6 @@
       <li class="item">
         <h1>GotYouTrip!</h1>
       </li>
-      <li>
-        <app-language-selector></app-language-selector>
-      </li>
     </ul>
   </nav>
   <nav class="nav-opened" *ngIf="navbarOpened && mobile" @globalInOut>
@@ -62,3 +59,6 @@
     </ul>
   </nav>
 </header>
+<div id="languagePicker">
+  <app-language-selector></app-language-selector>
+</div>

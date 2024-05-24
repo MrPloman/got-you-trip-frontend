@@ -23,6 +23,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
 import { MatListModule } from '@angular/material/list';
+import { TranslatorService } from './services/translator.service';
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -72,6 +73,6 @@ import { MatListModule } from '@angular/material/list';
     MatGridListModule,
     MatListModule,
   ],
-  providers: [FormService, MatDatepickerModule],
+  providers: [FormService, MatDatepickerModule, TranslatorService],
 })
 export class SharedModule {}

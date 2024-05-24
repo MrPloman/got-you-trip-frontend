@@ -5,4 +5,11 @@
   border: 1px solid $fourth;
   padding: 10px;
   font-size: 12px;
+  transition: 0.1s;
+}
+#language-selector:hover {
+  transition: 0.1s;
+  padding: 13px;
+  background-color: $fourth;
+  color: $primary;
 }

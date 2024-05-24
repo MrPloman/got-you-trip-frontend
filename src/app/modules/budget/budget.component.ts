@@ -146,10 +146,12 @@ export class BudgetComponent {
   }
 
   public startForm() {
+    this.scrollToTheTop();
     this.position = 0;
     this.formStarted = !this.formStarted;
   }
   private next(questionPosition: number) {
+    this.scrollToTheTop();
     this._budgetForm = this._budgetService.updateSelectableOrWritabbleValues(
       this._budgetForm
     );
@@ -164,6 +166,7 @@ export class BudgetComponent {
     console.log(this._budgetForm);
   }
   public previous(questionPosition: number) {
+    this.scrollToTheTop();
     const previousPosition = this._budgetService.previousQuestionToShow(
       this.budgetQuestions()[questionPosition],
       this.budgetQuestions(),
@@ -194,11 +197,13 @@ export class BudgetComponent {
   }
 
   protected goToThisAnswer(position: number) {
+    this.scrollToTheTop();
     this.position = position;
     this.formFulfilled = false;
     this.formStarted = true;
   }
   protected submitForm() {
+    this.scrollToTheTop();
     this.formSubmitted = true;
     this.formFulfilled = true;
     this.loading = true;
@@ -207,5 +212,8 @@ export class BudgetComponent {
       this.loading = false;
       this._budgetExpenses = this._budgetService.getBudget(this._budgetForm);
     }, 2000);
+  }
+  public scrollToTheTop() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }
 }
