@@ -6,6 +6,8 @@
   padding: 10px;
   font-size: 12px;
   transition: 0.1s;
+  z-index: 100;
+  background-color: $primary;
 }
 #language-selector:hover {
   transition: 0.1s;

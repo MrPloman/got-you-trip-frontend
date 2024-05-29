@@ -24,6 +24,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
 import { MatListModule } from '@angular/material/list';
 import { TranslatorService } from './services/translator.service';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -35,6 +37,7 @@ import { TranslatorService } from './services/translator.service';
     ButtonComponent,
     LoaderComponent,
     LanguageSelectorComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +55,7 @@ import { TranslatorService } from './services/translator.service';
     MatButtonModule,
     MatGridListModule,
     MatListModule,
+    MatSlideToggleModule,
   ],
   exports: [
     NavbarComponent,
@@ -62,6 +66,7 @@ import { TranslatorService } from './services/translator.service';
     InputDateComponent,
     LoaderComponent,
     LanguageSelectorComponent,
+    FooterComponent,
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
@@ -72,6 +77,7 @@ import { TranslatorService } from './services/translator.service';
     TranslateModule,
     MatGridListModule,
     MatListModule,
+    MatSlideToggleModule,
   ],
   providers: [FormService, MatDatepickerModule, TranslatorService],
 })

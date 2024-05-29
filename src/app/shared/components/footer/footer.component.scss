@@ -1,0 +1,31 @@
+@import "src/variables.scss";
+
+.container {
+  position: absolute;
+  width: 100%;
+  min-height: 10%;
+  bottom: 0;
+  background-image: linear-gradient(0deg, $third 50%, $primary 100%);
+  overflow-y: hidden;
+}
+
+.footer {
+  min-width: 700px;
+  width: 100%;
+}
+
+.foot--list {
+  position: relative;
+  height: 100%;
+  padding: 2% 0px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+#copyright {
+  color: $fourth;
+  text-align: center;
+}

@@ -1,4 +1,4 @@
-import { importProvidersFrom, NgModule, isDevMode } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -17,11 +17,6 @@ import {
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SharedModule } from './shared/shared.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
-import { HomeModule } from './modules/home/home.module';
-import { AboutModule } from './modules/about/about.module';
-import { BudgetModule } from './modules/budget/budget.module';
-import { BundlesModule } from './modules/bundles/bundles.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 

@@ -1,4 +1,4 @@
-<div [ngSwitch]="formFulfilled">
+<div [ngSwitch]="formFulfilled" id="page">
   <div *ngSwitchCase="false" @globalInOut>
     <form class="container" [formGroup]="_budgetForm.structure">
       <div [ngSwitch]="formStarted" @inOutInformation>

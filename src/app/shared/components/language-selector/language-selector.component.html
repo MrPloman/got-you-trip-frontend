@@ -1,3 +1,10 @@
-<span id="language-selector" (click)="changeLanguage()">
+<!-- <span id="language-selector" (click)="changeLanguage()">
   {{ language | uppercase }}
-</span>
+</span> -->
+<mat-slide-toggle
+  [checked]="language === 'en'"
+  class="example-margin"
+  (change)="changeLanguage()"
+>
+  {{ language | uppercase }}</mat-slide-toggle
+>
