@@ -3,6 +3,7 @@ import { QuestionModel } from '../models/question.model';
 import {
   BundleOptions,
   CityTransportationOptions,
+  CurrencyOptions,
   DestinationOptions,
   FoodOptions,
   HotelOptions,
@@ -216,8 +217,19 @@ export const questions: QuestionModel[] = [
     answer: new FormControl('pa@a.com'),
     required: true,
     previousStep: 16,
-    nextStep: null,
+    nextStep: 18,
     information: '',
     errorMessage: 'questions.question18_error',
+  }),
+  new QuestionModel({
+    step: 18,
+    question: 'question19',
+    answer: new FormControl('euros'),
+    required: true,
+    previousStep: 17,
+    nextStep: null,
+    information: '',
+    errorMessage: 'questions.question19_error',
+    options: CurrencyOptions,
   }),
 ];

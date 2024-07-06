@@ -34,6 +34,7 @@ export class CalculationModel {
 
   constructor(data: {
     name: string;
+
     people: number;
     type: BundlesTypes;
     destination: DestinationsTypes;

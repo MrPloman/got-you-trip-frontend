@@ -1,15 +1,25 @@
 @import "src/variables.scss";
 
 .container {
-  padding: 5% 0px 0px;
+  padding: 8% 0px 0px;
   width: 80% !important;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  #actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 0 auto;
+    padding: 30px 0 5%;
+  }
 }
-#page  {
-  padding: 5% 0;
+#questionaire,
+#resume {
+  padding: 0 0 3%;
 }
+
 #information {
   display: flex;
   flex-direction: column;
@@ -55,19 +65,9 @@
   }
 }
 
-#actions {
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  margin: 0 auto;
-  padding: 30px 0 5%;
-}
-
 .resumeContainer {
   width: 70%;
   border-radius: 40% 40% 0 0;
-  height: 600px;
   padding: 0% 15%;
   margin: 0 auto;
   margin-top: 3%;
@@ -234,6 +234,9 @@
         }
       }
     }
+  }
+  #loaderBudget {
+    height: 100vh;
   }
 }
 @media (width <= 425px) {

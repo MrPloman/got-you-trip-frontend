@@ -35,7 +35,8 @@ export class FormService {
       label === 'question11' ||
       label === 'question12' ||
       label === 'question13' ||
-      label === 'question16'
+      label === 'question16' ||
+      label === 'question19'
     )
       return true;
     else return false;

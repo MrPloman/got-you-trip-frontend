@@ -26,9 +26,12 @@ export class TranslatorService {
     localStorage.setItem('language', lang);
   }
 
-  public getLanguage() {
+  public getLanguage(): 'es' | 'en' | null {
     if (isPlatformBrowser(this.platformId)) {
-      return localStorage.getItem('language');
+      const _language = localStorage.getItem('language') as 'es' | 'en';
+      if (_language) {
+        return _language;
+      } else return null;
     } else return null;
   }
 }

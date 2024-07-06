@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { TranslatorService } from '../../services/translator.service';
 import { ThemePalette } from '@angular/material/core';
 
@@ -7,25 +7,21 @@ import { ThemePalette } from '@angular/material/core';
   templateUrl: './language-selector.component.html',
   styleUrl: './language-selector.component.scss',
 })
-export class LanguageSelectorComponent {
+export class LanguageSelectorComponent implements OnInit {
   public selectionOpened: boolean = false;
   private translate = inject(TranslatorService);
-  public language: 'es' | 'en' = 'es';
+  public language: 'es' | 'en' = 'en';
   public toogle = {
     color: 'accent',
     checked: false,
     disabled: false,
   };
 
-  constructor() {
-    const _language = this.translate.getLanguage();
-    console.log(_language);
-    if (_language) this.language = this.language;
-    else this.language = 'es';
-  }
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
+    const _language = this.translate.getLanguage();
+    if (_language) this.language = _language;
   }
 
   public changeLanguage() {

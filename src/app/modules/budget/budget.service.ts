@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { EmptyBudgetCalculation } from 'src/app/shared/config/empty-budget-calculation.config';
 import { BudgetModel } from 'src/app/shared/models/budget.model';
 import { CalculationModel } from 'src/app/shared/models/calculation.model';
 import { QuestionModel } from 'src/app/shared/models/question.model';
+import { TranslatorService } from 'src/app/shared/services/translator.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -80,7 +81,8 @@ export class BudgetService {
   }
   public getBudget(form: BudgetModel): CalculationModel {
     // Setting Budget Title
-    this.budgetExpenses.data.name = `${form.structure.controls['question17'].value}'s Budget`;
+
+    this.budgetExpenses.data.name = form.structure.controls['question17'].value;
     this.budgetExpenses.data.type = form.structure.controls['question1'].value;
     this.budgetExpenses.data.destination =
       form.structure.controls['question2'].value;

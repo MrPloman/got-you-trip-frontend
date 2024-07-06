@@ -2,6 +2,7 @@ import { FormControl } from '@angular/forms';
 import {
   BundlesTypes,
   CityTransportation,
+  CurrencyType,
   DestinationsTypes,
   FoodTypes,
   HotelTypes,
@@ -30,6 +31,7 @@ export class QuestionModel {
     | HotelTypes
     | FoodTypes
     | PlaceTypes
+    | CurrencyType
     | null
     | string
   >;

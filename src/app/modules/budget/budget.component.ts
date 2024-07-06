@@ -112,8 +112,8 @@ export class BudgetComponent {
   protected budgetQuestions = signal(questions);
   public _budgetForm = budgetForm;
   public _budgetExpenses: CalculationModel = EmptyBudgetCalculation;
-  protected formStarted = false;
-  protected formFulfilled = false;
+  protected formStarted = true;
+  protected formFulfilled = true;
   protected formSubmitted = false;
   public position = 0;
   public loading: boolean = false;
@@ -141,7 +141,8 @@ export class BudgetComponent {
       else return;
     });
   }
-  public fulfillForm() {
+  public fulfillForm(e: Event) {
+    e.preventDefault();
     this.formFulfilled = true;
   }
 

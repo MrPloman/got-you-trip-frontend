@@ -1,19 +1,11 @@
-<div [ngSwitch]="formFulfilled" id="page">
+<div [ngSwitch]="formFulfilled" id="questionaire">
   <div *ngSwitchCase="false" @globalInOut>
     <form class="container" [formGroup]="_budgetForm.structure">
       <div [ngSwitch]="formStarted" @inOutInformation>
         <div id="information" *ngSwitchCase="false" @inOutInformation>
-          <h2 id="title">What about our budget</h2>
+          <h2 id="title">{{ "questions.title_information" | translate }}</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            magna justo, imperdiet ut nibh at, ultricies porttitor lorem.
-            Suspendisse potenti. Duis imperdiet eros turpis, et ultrices mauris
-            porta nec. Interdum et malesuada fames ac ante ipsum primis in
-            faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Aenean erat dui, aliquam tincidunt lobortis non, sodales quis velit.
-            Vestibulum nec porta nulla. Vivamus porttitor felis vel dictum
-            aliquam. Fusce ut dolor aliquam, hendrerit lorem at, tincidunt nisl.
-            Cras blandit justo id auctor convallis. Maecenas nec orci tincidunt.
+            {{ "questions.information1" | translate }}
           </p>
         </div>
         <div id="questions" *ngSwitchCase="true" @inOutInformation>
@@ -76,42 +68,42 @@
           </div>
         </div>
       </div>
+      <div id="actions">
+        <app-button
+          @inOutInformation
+          *ngIf="formStarted"
+          (click)="previous(position)"
+          [label]="'previous'"
+          [color]="'accent'"
+        ></app-button>
+        <app-button
+          @inOutInformation
+          *ngIf="position < getQuestion.length - 1 && formStarted"
+          (click)="checkAnswer(getQuestion[position].question, position)"
+          [color]="'primary'"
+          [label]="'next'"
+        ></app-button>
+        <app-button
+          @inOutInformation
+          *ngIf="position < getQuestion.length - 1 && !formStarted"
+          (click)="startForm()"
+          [color]="'primary'"
+          [label]="'start'"
+        ></app-button>
+        <app-button
+          @inOutInformation
+          *ngIf="position === getQuestion.length - 1 && formStarted"
+          (click)="fulfillForm($event)"
+          [color]="'primary'"
+          [label]="'finish'"
+        ></app-button>
+      </div>
     </form>
-    <div id="actions">
-      <app-button
-        @inOutInformation
-        *ngIf="formStarted"
-        (click)="previous(position)"
-        [label]="'previous'"
-        [color]="'accent'"
-      ></app-button>
-      <app-button
-        @inOutInformation
-        *ngIf="position < getQuestion.length - 1 && formStarted"
-        (click)="checkAnswer(getQuestion[position].question, position)"
-        [color]="'primary'"
-        [label]="'next'"
-      ></app-button>
-      <app-button
-        @inOutInformation
-        *ngIf="position < getQuestion.length - 1 && !formStarted"
-        (click)="startForm()"
-        [color]="'primary'"
-        [label]="'start'"
-      ></app-button>
-      <app-button
-        @inOutInformation
-        *ngIf="position === getQuestion.length - 1 && formStarted"
-        (click)="fulfillForm()"
-        [color]="'primary'"
-        [label]="'finish'"
-      ></app-button>
-    </div>
   </div>
   <div *ngSwitchCase="true" @globalInOut>
     <div [ngSwitch]="formSubmitted">
       <div class="resumeContainer" *ngSwitchCase="false" @inOutInformation>
-        <h2>Your Answers</h2>
+        <h2>{{ "budget_resume.title" | translate }}</h2>
         <div class="answersInformation" id="answersFirstSection">
           <mat-grid-list
             id="gridListFirstAnswers"
@@ -158,11 +150,19 @@
         @inOutInformation
         [ngSwitch]="loading"
       >
-        <app-loader *ngSwitchCase="true" [loading]="loading"></app-loader>
+        <app-loader
+          id="loaderBudget"
+          *ngSwitchCase="true"
+          [loading]="loading"
+        ></app-loader>
         <article *ngSwitchCase="false" id="budgetModal">
           <section id="budgetTitle">
             <h2>
-              {{ _budgetExpenses.data.name | titlecase }}
+              {{
+                "budget_resume.budget_name"
+                  | translate : { name: _budgetExpenses.data.name }
+                  | titlecase
+              }}
             </h2>
           </section>
           <section id="budgetInformation">
@@ -174,7 +174,10 @@
                 id="budgetBasicInformation"
               >
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Nº People <i class="fa-solid fa-people-group"></i></h5>
+                  <h5>
+                    {{ "budget_resume.number_people" | translate }}
+                    <i class="fa-solid fa-people-group"></i>
+                  </h5>
                   <span
                     ><i class="fa-solid fa-person"></i> *
                     {{
@@ -191,14 +194,20 @@
                   colspan="1"
                   rowspan="2"
                 >
-                  <h5>Children <i class="fa-solid fa-children"></i></h5>
+                  <h5>
+                    {{ "budget_resume.children" | translate }}
+                    <i class="fa-solid fa-children"></i>
+                  </h5>
                   <span
                     ><i class="fa-solid fa-child-reaching"></i> *
                     {{ _budgetExpenses.data.child }}</span
                   >
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Duration <i class="fa-solid fa-calendar-days"></i></h5>
+                  <h5>
+                    {{ "budget_resume.duration" | translate }}
+                    <i class="fa-solid fa-calendar-days"></i>
+                  </h5>
                   <span
                     ><i class="fa-regular fa-sun"></i> *
                     {{ _budgetExpenses.data.duration }}</span
@@ -209,23 +218,38 @@
                   >
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Type <i class="fa-solid fa-plane"></i></h5>
+                  <h5>
+                    {{ "budget_resume.type" | translate }}
+                    <i class="fa-solid fa-plane"></i>
+                  </h5>
                   <span>{{ _budgetExpenses.data.type }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Destination <i class="fa-solid fa-globe"></i></h5>
+                  <h5>
+                    {{ "budget_resume.destination" | translate }}
+                    <i class="fa-solid fa-globe"></i>
+                  </h5>
                   <span>{{ _budgetExpenses.data.destination }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>When <i class="fa-solid fa-tree"></i></h5>
+                  <h5>
+                    {{ "budget_resume.when" | translate }}
+                    <i class="fa-solid fa-tree"></i>
+                  </h5>
                   <span>{{ _budgetExpenses.data.season }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Lodge <i class="fa-solid fa-bed"></i></h5>
+                  <h5>
+                    {{ "budget_resume.lodge" | translate }}
+                    <i class="fa-solid fa-bed"></i>
+                  </h5>
                   <span>{{ _budgetExpenses.data.lodge }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
-                  <h5>Transportation <i class="fa-solid fa-car"></i></h5>
+                  <h5>
+                    {{ "budget_resume.transportation" | translate }}
+                    <i class="fa-solid fa-car"></i>
+                  </h5>
                   <span>{{ _budgetExpenses.data.transportation }}</span>
                 </mat-grid-tile>
               </mat-grid-list>
@@ -236,7 +260,7 @@
 
             <div id="budgetExpensesInformation">
               <div class="expenseColumn" id="transportExpenses">
-                <h3>Transport</h3>
+                <h3>{{ "budget_resume.transport" | translate }}</h3>
                 <div
                   class="expense"
                   *ngFor="
@@ -249,11 +273,13 @@
                 </div>
                 <hr class="line" />
                 <h4 id="transportExpensesTotal">
-                  Total: ${{ _budgetExpenses.data.budget.transportation.total }}
+                  {{ "budget_resume.total" | translate }}: ${{
+                    _budgetExpenses.data.budget.transportation.total
+                  }}
                 </h4>
               </div>
               <div class="expenseColumn" id="lodgeExpenses">
-                <h3>Lodge</h3>
+                <h3>{{ "budget_resume.lodge" | translate }}</h3>
                 <div
                   class="expense"
                   *ngFor="
@@ -265,11 +291,13 @@
                 </div>
                 <hr class="line" />
                 <h4 id="lodgeExpensesTotal">
-                  Total: ${{ _budgetExpenses.data.budget.lodge.total }}
+                  {{ "budget_resume.total" | translate }}: ${{
+                    _budgetExpenses.data.budget.lodge.total
+                  }}
                 </h4>
               </div>
               <div class="expenseColumn" id="foodExpenses">
-                <h3>Food</h3>
+                <h3>{{ "budget_resume.food" | translate }}</h3>
                 <div
                   class="expense"
                   *ngFor="
@@ -281,11 +309,13 @@
                 </div>
                 <hr class="line" />
                 <h4 id="foodExpensesTotal">
-                  Total: ${{ _budgetExpenses.data.budget.food.total }}
+                  {{ "budget_resume.total" | translate }}: ${{
+                    _budgetExpenses.data.budget.food.total
+                  }}
                 </h4>
               </div>
               <div class="expenseColumn" id="tourExpenses">
-                <h3>Activities</h3>
+                <h3>{{ "budget_resume.activities" | translate }}</h3>
                 <div
                   class="expense"
                   *ngFor="
@@ -298,7 +328,9 @@
                 </div>
                 <hr class="line" />
                 <h4 id="activitiesExpensesTotal">
-                  Total: ${{ _budgetExpenses.data.budget.activities.total }}
+                  {{ "budget_resume.total" | translate }}: ${{
+                    _budgetExpenses.data.budget.activities.total
+                  }}
                 </h4>
               </div>
             </div>

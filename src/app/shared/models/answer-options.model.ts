@@ -8,6 +8,7 @@ import {
   OriginTypes,
   FoodTypes,
   PlaceTypes,
+  CurrencyType,
 } from '../types/budget.types';
 
 export class AnswerOption {
@@ -23,6 +24,7 @@ export class AnswerOption {
       | OriginTypes
       | FoodTypes
       | PlaceTypes
+      | CurrencyType
       | boolean;
     disabled: boolean;
   };
@@ -39,6 +41,7 @@ export class AnswerOption {
       | OriginTypes
       | FoodTypes
       | PlaceTypes
+      | CurrencyType
       | boolean;
     disabled: boolean;
   }) {

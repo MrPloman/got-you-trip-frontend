@@ -21,3 +21,4 @@ export type IntensityTypes = 'low' | 'medium' | 'high';
 export type OriginTypes = 'spain' | 'italy' | 'france' | 'usa';
 export type FoodTypes = 'groceries' | 'dinne' | 'takeaway';
 export type PlaceTypes = 'nature' | 'city';
+export type CurrencyType = 'euros' | 'dollars' | 'pounds';
