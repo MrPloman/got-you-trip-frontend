@@ -1,10 +1,9 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { EmptyBudgetCalculation } from 'src/app/shared/config/empty-budget-calculation.config';
 import { BudgetModel } from 'src/app/shared/models/budget.model';
 import { CalculationModel } from 'src/app/shared/models/calculation.model';
 import { QuestionModel } from 'src/app/shared/models/question.model';
-import { TranslatorService } from 'src/app/shared/services/translator.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -107,40 +106,55 @@ export class BudgetService {
     // Setting factors
     this.setFactors();
 
+    if (this.budgetExpenses.data.budget) {
+      this.budgetExpenses.data.budget.transportation =
+        this.calculateTransportation(form);
+      this.budgetExpenses.data.budget.lodge = this.calculateLodge(form);
+      this.budgetExpenses.data.budget.activities =
+        this.calculateActivities(form);
+      this.budgetExpenses.data.budget.food = this.calculateFood(form);
+    }
     // Getting calculation
-    this.budgetExpenses.data.budget.transportation =
-      this.calculateTransportation(form);
-    this.budgetExpenses.data.budget.lodge = this.calculateLodge(form);
-    this.budgetExpenses.data.budget.activities = this.calculateActivities(form);
-    this.budgetExpenses.data.budget.food = this.calculateFood(form);
+
     this.budgetExpenses.data.budget.total = this.calculateTotal();
     console.log(this.budgetExpenses);
     return this.budgetExpenses;
   }
   private setFactors() {}
-  private calculateTransportation(form: BudgetModel) {
-    return {
-      total: 10,
-      expenses: [],
-    };
+  private calculateTransportation(form: BudgetModel): {
+    total: number;
+    expenses: { name: string; value: number }[];
+  } {
+    if (form)
+      return {
+        total: 10,
+        expenses: [],
+      };
+    else return { total: 0, expenses: [] };
   }
   private calculateLodge(form: BudgetModel) {
-    return {
-      total: 20,
-      expenses: [],
-    };
+    if (form)
+      return {
+        total: 10,
+        expenses: [],
+      };
+    else return { total: 0, expenses: [] };
   }
   private calculateFood(form: BudgetModel) {
-    return {
-      total: 30,
-      expenses: [],
-    };
+    if (form)
+      return {
+        total: 10,
+        expenses: [],
+      };
+    else return { total: 0, expenses: [] };
   }
   private calculateActivities(form: BudgetModel) {
-    return {
-      total: 40,
-      expenses: [],
-    };
+    if (form)
+      return {
+        total: 10,
+        expenses: [],
+      };
+    else return { total: 0, expenses: [] };
   }
   private calculateTotal(): number {
     return (
