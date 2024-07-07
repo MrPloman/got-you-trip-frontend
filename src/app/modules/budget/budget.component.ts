@@ -1,12 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import {
-  afterNextRender,
-  AfterRenderPhase,
-  Component,
-  inject,
-  OnInit,
-  signal,
-} from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormService } from 'src/app/shared/services/form.service';
 import { budgetForm } from 'src/app/shared/config/budget-form.config';
 import { questions } from 'src/app/shared/config/questions.config';
@@ -141,8 +134,8 @@ export class BudgetComponent {
       else return;
     });
   }
-  public fulfillForm(e: Event) {
-    e.preventDefault();
+  public fulfillForm($event: MouseEvent) {
+    $event.preventDefault();
     this.formFulfilled = true;
   }
 
@@ -193,8 +186,9 @@ export class BudgetComponent {
       this._budgetForm.structure.get(question)?.markAsTouched();
     }
   }
-  protected checkWindowSize(event: any) {
-    this.breakPoint = event.target.innerWidth <= 1000 ? 1 : 2;
+  protected checkWindowSize($event: UIEvent) {
+    const w = $event.target as Window;
+    this.breakPoint = w.innerWidth <= 1000 ? 1 : 2;
   }
 
   protected goToThisAnswer(position: number) {
