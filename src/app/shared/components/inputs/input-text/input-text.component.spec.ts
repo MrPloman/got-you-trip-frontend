@@ -8,10 +8,9 @@ describe('InputTextComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [InputTextComponent]
-    })
-    .compileComponents();
-    
+      declarations: [InputTextComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(InputTextComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -11,27 +11,27 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./modules/home/home.module').then((m) => m.HomeModule),
+      import('./modules/home/home.module').then(m => m.HomeModule),
   },
   {
     path: '*',
     loadChildren: () =>
-      import('./modules/home/home.module').then((m) => m.HomeModule),
+      import('./modules/home/home.module').then(m => m.HomeModule),
   },
   {
     path: 'about',
     loadChildren: () =>
-      import('./modules/about/about.module').then((m) => m.AboutModule),
+      import('./modules/about/about.module').then(m => m.AboutModule),
   },
   {
     path: 'bundles',
     loadChildren: () =>
-      import('./modules/bundles/bundles.module').then((m) => m.BundlesModule),
+      import('./modules/bundles/bundles.module').then(m => m.BundlesModule),
   },
   {
     path: 'budget',
     loadChildren: () =>
-      import('./modules/budget/budget.module').then((m) => m.BudgetModule),
+      import('./modules/budget/budget.module').then(m => m.BudgetModule),
   },
 ];
 

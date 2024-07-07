@@ -7,13 +7,12 @@
     (blur)="onTouched()"
     (input)="onTouched()"
     [id]="id"
-    [matDatepicker]="picker"
-  />
+    [matDatepicker]="picker" />
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
   @if (valueControl.hasError('required')) {
-  <mat-error>{{ "questions.required_error" | translate }}</mat-error>
+    <mat-error>{{ 'questions.required_error' | translate }}</mat-error>
   } @else {
-  <mat-error>{{ errorMessage | translate }}</mat-error>
+    <mat-error>{{ errorMessage | translate }}</mat-error>
   }
 </mat-form-field>

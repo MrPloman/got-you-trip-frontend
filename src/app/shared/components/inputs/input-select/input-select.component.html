@@ -6,17 +6,16 @@
     [id]="id"
     [formControl]="valueControl"
     [formControlName]="formControlName"
-    ngDefaultControl
-  >
+    ngDefaultControl>
     @for (option of options; track option) {
-    <mat-option [value]="option.structure.value">{{
-      option.structure.label | translate
-    }}</mat-option>
+      <mat-option [value]="option.structure.value">{{
+        option.structure.label | translate
+      }}</mat-option>
     }
   </mat-select>
   @if (valueControl.hasError('required')) {
-  <mat-error>{{ "questions.required_error" | translate }}</mat-error>
+    <mat-error>{{ 'questions.required_error' | translate }}</mat-error>
   } @else {
-  <mat-error>{{ errorMessage | translate }}</mat-error>
+    <mat-error>{{ errorMessage | translate }}</mat-error>
   }
 </mat-form-field>

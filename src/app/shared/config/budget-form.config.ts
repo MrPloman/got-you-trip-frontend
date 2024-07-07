@@ -18,7 +18,7 @@ function InferiorDateValidator(
 
 export const budgetForm: BudgetModel = new BudgetModel(new FormGroup({}));
 
-_questions.forEach((question) => {
+_questions.forEach(question => {
   budgetForm.structure.addControl(question.question, question.answer);
   if (question.required) {
     budgetForm.structure.controls[question.question].addValidators([

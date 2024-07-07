@@ -2,8 +2,7 @@
   class="container-mobile"
   *ngIf="mobile"
   [ngClass]="{ hidden: !mobile }"
-  (window:resize)="resize()"
->
+  (window:resize)="resize()">
   <nav class="nav-closed">
     <ul class="nav--list">
       <li class="item" (click)="navbarOpened = true">
@@ -36,8 +35,7 @@
   class="container"
   (window:resize)="resize()"
   *ngIf="!mobile"
-  [ngClass]="{ hidden: mobile }"
->
+  [ngClass]="{ hidden: mobile }">
   <nav class="navbar">
     <ul class="nav--list">
       <li class="active"></li>

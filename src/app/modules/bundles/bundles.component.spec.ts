@@ -8,10 +8,9 @@ describe('BundlesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BundlesComponent]
-    })
-    .compileComponents();
-    
+      declarations: [BundlesComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(BundlesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

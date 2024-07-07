@@ -8,11 +8,10 @@
     [formControl]="valueControl"
     [formControlName]="formControlName"
     (blur)="onTouched()"
-    (input)="onTouched()"
-  />
+    (input)="onTouched()" />
   @if (valueControl.hasError('required')) {
-  <mat-error>{{ "questions.required_error" | translate }}</mat-error>
+    <mat-error>{{ 'questions.required_error' | translate }}</mat-error>
   } @else {
-  <mat-error>{{ errorMessage | translate }}</mat-error>
+    <mat-error>{{ errorMessage | translate }}</mat-error>
   }
 </mat-form-field>

@@ -3,9 +3,9 @@
     <form class="container" [formGroup]="_budgetForm.structure">
       <div [ngSwitch]="formStarted" @inOutInformation>
         <div id="information" *ngSwitchCase="false" @inOutInformation>
-          <h2 id="title">{{ "questions.title_information" | translate }}</h2>
+          <h2 id="title">{{ 'questions.title_information' | translate }}</h2>
           <p>
-            {{ "questions.information1" | translate }}
+            {{ 'questions.information1' | translate }}
           </p>
         </div>
         <div id="questions" *ngSwitchCase="true" @inOutInformation>
@@ -13,14 +13,13 @@
             <div
               id="question"
               *ngIf="position == i"
-              [@inOutIndividualQuestionAnimation]="position !== i"
-            >
+              [@inOutIndividualQuestionAnimation]="position !== i">
               <div id="questionInformation">
                 <h2 id="questionTitle">
-                  {{ "questions." + question.question | translate }}
+                  {{ 'questions.' + question.question | translate }}
                 </h2>
                 <p id="questionDescription">
-                  {{ "questions.information" + (position + 1) | translate }}
+                  {{ 'questions.information' + (position + 1) | translate }}
                 </p>
               </div>
               <app-input-select
@@ -32,8 +31,7 @@
                 [formGroup]="_budgetForm.structure"
                 [label]="'questions.' + question.question"
                 [options]="question.options ? question.options : []"
-                [errorMessage]="question.errorMessage"
-              ></app-input-select>
+                [errorMessage]="question.errorMessage"></app-input-select>
               <app-input-number
                 *ngIf="_formService.isInputNumber(question.question)"
                 class="input"
@@ -42,8 +40,7 @@
                 [formControlName]="question.question"
                 [formGroup]="_budgetForm.structure"
                 [label]="'questions.' + question.question"
-                [errorMessage]="question.errorMessage"
-              ></app-input-number>
+                [errorMessage]="question.errorMessage"></app-input-number>
               <app-input-text
                 *ngIf="_formService.isInputText(question.question)"
                 class="input"
@@ -52,8 +49,7 @@
                 [formControlName]="question.question"
                 [formGroup]="_budgetForm.structure"
                 [label]="'questions.' + question.question"
-                [errorMessage]="question.errorMessage"
-              ></app-input-text>
+                [errorMessage]="question.errorMessage"></app-input-text>
               <app-input-date
                 *ngIf="_formService.isInputDate(question.question)"
                 class="input"
@@ -62,8 +58,7 @@
                 [formControlName]="question.question"
                 [formGroup]="_budgetForm.structure"
                 [label]="'questions.' + question.question"
-                [errorMessage]="question.errorMessage"
-              ></app-input-date>
+                [errorMessage]="question.errorMessage"></app-input-date>
             </div>
           </div>
         </div>
@@ -74,36 +69,32 @@
           *ngIf="formStarted"
           (click)="previous(position)"
           [label]="'previous'"
-          [color]="'accent'"
-        ></app-button>
+          [color]="'accent'"></app-button>
         <app-button
           @inOutInformation
           *ngIf="position < getQuestion.length - 1 && formStarted"
           (click)="checkAnswer(getQuestion[position].question, position)"
           [color]="'primary'"
-          [label]="'next'"
-        ></app-button>
+          [label]="'next'"></app-button>
         <app-button
           @inOutInformation
           *ngIf="position < getQuestion.length - 1 && !formStarted"
           (click)="startForm()"
           [color]="'primary'"
-          [label]="'start'"
-        ></app-button>
+          [label]="'start'"></app-button>
         <app-button
           @inOutInformation
           *ngIf="position === getQuestion.length - 1 && formStarted"
           (click)="fulfillForm($event)"
           [color]="'primary'"
-          [label]="'finish'"
-        ></app-button>
+          [label]="'finish'"></app-button>
       </div>
     </form>
   </div>
   <div *ngSwitchCase="true" @globalInOut>
     <div [ngSwitch]="formSubmitted">
       <div class="resumeContainer" *ngSwitchCase="false" @inOutInformation>
-        <h2>{{ "budget_resume.title" | translate }}</h2>
+        <h2>{{ 'budget_resume.title' | translate }}</h2>
         <div class="answersInformation" id="answersFirstSection">
           <mat-grid-list
             id="gridListFirstAnswers"
@@ -111,14 +102,13 @@
             rowHeight="30px"
             colsWidth="50%"
             [formGroup]="_budgetForm.structure"
-            (window:resize)="checkWindowSize($event)"
-          >
+            (window:resize)="checkWindowSize($event)">
             <span *ngFor="let question of getFulfilledQuestion; let i = index">
               <mat-grid-tile [colspan]="1" [rowspan]="3">
                 <div id="question" (click)="goToThisAnswer(i)">
                   <tr>
                     <th>
-                      {{ "questions." + question.question | translate }}
+                      {{ 'questions.' + question.question | translate }}
                     </th>
                   </tr>
                   <tr>
@@ -135,32 +125,28 @@
         <div id="submitActions">
           <app-button
             (click)="goToThisAnswer(0)"
-            [label]="'Check answers'"
-          ></app-button>
+            [label]="'Check answers'"></app-button>
           <app-button
             [color]="'primary'"
             [label]="'submit'"
-            (click)="submitForm()"
-          ></app-button>
+            (click)="submitForm()"></app-button>
         </div>
       </div>
       <div
         id="budgetContainer"
         *ngSwitchCase="true"
         @inOutInformation
-        [ngSwitch]="loading"
-      >
+        [ngSwitch]="loading">
         <app-loader
           id="loaderBudget"
           *ngSwitchCase="true"
-          [loading]="loading"
-        ></app-loader>
+          [loading]="loading"></app-loader>
         <article *ngSwitchCase="false" id="budgetModal">
           <section id="budgetTitle">
             <h2>
               {{
-                "budget_resume.budget_name"
-                  | translate : { name: _budgetExpenses.data.name }
+                'budget_resume.budget_name'
+                  | translate: { name: _budgetExpenses.data.name }
                   | titlecase
               }}
             </h2>
@@ -171,11 +157,10 @@
                 [cols]="3"
                 rowHeight="40px"
                 (window:resize)="checkWindowSize($event)"
-                id="budgetBasicInformation"
-              >
+                id="budgetBasicInformation">
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
                   <h5>
-                    {{ "budget_resume.number_people" | translate }}
+                    {{ 'budget_resume.number_people' | translate }}
                     <i class="fa-solid fa-people-group"></i>
                   </h5>
                   <span
@@ -192,10 +177,9 @@
                   *ngIf="_budgetExpenses.data.child"
                   class="detail"
                   colspan="1"
-                  rowspan="2"
-                >
+                  rowspan="2">
                   <h5>
-                    {{ "budget_resume.children" | translate }}
+                    {{ 'budget_resume.children' | translate }}
                     <i class="fa-solid fa-children"></i>
                   </h5>
                   <span
@@ -205,7 +189,7 @@
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
                   <h5>
-                    {{ "budget_resume.duration" | translate }}
+                    {{ 'budget_resume.duration' | translate }}
                     <i class="fa-solid fa-calendar-days"></i>
                   </h5>
                   <span
@@ -219,35 +203,35 @@
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
                   <h5>
-                    {{ "budget_resume.type" | translate }}
+                    {{ 'budget_resume.type' | translate }}
                     <i class="fa-solid fa-plane"></i>
                   </h5>
                   <span>{{ _budgetExpenses.data.type }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
                   <h5>
-                    {{ "budget_resume.destination" | translate }}
+                    {{ 'budget_resume.destination' | translate }}
                     <i class="fa-solid fa-globe"></i>
                   </h5>
                   <span>{{ _budgetExpenses.data.destination }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
                   <h5>
-                    {{ "budget_resume.when" | translate }}
+                    {{ 'budget_resume.when' | translate }}
                     <i class="fa-solid fa-tree"></i>
                   </h5>
                   <span>{{ _budgetExpenses.data.season }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
                   <h5>
-                    {{ "budget_resume.lodge" | translate }}
+                    {{ 'budget_resume.lodge' | translate }}
                     <i class="fa-solid fa-bed"></i>
                   </h5>
                   <span>{{ _budgetExpenses.data.lodge }}</span>
                 </mat-grid-tile>
                 <mat-grid-tile class="detail" colspan="1" rowspan="2">
                   <h5>
-                    {{ "budget_resume.transportation" | translate }}
+                    {{ 'budget_resume.transportation' | translate }}
                     <i class="fa-solid fa-car"></i>
                   </h5>
                   <span>{{ _budgetExpenses.data.transportation }}</span>
@@ -260,75 +244,71 @@
 
             <div id="budgetExpensesInformation">
               <div class="expenseColumn" id="transportExpenses">
-                <h3>{{ "budget_resume.transport" | translate }}</h3>
+                <h3>{{ 'budget_resume.transport' | translate }}</h3>
                 <div
                   class="expense"
                   *ngFor="
                     let expense of _budgetExpenses.data.budget.transportation
                       .expenses
-                  "
-                >
+                  ">
                   <h5>{{ expense.name }}</h5>
                   <span>{{ expense.value }}</span>
                 </div>
                 <hr class="line" />
                 <h4 id="transportExpensesTotal">
-                  {{ "budget_resume.total" | translate }}: ${{
+                  {{ 'budget_resume.total' | translate }}: ${{
                     _budgetExpenses.data.budget.transportation.total
                   }}
                 </h4>
               </div>
               <div class="expenseColumn" id="lodgeExpenses">
-                <h3>{{ "budget_resume.lodge" | translate }}</h3>
+                <h3>{{ 'budget_resume.lodge' | translate }}</h3>
                 <div
                   class="expense"
                   *ngFor="
                     let expense of _budgetExpenses.data.budget.lodge.expenses
-                  "
-                >
+                  ">
                   <h5>{{ expense.name }}</h5>
                   <span>{{ expense.value }}</span>
                 </div>
                 <hr class="line" />
                 <h4 id="lodgeExpensesTotal">
-                  {{ "budget_resume.total" | translate }}: ${{
+                  {{ 'budget_resume.total' | translate }}: ${{
                     _budgetExpenses.data.budget.lodge.total
                   }}
                 </h4>
               </div>
               <div class="expenseColumn" id="foodExpenses">
-                <h3>{{ "budget_resume.food" | translate }}</h3>
+                <h3>{{ 'budget_resume.food' | translate }}</h3>
                 <div
                   class="expense"
                   *ngFor="
                     let expense of _budgetExpenses.data.budget.food.expenses
-                  "
-                >
+                  ">
                   <h5>{{ expense.name }}</h5>
                   <span>{{ expense.value }}</span>
                 </div>
                 <hr class="line" />
                 <h4 id="foodExpensesTotal">
-                  {{ "budget_resume.total" | translate }}: ${{
+                  {{ 'budget_resume.total' | translate }}: ${{
                     _budgetExpenses.data.budget.food.total
                   }}
                 </h4>
               </div>
               <div class="expenseColumn" id="tourExpenses">
-                <h3>{{ "budget_resume.activities" | translate }}</h3>
+                <h3>{{ 'budget_resume.activities' | translate }}</h3>
                 <div
                   class="expense"
                   *ngFor="
                     let expense of _budgetExpenses.data.budget.activities
                       .expenses
-                  "
-                >
+                  ">
                   <h5>{{ expense.name }}</h5>
                   <span>{{ expense.value }}</span>
                 </div>
                 <hr class="line" />
                 <h4 id="activitiesExpensesTotal">
-                  {{ "budget_resume.total" | translate }}: ${{
+                  {{ 'budget_resume.total' | translate }}: ${{
                     _budgetExpenses.data.budget.activities.total
                   }}
                 </h4>

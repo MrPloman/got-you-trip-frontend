@@ -1,4 +1,4 @@
-@import "src/variables.scss";
+@import 'src/variables.scss';
 * {
   padding: 0;
   margin: 0;
@@ -38,7 +38,9 @@
   width: 0%;
   height: 0%;
   border-radius: 5px;
-  transition: left 300ms ease, width 200ms 200ms ease;
+  transition:
+    left 300ms ease,
+    width 200ms 200ms ease;
 }
 
 .item {

@@ -136,7 +136,7 @@ export class BudgetComponent {
     return this.budgetQuestions();
   }
   get getFulfilledQuestion() {
-    return this.budgetQuestions().filter((question) => {
+    return this.budgetQuestions().filter(question => {
       if (question.answer.value) return question;
       else return;
     });

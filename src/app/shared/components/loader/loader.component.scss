@@ -1,4 +1,4 @@
-@import "src/variables.scss";
+@import 'src/variables.scss';
 
 #container {
   width: 100vw;
@@ -18,7 +18,7 @@
     animation: l6 1.5s linear infinite;
   }
   .loader:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 100%;
     box-shadow: inherit;
