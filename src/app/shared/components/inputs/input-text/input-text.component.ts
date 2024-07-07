@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, forwardRef, inject } from '@angular/core';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -32,7 +32,7 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
   @Input() public errorMessage = '';
   @Input() public disabled = false;
 
-  public readonly valueControl = new FormControl(null || '');
+  public readonly valueControl = new FormControl('');
 
   ngOnInit(): void {
     combineLatest([this.valueControl.valueChanges]).subscribe(() => {
@@ -60,8 +60,9 @@ export class InputTextComponent implements ControlValueAccessor, OnInit {
     }
   }
   // On change section
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  private _onChange = (_value: string | null): void => undefined;
+  private _onChange = (value: string | null): void => undefined;
   public registerOnChange(fn: (value: string | null) => void): void {
     this._onChange = fn;
   }

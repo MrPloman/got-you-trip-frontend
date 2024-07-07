@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { TranslatorService } from '../../services/translator.service';
-import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-language-selector',

@@ -1,6 +1,6 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import { AfterContentInit, Component, inject, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { AfterContentInit, Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { getWindow } from 'ssr-window';
 
 @Component({

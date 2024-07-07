@@ -39,7 +39,7 @@ export class InputDateComponent implements OnInit {
     });
     if (this.required) this.valueControl.addValidators([Validators.required]);
   }
-  public writeValue(value: any): void {
+  public writeValue(value: Date | null): void {
     if (value) {
       const _value = value;
       this.valueControl.setValue(new Date(_value));
@@ -47,7 +47,7 @@ export class InputDateComponent implements OnInit {
       this.valueControl.setValue(null);
     }
   }
-  private _getValue(): any {
+  private _getValue(): Date | null {
     try {
       if (this.valueControl.invalid) return null;
       const value = this.valueControl.value;
@@ -59,8 +59,8 @@ export class InputDateComponent implements OnInit {
   }
   // On change section
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  private _onChange = (_value: any): void => undefined;
-  public registerOnChange(fn: (value: any) => void): void {
+  private _onChange = (_value: Date | null): void => undefined;
+  public registerOnChange(fn: (value: Date | null) => void): void {
     this._onChange = fn;
   }
   // On touched section

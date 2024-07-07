@@ -19,7 +19,7 @@ export class FormService {
     else return false;
   }
   public isInputCheckbox(label: string): boolean {
-    if (true) return true;
+    if (label) return true;
     else return false;
   }
   public isInputSelector(label: string): boolean {

@@ -4,7 +4,7 @@ import { questions } from './questions.config';
 const _questions = questions;
 function InferiorDateValidator(
   control: AbstractControl
-): { [key: string]: any } | null {
+): { [key: string]: unknown } | null {
   if (!control.value) return { invalidSymbols: true };
   else {
     if (control.value instanceof Date) {

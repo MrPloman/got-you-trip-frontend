@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable({ providedIn: 'root' })
 export class TranslatorService {
   private translate = inject(TranslateService);
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: typeof PLATFORM_ID) {}
 
   public setDefaultLanguage() {
     this.translate.setDefaultLang('en');
