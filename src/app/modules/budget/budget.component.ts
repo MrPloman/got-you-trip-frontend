@@ -6,6 +6,7 @@ import { questions } from 'src/app/shared/config/questions.config';
 import { BudgetService } from './budget.service';
 import { CalculationModel } from 'src/app/shared/models/calculation.model';
 import { EmptyBudgetCalculation } from 'src/app/shared/config/empty-budget-calculation.config';
+import { CurrencyType } from 'src/app/shared/types/budget.types';
 
 @Component({
   selector: 'app-budget',
@@ -111,6 +112,7 @@ export class BudgetComponent {
   public position = 0;
   public loading: boolean = false;
   public budgetPrice = 0;
+  public currencySelected: CurrencyType = 'EUR';
   constructor() {
     this._budgetExpenses = this._budgetService.getBudget(this._budgetForm);
 
@@ -204,8 +206,10 @@ export class BudgetComponent {
     this.loading = true;
 
     setTimeout(() => {
-      this.loading = false;
       this._budgetExpenses = this._budgetService.getBudget(this._budgetForm);
+      this.currencySelected =
+        this._budgetForm.structure.controls['question19'].value;
+      this.loading = false;
     }, 2000);
   }
   public scrollToTheTop() {

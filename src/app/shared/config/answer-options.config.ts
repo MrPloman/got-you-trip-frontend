@@ -191,17 +191,17 @@ export const YesOrNoOptions: AnswerOption[] = [
 export const CurrencyOptions: AnswerOption[] = [
   new AnswerOption({
     label: 'answer.euros',
-    value: 'euros',
+    value: 'EUR',
     disabled: false,
   }),
   new AnswerOption({
     label: 'answer.dollars',
-    value: 'dollars',
+    value: 'USD',
     disabled: false,
   }),
   new AnswerOption({
     label: 'answer.pounds',
-    value: 'pounds',
+    value: 'GBP',
     disabled: false,
   }),
 ];

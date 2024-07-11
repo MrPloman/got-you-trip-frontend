@@ -60,6 +60,7 @@ export class QuestionModel {
       | PlaceTypes
       | null
       | string
+      | CurrencyType
     >;
     required: boolean;
     previousStep: number | null;

@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { EUR, GBP, USD } from 'src/app/shared/config/currency-values.config';
 import { EmptyBudgetCalculation } from 'src/app/shared/config/empty-budget-calculation.config';
 import { BudgetModel } from 'src/app/shared/models/budget.model';
 import { CalculationModel } from 'src/app/shared/models/calculation.model';
 import { QuestionModel } from 'src/app/shared/models/question.model';
+import { CurrencyType } from 'src/app/shared/types/budget.types';
+
 @Injectable({
   providedIn: 'root',
 })
 export class BudgetService {
   private budgetExpenses: CalculationModel = EmptyBudgetCalculation;
-
+  private exchangeRates: { EUR: number; USD: number; GBP: number } = {
+    EUR,
+    USD,
+    GBP,
+  };
   public nextQuestionToShow(
     question: QuestionModel,
     questions: QuestionModel[],
@@ -125,33 +132,37 @@ export class BudgetService {
     total: number;
     expenses: { name: string; value: number }[];
   } {
+    const currency: CurrencyType = form.structure.get('question19')?.value;
     if (form)
       return {
-        total: 10,
+        total: 10 * this.exchangeRates[currency],
         expenses: [],
       };
     else return { total: 0, expenses: [] };
   }
   private calculateLodge(form: BudgetModel) {
+    const currency: CurrencyType = form.structure.get('question19')?.value;
     if (form)
       return {
-        total: 10,
+        total: 10 * this.exchangeRates[currency],
         expenses: [],
       };
     else return { total: 0, expenses: [] };
   }
   private calculateFood(form: BudgetModel) {
+    const currency: CurrencyType = form.structure.get('question19')?.value;
     if (form)
       return {
-        total: 10,
+        total: 10 * this.exchangeRates[currency],
         expenses: [],
       };
     else return { total: 0, expenses: [] };
   }
   private calculateActivities(form: BudgetModel) {
+    const currency: CurrencyType = form.structure.get('question19')?.value;
     if (form)
       return {
-        total: 10,
+        total: 10 * this.exchangeRates[currency],
         expenses: [],
       };
     else return { total: 0, expenses: [] };

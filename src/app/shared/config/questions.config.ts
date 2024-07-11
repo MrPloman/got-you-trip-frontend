@@ -224,7 +224,7 @@ export const questions: QuestionModel[] = [
   new QuestionModel({
     step: 18,
     question: 'question19',
-    answer: new FormControl('euros'),
+    answer: new FormControl('EUR'),
     required: true,
     previousStep: 17,
     nextStep: null,
