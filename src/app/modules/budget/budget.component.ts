@@ -97,6 +97,34 @@ import { CurrencyType } from 'src/app/shared/types/budget.types';
         ),
       ]),
     ]),
+    trigger('finalBudgetAnimation', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+          display: 'none',
+        }), //apply default styles before animation starts
+        animate(
+          '800ms 800ms',
+          style({
+            display: 'flex',
+            opacity: 1,
+          })
+        ),
+      ]),
+      transition(':leave', [
+        style({
+          opacity: 1,
+          display: 'flex',
+        }), //apply default styles before animation starts
+        animate(
+          '800ms',
+          style({
+            opacity: 0,
+            display: 'none',
+          })
+        ),
+      ]),
+    ]),
   ],
 })
 export class BudgetComponent {

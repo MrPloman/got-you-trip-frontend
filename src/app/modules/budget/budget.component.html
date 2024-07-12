@@ -132,15 +132,8 @@
             (click)="submitForm()"></app-button>
         </div>
       </div>
-      <div
-        id="budgetContainer"
-        *ngSwitchCase="true"
-        @inOutInformation
-        [ngSwitch]="loading">
-        <app-loader
-          id="loaderBudget"
-          *ngSwitchCase="true"
-          [loading]="loading"></app-loader>
+      <div id="budgetContainer" *ngSwitchCase="true" [ngSwitch]="loading">
+        <app-loader id="loaderBudget" [loading]="loading"></app-loader>
         <article *ngSwitchCase="false" id="budgetModal">
           <section id="budgetTitle">
             <h2>
