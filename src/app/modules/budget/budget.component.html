@@ -134,7 +134,7 @@
       </div>
       <div id="budgetContainer" *ngSwitchCase="true" [ngSwitch]="loading">
         <app-loader id="loaderBudget" [loading]="loading"></app-loader>
-        <article *ngSwitchCase="false" id="budgetModal">
+        <article @finalBudgetAnimation *ngSwitchCase="false" id="budgetModal">
           <section id="budgetTitle">
             <h2>
               {{

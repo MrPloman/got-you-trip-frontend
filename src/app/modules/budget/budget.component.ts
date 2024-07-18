@@ -104,7 +104,7 @@ import { CurrencyType } from 'src/app/shared/types/budget.types';
           display: 'none',
         }), //apply default styles before animation starts
         animate(
-          '800ms 800ms',
+          '400ms',
           style({
             display: 'flex',
             opacity: 1,
@@ -117,7 +117,7 @@ import { CurrencyType } from 'src/app/shared/types/budget.types';
           display: 'flex',
         }), //apply default styles before animation starts
         animate(
-          '800ms',
+          '1000ms',
           style({
             opacity: 0,
             display: 'none',
