@@ -25,6 +25,7 @@ import { LanguageSelectorComponent } from './components/language-selector/langua
 import { MatListModule } from '@angular/material/list';
 import { TranslatorService } from './services/translator.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     LoaderComponent,
     LanguageSelectorComponent,
     FooterComponent,
+    ImageSliderComponent,
   ],
   imports: [
     CommonModule,
@@ -78,6 +80,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatGridListModule,
     MatListModule,
     MatSlideToggleModule,
+    ImageSliderComponent,
   ],
   providers: [FormService, MatDatepickerModule, TranslatorService],
 })
