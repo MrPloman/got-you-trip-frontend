@@ -134,8 +134,8 @@ export class BudgetComponent {
   protected budgetQuestions = signal(questions);
   public _budgetForm = budgetForm;
   public _budgetExpenses: CalculationModel = EmptyBudgetCalculation;
-  protected formStarted = true;
-  protected formFulfilled = true;
+  protected formStarted = false;
+  protected formFulfilled = false;
   protected formSubmitted = false;
   public position = 0;
   public loading: boolean = false;
