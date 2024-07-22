@@ -1,21 +1,30 @@
-<div class="container" (wheel)="sliderAction($event)">
-  <div
-    class="img-container"
-    *ngFor="let i of sliderArray; let select = index"
-    [ngClass]="{ selected: select == selectedIndex }">
-    <img src="{{ i.img }}" alt="{{ i.alt }}" />
+<div id="slider" class="container" (wheel)="sliderAction($event)">
+  <div class="img-container">
+    <div
+      class="slide active"
+      *ngFor="let i of slideElements; let select = index">
+      <div class="card" *ngIf="select === selectedIndex">
+        <img class="card__img" id="img01" [src]="i.img" />
+        <div class="card__content">
+          <h2 class="card__content-header">{{ i.title }}</h2>
+          <p class="card__content-paragraph">
+            {{ i.description }}
+          </p>
+          <a class="card__content-link">Read </a>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-
-<div class="slider">
-  <div
-    class="slide-button-parent-container"
-    *ngFor="let i of sliderArray; let x = index"
-    (click)="selected(x)">
-    <div class="select-box">
-      <div
-        class="slide-button"
-        [ngClass]="{ 'slide-button-select': x == selectedIndex }"></div>
+  <div class="slider">
+    <div
+      class="slide-button-parent-container"
+      *ngFor="let i of slideElements; let x = index"
+      (click)="selected(x)">
+      <div class="select-box">
+        <div
+          class="slide-button"
+          [ngClass]="{ 'slide-button-select': x == selectedIndex }"></div>
+      </div>
     </div>
   </div>
 </div>

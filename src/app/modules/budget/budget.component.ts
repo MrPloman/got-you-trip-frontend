@@ -143,13 +143,6 @@ export class BudgetComponent {
   public currencySelected: CurrencyType = 'EUR';
   constructor() {
     this._budgetExpenses = this._budgetService.getBudget(this._budgetForm);
-
-    // afterNextRender(
-    //   () => {
-    //     this.breakPoint = window.innerWidth <= 1000 ? 1 : 2;
-    //   },
-    //   { phase: AfterRenderPhase.Write }
-    // );
   }
   get getBreakpoint() {
     return this.breakPoint;

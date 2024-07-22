@@ -6,18 +6,19 @@ img {
 }
 
 .container {
-  height: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .img-container {
-  position: absolute;
-  left: 0;
-  opacity: 0;
+  position: relative;
+  top: 50%;
   height: auto !important;
   background-size: cover;
   background-position: center;
-  will-change: opacity;
-  transition: opacity 0.3s;
 }
 
 .slide-button:hover,
@@ -34,47 +35,93 @@ img {
   width: 30px;
   height: 4px;
   background-color: $third;
-  cursor: pointer;
-  position: absolute;
 }
 
 .slider {
-  position: absolute;
-  top: 50%;
-  right: 80px;
-  opacity: 1;
-  min-width: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 100px 0;
 }
 
 .slide-button-parent-container {
-  position: relative;
   margin: 22px 0;
   min-height: 4px;
+  cursor: pointer;
 }
 
 .select-box {
   min-height: 10px;
 }
 
-.text-container {
-  height: 100vh;
-  justify-content: center;
+.selected {
+  transition: 1s;
+}
+.slide {
   display: flex;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
 }
 
-.page-text {
-  min-height: 373px;
+.card {
+  width: 90vmin;
+  height: 55vmin;
+  display: flex;
+  box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.35);
+  background-color: #fff;
+}
+
+.card__img {
+  background-position: center;
   width: 50%;
   height: 100%;
-  opacity: 0;
-  font-weight: 300;
-  font-size: 90px;
-  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.selected {
-  opacity: 1;
-  transition: 1s;
+.card__content {
+  padding: 10% 5%;
+  box-sizing: border-box;
+  width: 50%;
+}
+
+.card__content-theme {
+  font-weight: 900;
+  font-size: 1.7vmin;
+}
+
+.card__content-header {
+  font-weight: 900;
+  font-size: 54px;
+  font-size: 7vmin;
+  text-transform: capitalize;
+  letter-spacing: 0.01em;
+  line-height: 0.91;
+  margin: 3vmin 0 3.5vmin;
+}
+
+.card__content-paragraph {
+  font-size: 1.6vmin;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 2.5vmin;
+}
+
+.card__content-link {
+  color: #ba3428;
+  font-size: 1.8vmin;
+  display: block;
+  cursor: pointer;
+
+  &:hover {
+  }
+
+  &:after {
+    content: ' →';
+  }
 }

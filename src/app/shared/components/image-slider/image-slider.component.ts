@@ -1,56 +1,90 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { SlideModel } from '../../models/slide.model';
+import { trigger, transition, style, animate } from '@angular/animations';
 @Component({
   selector: 'app-image-slider',
   templateUrl: './image-slider.component.html',
   styleUrl: './image-slider.component.scss',
+  animations: [
+    trigger('slideInLeft', [
+      transition(':enter', [
+        style({ transform: 'translateX(-100%)', display: 'none', opacity: 0 }),
+        animate(
+          '500ms ease-out',
+          style({ transform: 'translateX(0)', display: 'flex', opacity: 1 })
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '500ms ease-out',
+          style({ transform: 'translateX(-100%)', display: 'none', opacity: 0 })
+        ),
+      ]),
+    ]),
+    trigger('slideInRight', [
+      transition(':enter', [
+        style({ transform: 'translateX(100%)', display: 'none', opacity: 0 }),
+        animate(
+          '500ms ease-out',
+          style({ transform: 'translateX(0)', display: 'flex', opacity: 1 })
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '500ms ease-out',
+          style({ transform: 'translateX(100%)', display: 'none', opacity: 0 })
+        ),
+      ]),
+    ]),
+  ],
 })
-export class ImageSliderComponent implements OnInit {
-  sliderArray: { img: string; alt: string; text: string }[] = [
+export class ImageSliderComponent {
+  direction: string = 'right';
+
+  @Input() slideElements: SlideModel[] = [
     {
       img: 'https://www.adpersonam.net/wp-content/uploads/2021/09/ad-personam-itinerari-toscana-crete-senesi.jpg',
-      alt: 'a',
-      text: 'a',
+      title: 'a',
+      description: 'a',
     },
     {
       img: 'https://www.frozentimes.net/wordpress/wp-content/gallery/2012-Spain-Landscapes/2012-Spain_Benalmadena_2012-3186.jpg',
-      alt: 'a',
-      text: 'a',
+      title: 'a',
+      description: 'a',
     },
     {
       img: 'https://cdn-v2.theculturetrip.com/1280x713/wp-content/uploads/2017/12/france-1805936_1920.webp',
-      alt: 'a',
-      text: 'a',
+      title: 'a',
+      description: 'a',
     },
     {
       img: 'https://www.frozentimes.net/wordpress/wp-content/gallery/2012-Spain-Landscapes/2012-Spain_Benalmadena_2012-3186.jpg',
-      alt: 'a',
-      text: 'a',
+      title: 'a',
+      description: 'a',
     },
     {
       img: 'https://cdn-v2.theculturetrip.com/1280x713/wp-content/uploads/2017/12/france-1805936_1920.webp',
-      alt: 'a',
-      text: 'a',
+      title: 'a',
+      description: 'a',
     },
     {
       img: 'https://www.frozentimes.net/wordpress/wp-content/gallery/2012-Spain-Landscapes/2012-Spain_Benalmadena_2012-3186.jpg',
-      alt: 'a',
-      text: 'a',
+      title: 'a',
+      description: 'a',
     },
     {
       img: 'https://cdn-v2.theculturetrip.com/1280x713/wp-content/uploads/2017/12/france-1805936_1920.webp',
-      alt: 'a',
-      text: 'a',
+      title: 'a',
+      description: 'a',
     },
   ];
-  transform: number;
-  selectedIndex = 0;
+  private transform: number;
+  protected selectedIndex = 0;
+  private scrolling = false;
   constructor() {
     this.selectedIndex = 0;
     this.transform = 100;
   }
-
-  ngOnInit() {}
 
   selected(x: number) {
     this.downSelected(x);
@@ -69,52 +103,33 @@ export class ImageSliderComponent implements OnInit {
       this.selectedIndex = 0;
     }
   }
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  sliderAction($event: WheelEvent) {
-    // $event.preventDefault();
-    const ratio = 30 / this.sliderArray.length;
-    console.log(ratio);
-    if (
-      this.selectedIndex < this.sliderArray.length - 1 &&
-      $event.deltaY > this.selectedIndex * ratio
-    ) {
-      this.selectedIndex++;
-    } else if (this.selectedIndex > 0 && $event.deltaY < -ratio) {
-      this.selectedIndex--;
-    }
-    // if (
-    //   $event.deltaY > this.selectedIndex + 1 * ratio &&
-    //   this.sliderArray.length - 1 >= this.selectedIndex
-    // ) {
-    //   this.selectedIndex++;
-    // } else if (
-    //   $event.deltaY < 0 &&
-    //   this.sliderArray.length - 1 >= this.selectedIndex
-    // ) {
-    //   this.selectedIndex--;
-    // }
-    // for (let index = 0; index < this.sliderArray.length; index++) {
-    //   console.log(ratio * index, ratio * (index + 1));
-    //   console.log('......');
-    //   if (
-    //     ratio * index >= $event.deltaY &&
-    //     ratio * (index + 1) < $event.deltaY
-    //   ) {
-    //     this.selectedIndex = index;
-    //   } else if ($event.deltaY < 0) {
-    //     this.selectedIndex = 0;
-    //   } else if ($event.wheelDeltaY > 1) {
-    //     this.selectedIndex = this.sliderArray.length - 1;
-    //   }
-    // }
 
-    // if ($event.deltaY >= 1) {
-    //   this.selectedIndex = this.sliderArray.length - 1;
-    // } else if ($event.deltaY >= 0.5 && $event.deltaY < 1) {
-    //   this.selectedIndex = 1;
-    // } else if ($event.deltaY < 0) {
-    //   this.selectedIndex = 2;
-    // }
-    console.log($event);
+  sliderAction($event: WheelEvent) {
+    if (!this.scrolling) {
+      this.scrolling = true;
+
+      setTimeout(() => {
+        if (
+          this.selectedIndex < this.slideElements.length - 1 &&
+          ($event.deltaY > 0 || $event.deltaX > 0)
+        ) {
+          this.next();
+        } else if (
+          this.selectedIndex > 0 &&
+          ($event.deltaY < 0 || $event.deltaX < 0)
+        ) {
+          this.prev();
+        }
+        this.scrolling = false;
+      }, 1000);
+    }
+  }
+  next() {
+    this.direction = 'right';
+    this.selectedIndex++;
+  }
+  prev() {
+    this.direction = 'left';
+    this.selectedIndex--;
   }
 }
