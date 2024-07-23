@@ -3,14 +3,16 @@
     <div
       class="slide active"
       *ngFor="let i of slideElements; let select = index">
-      <div class="card" *ngIf="select === selectedIndex">
-        <img class="card__img" id="img01" [src]="i.img" />
+      <div
+        class="card"
+        [id]="'card' + select"
+        *ngIf="select === selectedIndex"
+        [ngStyle]="{ 'background-image': 'url(' + i.img + ')' }">
         <div class="card__content">
           <h2 class="card__content-header">{{ i.title }}</h2>
           <p class="card__content-paragraph">
             {{ i.description }}
           </p>
-          <a class="card__content-link">Read </a>
         </div>
       </div>
     </div>

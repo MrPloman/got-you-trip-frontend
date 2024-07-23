@@ -1,10 +1,5 @@
 @import 'src/variables.scss';
 
-img {
-  max-width: 40%;
-  min-width: 30%;
-}
-
 .container {
   height: 100%;
   display: flex;
@@ -14,8 +9,8 @@ img {
 }
 
 .img-container {
-  position: relative;
-  top: 50%;
+  width: 60%;
+  min-height: 60vh;
   height: auto !important;
   background-size: cover;
   background-position: center;
@@ -38,7 +33,7 @@ img {
 }
 
 .slider {
-  width: 100%;
+  width: 40%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -69,25 +64,31 @@ img {
 }
 
 .card {
-  width: 90vmin;
-  height: 55vmin;
+  cursor: pointer;
+  width: 50%;
+  height: 60vh;
   display: flex;
   box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.35);
-  background-color: #fff;
-}
-
-.card__img {
-  background-position: center;
-  width: 50%;
-  height: 100%;
-  background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(70%);
+  border-radius: 100%;
+  transition: 0.5s;
+}
+.card:hover {
+  transition: 0.5s;
+  width: 51%;
+  height: 61vh;
 }
 
 .card__content {
-  padding: 10% 5%;
-  box-sizing: border-box;
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 .card__content-theme {
@@ -102,26 +103,20 @@ img {
   text-transform: capitalize;
   letter-spacing: 0.01em;
   line-height: 0.91;
-  margin: 3vmin 0 3.5vmin;
+  margin: 0 auto;
+  color: $third;
 }
 
 .card__content-paragraph {
-  font-size: 1.6vmin;
+  background-color: rgba(0, 0, 0, 0.335);
+  border-radius: 10%;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+  width: 80%;
+  font-size: 1.7vmin;
   line-height: 1.7;
   font-weight: 300;
   margin-bottom: 2.5vmin;
-}
-
-.card__content-link {
-  color: #ba3428;
-  font-size: 1.8vmin;
-  display: block;
-  cursor: pointer;
-
-  &:hover {
-  }
-
-  &:after {
-    content: ' →';
-  }
+  color: white;
 }
