@@ -1,4 +1,10 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostBinding,
+  Input,
+  Output,
+} from '@angular/core';
 import { SlideModel } from '../../models/slide.model';
 import {
   style,
@@ -8,6 +14,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { DestinationsTypes } from '../../types/budget.types';
 
 @Component({
   selector: 'app-image-slider',
@@ -95,6 +102,7 @@ import {
 })
 export class ImageSliderComponent {
   @Input() slideElements: SlideModel[] = [];
+  @Output() public goTo = new EventEmitter<DestinationsTypes>();
   @HostBinding('@trigger') public selectedIndex = 0;
   private scrolling = false;
   constructor() {
@@ -103,6 +111,10 @@ export class ImageSliderComponent {
 
   selected(x: number) {
     this.selectedIndex = x;
+  }
+  selectBundle(where: DestinationsTypes) {
+    console.log(where);
+    this.goTo.emit('spain');
   }
 
   sliderAction($event: WheelEvent) {

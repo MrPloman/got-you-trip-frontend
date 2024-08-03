@@ -2,7 +2,8 @@
   <div class="img-container">
     <div
       class="slide active"
-      *ngFor="let i of slideElements; let select = index">
+      *ngFor="let i of slideElements; let select = index"
+      (click)="goTo.emit(i.title)">
       <div
         class="card"
         [id]="'card' + select"

@@ -1,3 +1,5 @@
 <div id="bundles">
-  <app-image-slider [slideElements]="bundleSlides"></app-image-slider>
+  <app-image-slider
+    (goTo)="router.navigate(['bundles', $event], { skipLocationChange: true })"
+    [slideElements]="bundleSlides"></app-image-slider>
 </div>

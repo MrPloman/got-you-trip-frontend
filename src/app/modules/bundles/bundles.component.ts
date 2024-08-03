@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { SlidesBundle } from 'src/app/shared/config/bundle-slides';
 
 @Component({
@@ -8,4 +9,5 @@ import { SlidesBundle } from 'src/app/shared/config/bundle-slides';
 })
 export class BundlesComponent {
   protected bundleSlides = SlidesBundle;
+  constructor(public router: Router) {}
 }
