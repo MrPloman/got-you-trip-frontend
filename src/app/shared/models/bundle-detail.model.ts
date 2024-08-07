@@ -1,6 +1,6 @@
 import { DestinationsTypes } from '../types/budget.types';
 type Positions = 'left' | 'right' | 'center';
-class DetailSlide {
+export class DetailSlide {
   img: string;
   description: string;
   position: Positions;

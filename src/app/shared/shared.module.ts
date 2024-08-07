@@ -26,6 +26,7 @@ import { MatListModule } from '@angular/material/list';
 import { TranslatorService } from './services/translator.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ImageSliderComponent } from './components/image-slider/image-slider.com
     LanguageSelectorComponent,
     FooterComponent,
     ImageSliderComponent,
+    CardComponent,
   ],
   imports: [
     CommonModule,
