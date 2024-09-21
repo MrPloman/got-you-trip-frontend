@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TranslatorService } from './shared/services/translator.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import { TranslatorService } from './shared/services/translator.service';
 export class AppComponent {
   private translate = inject(TranslatorService);
 
-  constructor() {
+  constructor(public router: Router) {
     this.translate.setDefaultLanguage();
+    this.router.navigate(['bundles/italy'], { skipLocationChange: true });
   }
 }

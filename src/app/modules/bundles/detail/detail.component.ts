@@ -34,6 +34,5 @@ export class DetailComponent {
     // this.bundleSelected = this.router.parseUrl(this.router.url).root.children[
     //   'primary'
     // ].segments[1].path;
-    console.log(this.bundleSelected);
   }
 }

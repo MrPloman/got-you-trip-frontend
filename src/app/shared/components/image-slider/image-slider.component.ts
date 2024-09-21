@@ -113,8 +113,7 @@ export class ImageSliderComponent {
     this.selectedIndex = x;
   }
   selectBundle(where: DestinationsTypes) {
-    console.log(where);
-    this.goTo.emit('spain');
+    this.goTo.emit(where);
   }
 
   sliderAction($event: WheelEvent) {

@@ -2,17 +2,17 @@
 
 #detail-container {
   width: 100%;
-  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   #header-banner {
     border-radius: 10px;
     box-shadow: 0 0 50px 50px $primary inset !important;
     height: 50vh;
-    width: 70%;
+    width: 100%;
     background-position: 0% !important;
-    //  filter: grayscale(70%);
+    filter: grayscale(50%);
     background-repeat: no-repeat !important;
     background-size: cover !important;
     display: flex;
@@ -32,6 +32,29 @@
       font-size: 30px;
       text-align: center;
       color: white;
+    }
+  }
+  #slides {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .slide {
+      display: flex;
+      width: 50%;
+      height: 300px;
+      border: 1px solid black;
+      margin: 50px;
+    }
+    .left {
+      align-self: flex-start;
+    }
+    .center {
+      align-self: center;
+    }
+    .right {
+      align-self: flex-end;
     }
   }
 }

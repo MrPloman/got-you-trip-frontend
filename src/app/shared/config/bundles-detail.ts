@@ -7,9 +7,33 @@ export const SpainBundle: BundleDetail = {
     'Land of lasl ada asd asd asdadd asdds dsds dsd sdsd sdddasd asdasd adasd ad, Land of lasl ada asd asd asdadd asdds dsds dsd sdsd sdddasd asdasd adasd ad',
   slides: [
     {
+      title: 'Not',
+      description: '',
+      position: 'left',
+      img: '',
+    },
+    {
       title: 'Imagine',
       description: '',
       position: 'center',
+      img: '',
+    },
+    {
+      title: 'Other',
+      description: '',
+      position: 'right',
+      img: '',
+    },
+    {
+      title: 'Realities',
+      description: '',
+      position: 'center',
+      img: '',
+    },
+    {
+      title: 'Over',
+      description: '',
+      position: 'left',
       img: '',
     },
   ],
@@ -23,9 +47,33 @@ export const ItalyBundle: BundleDetail = {
     'Land of lasl ada asd asd asdadd asdds dsds dsd sdsd sdddasd asdasd adasd ad, Land of lasl ada asd asd asdadd asdds dsds dsd sdsd sdddasd asdasd adasd ad',
   slides: [
     {
+      title: 'Not',
+      description: '',
+      position: 'left',
+      img: '',
+    },
+    {
       title: 'Imagine',
       description: '',
       position: 'center',
+      img: '',
+    },
+    {
+      title: 'Other',
+      description: '',
+      position: 'right',
+      img: '',
+    },
+    {
+      title: 'Realities',
+      description: '',
+      position: 'center',
+      img: '',
+    },
+    {
+      title: 'Over',
+      description: '',
+      position: 'left',
       img: '',
     },
   ],

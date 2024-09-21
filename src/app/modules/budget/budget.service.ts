@@ -124,7 +124,6 @@ export class BudgetService {
     // Getting calculation
 
     this.budgetExpenses.data.budget.total = this.calculateTotal();
-    console.log(this.budgetExpenses);
     return this.budgetExpenses;
   }
   private setFactors() {}

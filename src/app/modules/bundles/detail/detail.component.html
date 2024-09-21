@@ -5,4 +5,17 @@
     <h2 id="bundleTitle">{{ bundleSelected.name | titlecase }}</h2>
     <h5 id="bundleDescription">{{ bundleSelected.description }}</h5>
   </header>
+  <section id="slides">
+    <article
+      class="slide"
+      *ngFor="let slide of bundleSelected.slides; let i = index"
+      [ngClass]="{
+        left: slide.position === 'left',
+        center: slide.position === 'center',
+        right: slide.position === 'right',
+      }"
+      [id]="'slide' + i">
+      {{ slide.title }}
+    </article>
+  </section>
 </div>
