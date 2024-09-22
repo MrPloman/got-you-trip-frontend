@@ -16,7 +16,23 @@
         right: slide.position === 'right',
       }"
       [id]="'slide' + i">
-      {{ slide.title }}
+      <div class="information">
+        <div class="column1">
+          <h3 class="title">
+            {{ slide.title }}
+          </h3>
+          <p class="description">
+            {{ slide.description }}
+          </p>
+        </div>
+        <div class="column2">
+          <img [src]="slide.img" [alt]="slide.title" />
+        </div>
+      </div>
+
+      <div class="actions">
+        <app-button [label]="'Budget It!'" />
+      </div>
     </article>
   </section>
 </div>

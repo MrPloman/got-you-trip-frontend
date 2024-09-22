@@ -24,6 +24,12 @@
       padding: 0;
       margin: 0;
       color: white;
+      text-shadow:
+        3px 3px 0 black,
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
     }
     h5 {
       width: 50%;
@@ -41,20 +47,128 @@
     width: 100%;
 
     .slide {
+      padding: 50px;
       display: flex;
       width: 70%;
-      height: 300px;
-      border: 1px solid black;
-      margin: 50px;
+      border-radius: 50px;
+      margin: 100px;
+      background: rgb(0, 0, 0);
+      flex-direction: column;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, $sixth 36%);
+      .information {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        .column1 {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+
+          h3 {
+            margin: 0;
+            font-size: 70px;
+            color: $primary;
+            text-shadow:
+              3px 3px 0 black,
+              -1px -1px 0 black,
+              1px -1px 0 black,
+              -1px 1px 0 black,
+              1px 1px 0 black;
+          }
+          .description {
+            width: 100%;
+            font-size: 18px;
+            letter-spacing: 5px;
+            line-height: 30px;
+          }
+        }
+        .column2 {
+          width: 45%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          img {
+            border-radius: 10%;
+            filter: drop-shadow(0 0 0.9rem $secondary) grayscale(70%);
+          }
+        }
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: row;
+      }
     }
     .left {
+      justify-content: flex-start;
+      align-items: flex-start;
       align-self: flex-start;
     }
     .center {
       align-self: center;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $sixth 36%);
+      .information {
+        display: flex;
+        flex-direction: row-reverse;
+
+        width: 100%;
+        .column1 {
+          justify-content: center;
+          align-items: center;
+          .description {
+            text-align: justify;
+          }
+        }
+      }
+      .actions {
+        flex-direction: row-reverse;
+      }
     }
     .right {
       align-self: flex-end;
+      .information {
+        display: flex;
+        flex-direction: row-reverse;
+
+        width: 100%;
+        .column1 {
+          display: flex;
+          flex-direction: column;
+          width: 60%;
+          justify-content: flex-start;
+          align-items: end;
+          h3 {
+            margin: 0;
+            font-size: 70px;
+            color: $primary;
+            text-shadow:
+              3px 3px 0 black,
+              -1px -1px 0 black,
+              1px -1px 0 black,
+              -1px 1px 0 black,
+              1px 1px 0 black;
+          }
+          .description {
+            width: 100%;
+            font-size: 18px;
+            letter-spacing: 5px;
+            line-height: 30px;
+            text-align: right;
+          }
+        }
+        .column2 {
+          width: 40%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+      }
+      .actions {
+        display: flex;
+        flex-direction: row-reverse;
+      }
     }
   }
 }
