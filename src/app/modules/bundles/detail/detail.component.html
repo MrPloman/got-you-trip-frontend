@@ -8,6 +8,7 @@
   <section id="slides">
     <article
       class="slide"
+      data-aos="fade-up"
       *ngFor="let slide of bundleSelected.slides; let i = index"
       [ngClass]="{
         left: slide.position === 'left',

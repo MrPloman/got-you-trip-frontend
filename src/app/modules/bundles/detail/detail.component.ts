@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Component, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import {
   FranceBundle,
@@ -10,6 +13,11 @@ import {
 import { BundleDetail } from 'src/app/shared/models/bundle-detail.model';
 import { DestinationsTypes } from 'src/app/shared/types/budget.types';
 
+// AOS Dependencies
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+// Component
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -21,18 +29,25 @@ export class DetailComponent {
     this.router.parseUrl(this.router.url).root.children['primary'].segments[1]
       .path;
 
-  constructor(public router: Router) {}
+  constructor(
+    public router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    // Check if the platform is a browser
+    const isBrowser = isPlatformBrowser(this.platformId);
+
+    if (isBrowser) {
+      AOS.init();
+      // Code to execute only on the browser
+    } else {
+      // Code to execute on the server
+    }
+  }
   ngOnInit(): void {
     if (this.bundleParam == 'spain') this.bundleSelected = SpainBundle;
     if (this.bundleParam == 'france') this.bundleSelected = FranceBundle;
     if (this.bundleParam == 'italy') this.bundleSelected = ItalyBundle;
     if (this.bundleParam == 'norway') this.bundleSelected = NorwayBundle;
     if (this.bundleParam == 'portugal') this.bundleSelected = PortugalBundle;
-
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    // this.bundleSelected = this.router.parseUrl(this.router.url).root.children[
-    //   'primary'
-    // ].segments[1].path;
   }
 }
