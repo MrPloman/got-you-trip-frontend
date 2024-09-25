@@ -50,11 +50,17 @@
 }
 
 h1 {
-  font-size: 50px;
   padding: 0 2%;
   color: $primary;
-  text-shadow: 6px 4px $secondary;
   font-weight: 400;
+  font-size: 60px;
+  color: $primary;
+  text-shadow:
+    3px 3px 0 black,
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    1px 1px 0 black;
 }
 
 .item a {
