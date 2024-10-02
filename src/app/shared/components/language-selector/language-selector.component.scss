@@ -1,12 +1,12 @@
 @import 'src/variables.scss';
 
 #language-selector {
+  position: relative;
   border-radius: 100%;
   border: 1px solid $fourth;
   padding: 10px;
   font-size: 12px;
   transition: 0.1s;
-  z-index: 100;
   background-color: $primary;
 }
 #language-selector:hover {

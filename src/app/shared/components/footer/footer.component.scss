@@ -1,9 +1,10 @@
 @import 'src/variables.scss';
 
 footer {
+  position: relative;
   width: 100%;
   min-height: 15%;
-  background-image: linear-gradient(0deg, $third 50%, $primary 100%);
+  background-image: linear-gradient(0deg, $third 50%, transparent 100%);
   overflow-y: hidden;
   bottom: 0;
 }

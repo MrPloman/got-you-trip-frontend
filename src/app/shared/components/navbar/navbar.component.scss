@@ -6,11 +6,13 @@
 }
 
 .container {
+  position: relative;
   width: 100%;
   min-height: 10%;
   top: 0;
-  background-image: linear-gradient(180deg, $third 50%, $primary 100%);
+  background-image: linear-gradient(180deg, $third 50%, transparent 100%);
   overflow-y: hidden;
+  z-index: 100 !important;
 }
 .container.hidden {
   display: none;

@@ -7,7 +7,9 @@
       [ngStyle]="{ 'background-image': 'url(' + item.img + ')' }"></div>
   </div>
   <div id="mainInfo">
-    <h1 id="mainTitle">Welcome</h1>
-    <p id="description">Somos una agencia de viajes a tu medida</p>
+    <h1 id="mainTitle">{{ cards[backgroundImage].title }}</h1>
+    <p id="description">
+      {{ cards[backgroundImage].description }}
+    </p>
   </div>
 </div>

@@ -20,7 +20,7 @@ import { CurrencyType } from 'src/app/shared/types/budget.types';
           display: 'none',
         }), //apply default styles before animation starts
         animate(
-          '400ms 400ms',
+          '400ms',
           style({
             opacity: 1,
             display: 'inline',

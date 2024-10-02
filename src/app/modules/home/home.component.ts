@@ -2,6 +2,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { SlidesBundle } from 'src/app/shared/config/bundle-slides';
+import { HomeCardsConfig } from 'src/app/shared/config/home-cards.config';
+import { HomeCards } from 'src/app/shared/models/home-cards.model';
 
 @Component({
   selector: 'app-home',
@@ -39,8 +41,12 @@ import { SlidesBundle } from 'src/app/shared/config/bundle-slides';
   ],
 })
 export class HomeComponent {
+  public title: string = 'Welcome';
+  public description: string = 'Lorem ipsum';
   protected bundleSlides = SlidesBundle;
-  public backgroundImage = 0;
+  public backgroundImage: number = 0;
+  public cards: HomeCards[] = HomeCardsConfig;
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: 'any non-nullish value'
   ) {}
@@ -52,9 +58,12 @@ export class HomeComponent {
     if (isBrowser) {
       setInterval(() => {
         console.log(this.backgroundImage);
-        if (this.backgroundImage < 4) this.backgroundImage++;
-        else this.backgroundImage = 0;
-      }, 4000);
+        if (this.backgroundImage < 4) {
+          this.backgroundImage++;
+        } else {
+          this.backgroundImage = 0;
+        }
+      }, 8000);
     }
   }
 }
