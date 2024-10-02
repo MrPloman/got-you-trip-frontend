@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { TranslatorService } from './shared/services/translator.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,7 +12,5 @@ export class AppComponent {
 
   constructor(public router: Router) {
     this.translate.setDefaultLanguage();
-    this.router.navigate(['bundles/italy'], { skipLocationChange: true });
   }
-
 }

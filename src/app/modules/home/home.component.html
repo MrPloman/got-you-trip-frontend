@@ -1,4 +1,13 @@
 <div id="home">
-  <div id="background"></div>
-  <h1 id="mainTitle">Welcome</h1>
+  <div *ngFor="let item of bundleSlides; let i = index">
+    <div
+      @globalInOut
+      *ngIf="backgroundImage == i"
+      id="background"
+      [ngStyle]="{ 'background-image': 'url(' + item.img + ')' }"></div>
+  </div>
+  <div id="mainInfo">
+    <h1 id="mainTitle">Welcome</h1>
+    <p id="description">Somos una agencia de viajes a tu medida</p>
+  </div>
 </div>
