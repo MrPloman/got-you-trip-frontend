@@ -45,4 +45,4 @@ Thumbs.db
 .nx/workspace-data
 
 # Config documents
-./src/app/configuration
+/src/app/configuration
