@@ -4,6 +4,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 import { InputTextComponent } from './components/inputs/input-text/input-text.component';
+import { InputTextareaComponent } from './components/inputs/input-textarea/input-textarea.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,6 +28,7 @@ import { TranslatorService } from './services/translator.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { CardComponent } from './components/card/card.component';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { CardComponent } from './components/card/card.component';
     FooterComponent,
     ImageSliderComponent,
     CardComponent,
+    InputTextareaComponent,
   ],
   imports: [
     CommonModule,
@@ -60,6 +63,7 @@ import { CardComponent } from './components/card/card.component';
     MatGridListModule,
     MatListModule,
     MatSlideToggleModule,
+    RecaptchaModule,
   ],
   exports: [
     NavbarComponent,
@@ -68,6 +72,7 @@ import { CardComponent } from './components/card/card.component';
     InputSelectComponent,
     InputNumberComponent,
     InputDateComponent,
+    InputTextareaComponent,
     LoaderComponent,
     LanguageSelectorComponent,
     FooterComponent,

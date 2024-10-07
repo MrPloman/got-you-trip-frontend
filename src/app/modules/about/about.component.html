@@ -1,1 +1,24 @@
-<p>about works!</p>
+<div id="mailContainer" [formGroup]="emailForm">
+  <app-input-text
+    [required]="true"
+    [id]="'email'"
+    [formControlName]="'email'"
+    [formGroup]="emailForm"
+    [label]="'email'"
+    [errorMessage]="'error'"></app-input-text>
+  <app-input-textarea
+    [required]="true"
+    [id]="'message'"
+    [formControlName]="'text'"
+    [formGroup]="emailForm"
+    [label]="'message'"
+    [errorMessage]="'error'"></app-input-textarea>
+  <div>
+    <!-- <div id="captcha">
+      <re-captcha
+        (resolved)="sendCaptcha()"
+        [siteKey]="_environment.TOKEN_CAPTCHA"></re-captcha>
+    </div> -->
+    <app-button></app-button>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<mat-form-field class="input-field" [formGroup]="formGroup">
+  <mat-label> {{ label | translate }} </mat-label>
+  <textarea
+    matInput
+    [type]="type"
+    [id]="id"
+    type="text"
+    [formControl]="valueControl"
+    [formControlName]="formControlName"
+    (blur)="onTouched()"
+    (input)="onTouched()"></textarea>
+  @if (valueControl.hasError('required')) {
+    <mat-error>{{ 'questions.required_error' | translate }}</mat-error>
+  } @else {
+    <mat-error>{{ errorMessage | translate }}</mat-error>
+  }
+</mat-form-field>
