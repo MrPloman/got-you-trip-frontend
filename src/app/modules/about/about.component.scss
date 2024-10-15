@@ -1,4 +1,18 @@
 @import 'src/variables.scss';
+#information {
+  margin: 0 auto;
+  width: 60%;
+
+  #title {
+    font-size: 25px;
+    color: $secondary;
+    letter-spacing: 2.5px;
+  }
+  p {
+    font-size: 15px;
+    letter-spacing: 2.5px;
+  }
+}
 
 #mailContainer {
   margin: 0 auto;

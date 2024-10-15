@@ -1,4 +1,17 @@
-<div id="mailContainer" [formGroup]="emailForm">
+<div id="information">
+  <h2 id="title">About Us</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dui nibh,
+    rhoncus ut tristique nec, ullamcorper ut nunc. Donec scelerisque vulputate
+    ipsum, ut dapibus nisl lobortis pretium. Curabitur nec tristique ex. Duis
+    dignissim, libero non varius porttitor, sapien massa ultrices nibh, vel
+    porta libero nibh et velit. Morbi efficitur accumsan ligula, nec placerat
+    urna egestas sed. Mauris non malesuada quam, ac feugiat sapien. Aenean non
+    placerat est. Cras fringilla sit amet nisl nec faucibus. Maecenas justo ex,
+    placerat et libero sed, elementum vulputate enim.
+  </p>
+</div>
+<form id="mailContainer" [formGroup]="emailForm">
   <app-input-text
     [required]="true"
     [id]="'email'"
@@ -19,6 +32,6 @@
         (resolved)="sendCaptcha()"
         [siteKey]="_environment.TOKEN_CAPTCHA"></re-captcha>
     </div> -->
-    <app-button></app-button>
+    <app-button [label]="'Send'" (click)="checkForm()"></app-button>
   </div>
-</div>
+</form>

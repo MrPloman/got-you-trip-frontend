@@ -46,6 +46,7 @@ export class HomeComponent {
   protected bundleSlides = SlidesBundle;
   public backgroundImage: number = 0;
   public cards: HomeCards[] = HomeCardsConfig;
+  private intervalCarrouselPicture: ReturnType<typeof setTimeout> | undefined;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: 'any non-nullish value'
@@ -56,7 +57,7 @@ export class HomeComponent {
     const isBrowser = isPlatformBrowser(this.platformId);
 
     if (isBrowser) {
-      setInterval(() => {
+      this.intervalCarrouselPicture = setInterval(() => {
         console.log(this.backgroundImage);
         if (this.backgroundImage < 4) {
           this.backgroundImage++;
@@ -65,5 +66,10 @@ export class HomeComponent {
         }
       }, 8000);
     }
+  }
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    clearInterval(this.intervalCarrouselPicture);
   }
 }

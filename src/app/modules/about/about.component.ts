@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-about',
@@ -8,10 +8,20 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AboutComponent {
   public emailForm: FormGroup = new FormGroup({
-    email: new FormControl(),
-    text: new FormControl(),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    text: new FormControl('', [Validators.required]),
   });
+
   resolved(captchaResponse: string) {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
+  }
+
+  public checkForm() {
+    this.emailForm.markAllAsTouched();
+    if (this.emailForm.valid) {
+      console.log('es valido');
+    } else {
+      console.log('no es valido');
+    }
   }
 }
