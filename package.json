@@ -26,6 +26,7 @@
     "@angular/router": "^18.2.5",
     "@angular/service-worker": "^18.2.5",
     "@angular/ssr": "^18.2.5",
+    "@emailjs/browser": "^4.4.1",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "aos": "^2.3.4",
