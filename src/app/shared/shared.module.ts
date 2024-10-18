@@ -29,6 +29,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { CardComponent } from './components/card/card.component';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogContentExampleDialog } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
     ImageSliderComponent,
     CardComponent,
     InputTextareaComponent,
+    DialogContentExampleDialog,
   ],
   imports: [
     CommonModule,
@@ -64,6 +67,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
     MatListModule,
     MatSlideToggleModule,
     RecaptchaModule,
+    MatDialogModule,
   ],
   exports: [
     NavbarComponent,
@@ -86,8 +90,10 @@ import { RecaptchaModule } from 'ng-recaptcha';
     TranslateModule,
     MatGridListModule,
     MatListModule,
+    MatDialogModule,
     MatSlideToggleModule,
     ImageSliderComponent,
+    DialogContentExampleDialog,
   ],
   providers: [FormService, MatDatepickerModule, TranslatorService],
 })
