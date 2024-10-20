@@ -58,12 +58,7 @@ export class HomeComponent {
 
     if (isBrowser) {
       this.intervalCarrouselPicture = setInterval(() => {
-        console.log(this.backgroundImage);
-        if (this.backgroundImage < 4) {
-          this.backgroundImage++;
-        } else {
-          this.backgroundImage = 0;
-        }
+        this.nextBanner();
       }, 8000);
     }
   }
@@ -71,5 +66,12 @@ export class HomeComponent {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
     clearInterval(this.intervalCarrouselPicture);
+  }
+  public nextBanner() {
+    if (this.backgroundImage < 4) {
+      this.backgroundImage++;
+    } else {
+      this.backgroundImage = 0;
+    }
   }
 }

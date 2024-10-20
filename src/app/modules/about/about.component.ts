@@ -26,6 +26,14 @@ export class AboutComponent {
   resolved(captchaResponse: string) {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
+  // ngOnInit(): void {
+  //   //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+  //   //Add 'implements OnInit' to the class.
+  //   this.openDialog(
+  //     'success',
+  //     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dui nibh, rhoncus ut tristique nec, ullamcorper ut nunc. Donec scelerisque vulputate ipsum, ut dapibus nisl lobortis pretium. Curabitur nec tristique ex. Duis dignissim, libero non varius porttitor, sapien massa ultrices nibh, vel porta libero nibh et velit. Morbi efficitur a'
+  //   );
+  // }
 
   public isValidForm() {
     if (this.emailForm.valid) return true;
@@ -40,9 +48,10 @@ export class AboutComponent {
           this.emailForm.controls['email'].value,
           this.emailForm.controls['text'].value
         )
-        .then(value => {
-          console.log(value);
+        .then(() => {
           this.openDialog('success', 'email enviado correctamente');
+          this.emailForm.reset();
+
           setTimeout(() => {
             this.dialog.closeAll();
           }, 3000);
@@ -52,6 +61,10 @@ export class AboutComponent {
 
   private openDialog(title: string, message: string) {
     this.dialog.open(DialogContentExampleDialog, {
+      panelClass: 'custom-dialog-theme',
+      width: '30%',
+      enterAnimationDuration: 500,
+      exitAnimationDuration: 500,
       data: {
         title,
         message,
